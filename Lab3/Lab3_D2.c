@@ -15,7 +15,7 @@
  *                      |             P4.7|-->LED2(GREEN)
  *                      |                 |
  * Input:       None
- * Output:      LED1 and LED2 blinks alternately at 1Hz frequency
+ * Output:      LED1 and LED2 blink alternately at 1 Hz frequency
  * Author:      Aleksandar Milenkovic, milenkovic@computer.org
  *              Prawar Poudel
  *------------------------------------------------------------------------------*/
