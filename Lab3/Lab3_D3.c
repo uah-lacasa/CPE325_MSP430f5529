@@ -43,7 +43,7 @@ void main(void)
             {
                 P1OUT |= BIT0;            // S1 pressed, turn LED1 on
             }
-            while ((S1)==0);              // Hang-on as long as S1 pressed
+            while ((S1) == 0);            // Hang-on as long as S1 pressed
         } else
             P1OUT &= ~BIT0;
     }
