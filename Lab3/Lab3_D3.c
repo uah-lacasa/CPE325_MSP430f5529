@@ -17,7 +17,7 @@
  *                      |             P2.1|<--S1
  *                      |                 |
  * Input:       Press S1
- * Output:      LED1 is turned on when SW1 is pressed
+ * Output:      LED1 is turned on when S1 is pressed
  * Authors:     Aleksandar Milenkovic, milenkovic@computer.org
  *              Prawar Poudel
  *------------------------------------------------------------------------------*/
@@ -44,7 +44,7 @@ void main(void)
                 P1OUT |= BIT0;            // S1 pressed, turn LED1 on
             }
             while ((S1)==0);              // Hang-on as long as S1 pressed
-        }else
+        } else
             P1OUT &= ~BIT0;
     }
 }
