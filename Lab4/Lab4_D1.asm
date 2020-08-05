@@ -6,7 +6,8 @@
 ; Input      : The input string is specified in myStr
 ; Output     : The port P1OUT displays the number of E's in the string
 ; Author     : A. Milenkovic, milenkovic@computer.org
-; Date       : August 14, 2008
+; Date       : August 14, 2008;
+;              August 5, 2020 (revised)
 ;-------------------------------------------------------------------------------
         .cdecls C,LIST,"msp430.h"       ; Include device header file
 
@@ -15,6 +16,10 @@
                                         ; make it known to linker.
 
 myStr:  .string "HELLO WORLD, I AM THE MSP430!", ''
+        ; .string does add NULL at the end of the string;
+        ;    '' ensures that a NULL follows the string.
+        ; You can alternatively use .cstring "HELLO WORLD, I AM THE MSP430!"
+        ;    that adds a NULL character at the end of the string automatically.
 ;-------------------------------------------------------------------------------
         .text                           ; Assemble into program memory.
         .retain                         ; Override ELF conditional linking
@@ -29,7 +34,7 @@ RESET:  mov.w   #__STACK_END,SP         ; Initialize stack pointer
 ;-------------------------------------------------------------------------------
 ; Main loop here
 ;-------------------------------------------------------------------------------
-main:   bis.b   #0FFh,&P1DIR            ; configure P1.x output
+main:   ; bis.b   #0FFh,&P1DIR          ; do not output the result on port pins
         mov.w   #myStr, R4              ; load the starting address of the string into R4
         clr.b   R5                      ; register R5 will serve as a counter
 gnext:  mov.b   @R4+, R6                ; get a new character
@@ -40,7 +45,7 @@ gnext:  mov.b   @R4+, R6                ; get a new character
         inc.w   R5                      ; if yes, increment counter
         jmp     gnext                   ; go to the next character
 
-lend:   mov.b   R5,&P1OUT               ; set all P1 pins (output)
+lend:   mov.b   R5,&P1OUT               ; write result in P1OUT (not visible on port pins)
         bis.w   #LPM4,SR                ; LPM4
         nop                             ; required only for Debugger
 
