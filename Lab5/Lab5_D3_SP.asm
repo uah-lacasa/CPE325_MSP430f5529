@@ -3,12 +3,11 @@
 ; Function   : Finds a sum of an input integer array
 ; Description: suma_sp is a subroutine that sums elements of an integer array
 ; Input      : The input parameters are on the stack pushed as follows:
-;                 starting addrress of the array
+;                 starting address of the array
 ;                 array length
-;                 display id
-; Output     : No output
+; Output     : The result is returned through the stack
 ; Author     : A. Milenkovic, milenkovic@computer.org
-; Date       : September 14, 2008
+; Date       : September 14, 2008 (revised August 2020)
 ;------------------------------------------------------------------------------
             .cdecls C,LIST,"msp430.h"       ; Include device header file
 
@@ -26,16 +25,7 @@ suma_sp:
 lnext:      add.w   @R4+, R7                ; add next element
             dec.w   R6                      ; decrement array length
             jnz     lnext                   ; repeat if not done
-            mov.w   8(SP), R4               ; get id from the stack
-            bit.w   #1, R4                  ; test display id
-            jnz     lp34                    ; jump to lp34 display id = 1
-            mov.b   R7, P1OUT               ; lower 8 bits of the sum to P1OUT
-            swpb    R7                      ; swap bytes
-            mov.b   R7, P2OUT               ; upper 8 bits of the sum to P2OUT
-            jmp     lend                    ; jump to lend
-lp34:       mov.b   R7, P3OUT               ; lower 8 bits of ths sum to P3OUT
-            swpb    R7                      ; swap bytes
-            mov.b   R7, P4OUT               ; upper 8 bits of the sum to P4OUT
+            mov.w   R7, 8(SP)               ; store the sum on the stack
 lend:       pop     R4                      ; restore R4
             pop     R6                      ; restore R6
             pop     R7                      ; restore R7

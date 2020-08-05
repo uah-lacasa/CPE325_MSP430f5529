@@ -3,7 +3,7 @@
 ; Function   : Finds a sum of two integer arrays
 ; Description: The program initializes ports,
 ;              sums up elements of two integer arrays and
-;              display sums on parallel ports
+;              display sums on on parallel port output registers
 ; Input      : The input arrays are signed 16-bit integers in arr1 and arr2
 ; Output     : P1OUT&P2OUT displays sum of arr1, P3OUT&P4OUT displays sum of arr2
 ; Author     : A. Milenkovic, milenkovic@computer.org
@@ -28,10 +28,7 @@ StopWDT:     mov.w   #WDTPW|WDTHOLD,&WDTCTL ; Stop watchdog timer
 ;-------------------------------------------------------------------------------
 ; Main code here
 ;-------------------------------------------------------------------------------
-main:       bis.b   #0xFF, &P1DIR           ; configure P1.x as output
-            bis.b   #0xFF, &P2DIR           ; configure P2.x as output
-            bis.b   #0xFF, &P3DIR           ; configure P3.x as output
-            bis.b   #0xFF, &P4DIR           ; configure P4.x as output
+main:
             ; load the starting address of the array1 into the register R4
             mov.w   #arr1, R4
             ; load the starting address of the array2 into the register R5
