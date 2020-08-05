@@ -1,6 +1,6 @@
 /*------------------------------------------------------------------------------
  * File:        Lab3_D1.c (CPE 325 Lab3 Demo code)
- * Function:    Turning on LED1(MPS430F5529)
+ * Function:    Turning on LED1 (EXP-MSP430F5529)
  * Description: This C program turns on LED1 connected to P1.0 by writing 1
  *              (P1.0 = 1).
  * Clocks:      ACLK = 32.768kHz, MCLK = SMCLK = default DCO (~1 MHz)
