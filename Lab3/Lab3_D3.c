@@ -31,7 +31,7 @@ void main(void)
     P1DIR |= BIT0;                        // Set P1.0 to output direction (0000_0001)
     P1OUT &= ~BIT0;                       // LED1 is OFF
 
-    P2DIR &= ~BIT1;                       // Set P2.1 as input for SW1 input
+    P2DIR &= ~BIT1;                       // Set P2.1 as input for S1 input
     P2REN |= BIT1;                        // Enable the Pull-up resistor at P2.1
     P2OUT |= BIT1;                        // Required for proper IO
 
