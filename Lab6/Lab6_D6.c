@@ -19,8 +19,9 @@
  *           |             P1.0|--> ACLK = 32kHz
  *           |                 |
  *
- *  Author: Aleksandar Milenkovic, milenkovic@computer.og
- *  Date:   September 2010
+ *  Author:     Aleksandar Milenkovic, milenkovic@computer.og
+ *  Date:       September 2010
+ *  Modified:   Prawar Poudel, August 2020
  ******************************************************************************/
 #include  <msp430.h>
 
@@ -44,11 +45,11 @@ void main(void)
     UCSCTL7 &= ~(XT2OFFG + XT1LFOFFG + DCOFFG);
                                             // Clear XT2,XT1,DCO fault flags
     SFRIFG1 &= ~OFIFG;                      // Clear fault flags
-  }while (SFRIFG1&OFIFG);                   // Test oscillator fault flag
+  } while (SFRIFG1&OFIFG);                  // Test oscillator fault flag
 
   __bis_SR_register(SCG0);                  // Disable the FLL control loop
   UCSCTL1 = DCORSEL_5;                      // Select DCO range 16MHz operation
-  UCSCTL2 |= 74;                           // Set DCO Multiplier for 8MHz
+  UCSCTL2 |= 74;                            // Set DCO Multiplier for 8MHz
                                             // (N + 1) * FLLRef = Fdco
                                             // (74 + 1) * 32768 = 2.45MHz
   __bic_SR_register(SCG0);                  // Enable the FLL control loop

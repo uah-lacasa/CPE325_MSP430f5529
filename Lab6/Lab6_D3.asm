@@ -1,12 +1,12 @@
 ;-------------------------------------------------------------------------------
 ;   File:        Lab6_D3.asm
-;   Description: The program demonstrates Press/Release using SW2 and LED1.
+;   Description: The program demonstrates Press/Release using S2 and LED1.
 ;                LED1 is initialized off. The main program enables interrupts
-;                from P1.BIT1 (SW2) and remains in an infinite loop doing nothing.
-;                P1_ISR implements debouncing and waits for a SW2 to be released.
+;                from P1.BIT1 (S2) and remains in an infinite loop doing nothing.
+;                P1_ISR implements debouncing and waits for a S2 to be released.
 ;
 ;   Clocks:      ACLK = 32.768kHz, MCLK = SMCLK = default DCO = 2^20=1,048,576 Hz
-;   Platform:    TI EXP430F5529LP Experimenter's Board
+;   Platform:    TI EXP430F5529LP Launchpad
 ;
 ;                 MSP430F5529
 ;             -----------------
@@ -14,18 +14,18 @@
 ;          | |                 |
 ;          --|RST              |
 ;            |             P1.0|-->LED1(RED)
-;            |             P1.1|<--SW2
+;            |             P1.1|<--S2
 ;
-;   Author:  Aleksandar Milenkovic, milenkovic@computer.org
-;   Date:    September 14, 2018
-;	Modified: Prawar Poudel, Auguest 8, 2019
+;   Author:     Aleksandar Milenkovic, milenkovic@computer.org
+;   Date:       September 14, 2018
+;   Modified:   Prawar Poudel, Auguest 8, 2019
 ;-------------------------------------------------------------------------------
             .cdecls C,LIST,"msp430.h"       ; Include device header file
 
 ;-------------------------------------------------------------------------------
             .def    RESET                   ; Export program entry-point to
                                             ; make it known to linker.
-            .def    SW2_ISR
+            .def    S2_ISR
 ;-------------------------------------------------------------------------------
             .text                           ; Assemble into program memory.
             .retain                         ; Override ELF conditional linking
@@ -42,9 +42,9 @@ Setup:
                                             ; direction (0000_0001)
             bic.b   #001h, &P1OUT           ; Set P1OUT to 0x0000_0001
 
-            bic.b   #002h, &P1DIR           ; SET P1.1 as input for SW2
+            bic.b   #002h, &P1DIR           ; SET P1.1 as input for S2
             bis.b   #002h, &P1REN           ; Enable Pull-Up resister at P1.1
-            bis.b   #002h, &P1OUT			; required for proper IO set up
+            bis.b   #002h, &P1OUT           ; required for proper IO set up
 
 
             bis.w   #GIE, SR                ; Enable Global Interrupts
@@ -55,11 +55,11 @@ InfLoop:
             jmp     $                       ; Loop here until interrupt
                                             
 ;----------------------------------------------------------------------------
-; P1_0 (SW2) interrupt service routine (ISR)
+; P1_0 (S2) interrupt service routine (ISR)
 ;----------------------------------------------------------------------------
-SW2_ISR:
+S2_ISR:
             bic.b   #002h, &P1IFG           ; Clear interrupt flag
-ChkSW2:     bit.b   #02h, &P1IN             ; Check if SW2 is pressed
+ChkSW2:     bit.b   #02h, &P1IN             ; Check if S2 is pressed
                                             ; (0000_0010 on P1IN)
             jnz     LExit                   ; If not zero, SW is not pressed
                                             ; loop and check again
@@ -73,11 +73,11 @@ SWD20ms:    dec.w   R15                     ; Decrement R15
             nop
             nop
             jnz     SWD20ms                 ; Delay over?
-            bit.b   #00000010b,&P1IN        ; Verify SW2 is still pressed
-            jnz     LExit                   ; If not, wait for SW2 press
+            bit.b   #00000010b,&P1IN        ; Verify S2 is still pressed
+            jnz     LExit                   ; If not, wait for S2 press
 LEDon:      bis.b   #001h,&P1OUT            ; Turn on LED1
-SW2wait:    bit.b   #002h,&P1IN             ; Test SW2
-            jz      SW2wait                 ; Wait until SW2 is released
+SW2wait:    bit.b   #002h,&P1IN             ; Test S2
+            jz      SW2wait                 ; Wait until S2 is released
             bic.b   #001,&P1OUT             ; Turn off LED1
 LExit:      reti                            ; Return from interrupt
 ;-------------------------------------------------------------------------------
@@ -89,8 +89,8 @@ LExit:      reti                            ; Return from interrupt
 ;-------------------------------------------------------------------------------
 ; Interrupt Vectors
 ;-------------------------------------------------------------------------------
-            .sect   ".reset"                ; MSP430 RESET Vector
+            .sect   ".reset"        ; MSP430 RESET Vector
             .short  RESET
-            .sect   ".int47"                ;PORT1_VECTOR, please check the MSP430F5529.h header file
-            .short  SW2_ISR
+            .sect   ".int47"        ; PORT1_VECTOR,
+            .short  S2_ISR         ; please check the MSP430F5529.h header file
             .end

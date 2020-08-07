@@ -19,26 +19,28 @@
  *           |             P1.0|--> ACLK = 32kHz
  *           |                 |
  *
- *  Author: Aleksandar Milenkovic, milenkovic@computer.og
- *  Date:   September 2010
+ *  Author:     Aleksandar Milenkovic, milenkovic@computer.og
+ *  Date:       September 2010
+ *  Modified:   Prawar Poudel
+ *  Date:       August 2020
  ******************************************************************************/
 
 #include  <msp430.h>
 
 void main(void)
 {
-   WDTCTL = WDTPW + WDTHOLD;       // Stop watchdog timer
+   WDTCTL = WDTPW + WDTHOLD;            // Stop watchdog timer
 
-   P1DIR |= BIT0;                            // ACLK set out to pins
+   P1DIR |= BIT0;                       // ACLK set out to pins
    P1SEL |= BIT0;
-   P2DIR |= BIT2;                            // SMCLK set out to pins
+   P2DIR |= BIT2;                       // SMCLK set out to pins
    P2SEL |= BIT2;
-   P7DIR |= BIT7;                            // MCLK set out to pins
+   P7DIR |= BIT7;                       // MCLK set out to pins
    P7SEL |= BIT7;
 
-   UCSCTL3 = SELREF_2;                       // Set DCO FLL reference = REFO
-   UCSCTL4 |= SELA_2;                        // Set ACLK = REFO
-   UCSCTL0 = 0x0000;                         // Set lowest possible DCOx, MODx
+   UCSCTL3 = SELREF_2;                  // Set DCO FLL reference = REFO
+   UCSCTL4 |= SELA_2;                   // Set ACLK = REFO
+   UCSCTL0 = 0x0000;                    // Set lowest possible DCOx, MODx
 
    // Loop until XT1,XT2 & DCO stabilizes - In this case only DCO has to stabilize
    do
@@ -46,7 +48,7 @@ void main(void)
      UCSCTL7 &= ~(XT2OFFG + XT1LFOFFG + DCOFFG);
                                              // Clear XT2,XT1,DCO fault flags
      SFRIFG1 &= ~OFIFG;                      // Clear fault flags
-   }while (SFRIFG1&OFIFG);                   // Test oscillator fault flag
+   } while (SFRIFG1&OFIFG);                  // Test oscillator fault flag
 
    __bis_SR_register(SCG0);                  // Disable the FLL control loop
    UCSCTL1 = DCORSEL_5;                      // Select DCO range 16MHz operation

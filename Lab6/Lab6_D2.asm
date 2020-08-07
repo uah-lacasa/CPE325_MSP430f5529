@@ -1,13 +1,13 @@
 ;-------------------------------------------------------------------------------
 ;   File:        Lab6_D2.asm
-;   Description: The program demonstrates Press/Release using SW1 and LED1.
+;   Description: The program demonstrates Press/Release using S1 and LED1.
 ;                LED1 is initialized off.
-;                When SW1 press is detected, a software delay of 20 ms
+;                When an S1 press is detected, a software delay of 20 ms
 ;                is used to implement debouncing. The switch is checked
-;                again, and if on, LED1 is turned on until SW1 is released.
+;                again, and if it's on, LED1 is turned on until S1 is released.
 ;
 ;   Clocks:      ACLK = 32.768kHz, MCLK = SMCLK = default DCO = 2^20=1,048,576 Hz
-;   Platform:    TI EXP430F5529LP Experimenter's Board
+;   Platform:    TI EXP430F5529LP Launchpad
 ;
 ;                 MSP430F5529
 ;             -----------------
@@ -17,9 +17,9 @@
 ;            |             P1.0|-->LED1(REd)
 ;            |             P2.1|<--SW1
 ;
-;   Author:  Aleksandar Milenkovic, milenkovic@computer.org
-;   Date:    September 14, 2018
-;	Modified: Prawar Poudel, August 08, 2019
+;   Author:     Aleksandar Milenkovic, milenkovic@computer.org
+;   Date:       September 14, 2018
+;   Modified:   Prawar Poudel, August 08, 2019
 ;-------------------------------------------------------------------------------
 
             .cdecls C,LIST,"msp430.h"       ; Include device header file
@@ -46,10 +46,10 @@ SetupP2:
 
             bic.b   #002h, &P2DIR           ; SET P2.1 as input for SW1
             bis.b   #002h, &P2REN           ; Enable Pull-Up resister at P2.1
-            bis.b   #002h, &P2OUT			; required for proper IO set up
+            bis.b   #002h, &P2OUT           ; required for proper IO set up
 
 ChkSW1:     bic.b   #001h, &P1OUT
-			bit.b   #002h, &P2IN             ; Check if SW1 is pressed
+            bit.b   #002h, &P2IN             ; Check if SW1 is pressed
                                             ; (0000_0010 on P1IN)
             jnz     ChkSW1                  ; If not zero, SW1 is not pressed
                                             ; loop and check again
