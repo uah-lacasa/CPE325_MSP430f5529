@@ -3,13 +3,13 @@
  *
  * Function:    Toggling LED1 using WDT ISR (MPS430F5529)
  *
- * Description: This C program configures the WDT in interval timer mode and
- *              it is clocked with SMCLK. The WDT is configured to give an
+ * Description: This C program configures the WDT in interval timer mode,
+ *              clocked with SMCLK. The WDT is configured to give an
  *              interrupt for every 32ms. The WDT ISR is counted for 32 times
- *              (32*32ms = 1sec) before toggling LED1 to get 1 s on/off.
+ *              (32*32.5ms ~ 1sec) before toggling LED1 to get 1 s on/off.
  *              The blinking frequency of LED1 is 0.5Hz.
  *
- * Clocks:      ACLK = LFXT1 = 32768Hz, MCLK = SMCLK = DCO = default (~1MHz)
+ * Clocks:      ACLK = XT1 = 32768Hz, MCLK = SMCLK = DCO = default (~1MHz)
  *              An external watch crystal between XIN & XOUT is required for ACLK
  *
  *                          MSP430xF5529

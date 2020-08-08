@@ -1,19 +1,22 @@
 /*------------------------------------------------------------------------------
  * File:        Lab7_D1.c (CPE 325 Lab7 Demo code)
- * Function:    Toggling LED1 using WDT ISR (MPS430F5529)
+ * Function:    Blinking LED1 using WDT ISR (MPS430F5529)
  *
- * Description: This C program configures the WDT in interval timer mode and
- *              it is clocked with ACLK. The WDT is configured to give an
+ * Description: This C program configures the WDT in interval timer mode,
+ *              clocked with the ACLK clock. The WDT is configured to give an
  *              interrupt for every 1s. LED1 is toggled in the WDT ISR
  *              by xoring P1.0. The blinking frequency of LED1 is 0.5Hz.
  *
- * Clocks:      ACLK = LFXT1 = 32768Hz, MCLK = SMCLK = DCO = default (~1MHz)
+ * Board:       MSP-EXP430F5529 (includes 32-KHZ crystal on XT1 and
+ *                               4-MHz ceramic resonator on XT2)
+ *
+ * Clocks:      ACLK = XIN-XOUT = 32768Hz, MCLK = SMCLK = DCO = default (~1MHz)
  *              An external watch crystal between XIN & XOUT is required for ACLK
  *
- *                          MSP430xG461x
+ *                          MSP430F5529
  *                       -----------------
  *                   /|\|              XIN|-
- *                    | |                 | 32kHz
+ *                    | |                 | 32kHz crystal
  *                    --|RST          XOUT|-
  *                      |                 |
  *                      |             P1.0|-->LED1(RED)
@@ -36,5 +39,5 @@ void main(void) {
 // Watchdog Timer Interrupt Service Routine
 #pragma vector=WDT_VECTOR
 __interrupt void watchdog_timer(void) {
-    P1OUT ^= BIT0;                    // Toggle P2.2 using exclusive-OR
+    P1OUT ^= BIT0;                    // Toggle P1.0 using exclusive-OR
 }
