@@ -1,11 +1,10 @@
 /******************************************************************************
  *  File:        Lab6_D7.c
- *  Description: MSP430F5529 Demo - FLL+, Runs Internal DCO at 8MHz
+ *  Description: MSP430F5529 Demo - FLL, Runs Internal DCO at 8MHz
  *               This program demonstrates setting the internal DCO to run at
- *               8MHz with auto-calibration by the FLL+ circuitry.
- *  Clocks:      ACLK = LFXT1 = 32768Hz,
+ *               8MHz.
+ *  Clocks:      ACLK = 32768Hz,
  *               MCLK = SMCLK = DCO = (121+1) x 2 x ACLK = 7995392Hz
- *               An external watch crystal between XIN & XOUT is required for ACLK
  *
  *                MSP430F5529
  *            -----------------
