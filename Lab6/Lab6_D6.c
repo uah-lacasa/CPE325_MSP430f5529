@@ -1,11 +1,10 @@
 /******************************************************************************
  *  File:        Lab6_D6.c
- *  Description: MSP430F5529 Demo - FLL+, Runs Internal DCO at 2.45MHz
+ *  Description: MSP430F5529 Demo - FLL, Runs Internal DCO at 2.45MHz
  *               This program demonstrates setting the internal DCO to run at
- *               2.45MHz with auto-calibration by the FLL+ circuitry.
- *  Clocks:      ACLK = LFXT1 = 32768Hz,
+ *               2.45MHz.
+ *  Clocks:      ACLK = 32768Hz,
  *               MCLK = SMCLK = DCO = (74+1) x ACLK = 2457600Hz
- *               An external watch crystal between XIN & XOUT is required for ACLK
  *
  *                MSP430F5529
  *            -----------------
@@ -49,7 +48,7 @@ void main(void)
 
   __bis_SR_register(SCG0);                  // Disable the FLL control loop
   UCSCTL1 = DCORSEL_5;                      // Select DCO range 16MHz operation
-  UCSCTL2 |= 74;                            // Set DCO Multiplier for 8MHz
+  UCSCTL2 |= 74;                            // Set DCO Multiplier for 2.45MHz
                                             // (N + 1) * FLLRef = Fdco
                                             // (74 + 1) * 32768 = 2.45MHz
   __bic_SR_register(SCG0);                  // Enable the FLL control loop
