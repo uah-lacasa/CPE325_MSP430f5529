@@ -9,14 +9,14 @@
  *                Baud rate divider with 1048576hz = 1048576/(16*9600) = ~6.8 [16 from UCOS16]
  * Clocks:        ACLK = LFXT1 = 32768Hz, MCLK = SMCLK = default DCO = 1048576Hz
  * Instructions:  Set the following parameters in putty/hyperterminal
- * Port: COM1
+ * Port: COMx
  * Baud rate: 19200
  * Data bits: 8
  * Parity: None
  * Stop bits: 1
  * Flow Control: None
  *
- *        MSP430xG461x
+ *        MSP430F5529
  *     -----------------
  * /|\ |            XIN|-
  *  |  |               | 32kHz
@@ -44,7 +44,7 @@ void UART_setup(void) {
     UCA0CTL1 |= UCSSEL_2;                     // SMCLK
     UCA0BR0 = 6;                              // 1MHz 9600 (see User's Guide)
     UCA0BR1 = 0;                              // 1MHz 9600
-    UCA0MCTL = UCBRS_0 + UCBRF_13 + UCOS16;   // Modln UCBRSx=0, UCBRFx=0,
+    UCA0MCTL = UCBRS_0 + UCBRF_13 + UCOS16;   // Mod. UCBRSx=0, UCBRFx=0,
                                               // over sampling
     UCA0CTL1 &= ~UCSWRST;                     // **Initialize USCI state machine**
 }

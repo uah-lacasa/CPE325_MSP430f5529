@@ -9,7 +9,7 @@
  * Clocks:        ACLK = LFXT1 = 32768Hz, MCLK = SMCLK = default DCO
  *
  * Instructions: Set the following parameters in putty
- * Port: COM1
+ * Port: COMx
  * Baud rate: 115200
  * Data bits: 8
  * Parity: None
@@ -44,10 +44,10 @@ void UART_setup(void) {
 
     UCA0BR0 = 0x09;         // 1048576 Hz  / 115200 lower byte
     UCA0BR1 = 0x00;         // upper byte
-    UCA0MCTL = 0x02;        // Modulation (UCBRS0=0x01, UCOS16=0)
+    UCA0MCTL |= UCBRS0;     // Modulation (UCBRS0=0x01, UCOS16=0)
 
     UCA0CTL1 &= ~UCSWRST;   // Clear software reset to initialize USCI state machine
-    UCA0IE |= UCRXIE;                         // Enable USCI_A0 RX interrupt
+    UCA0IE |= UCRXIE;       // Enable USCI_A0 RX interrupt
 }
 
 void main(void) {
@@ -61,7 +61,7 @@ void main(void) {
 // Echo back RXed character, confirm TX buffer is ready first
 #pragma vector = USCI_A0_VECTOR
 __interrupt void USCIA0RX_ISR (void) {
-    while(!(UCA0IFG&UCTXIFG)); // Wait until can transmit
-    UCA0TXBUF = UCA0RXBUF;    // TXBUF <-- RXBUF
-    P1OUT ^= BIT0;            // Toggle LED1
+    while(!(UCA0IFG&UCTXIFG));  // Wait until can transmit
+    UCA0TXBUF = UCA0RXBUF;      // TXBUF <-- RXBUF
+    P1OUT ^= BIT0;              // Toggle LED1
 }
