@@ -1,30 +1,30 @@
-/******************************************************************************
- *  File:        Lab5_D4.asm
- *  Description: MSP430F5529 Demo: This program defines two integer variables
- *					.. and performs multiplication of these two intergers and
- *					.. and stores the result in another variable
- *
- *  Clocks:      ACLK = 32768Hz,
- *               MCLK = SMCLK = 1 Mhz
- *
- * Input:       None
- * Output:      None
- *
- *                MSP430F5529
- *            -----------------
- *        /|\|              XIN|-
- *         | |                 | 32kHz
- *         --|RST          XOUT|-
- *           |                 |
- *      	 |           	   |
- *    		 |                 |
- *           |                 |
- *           |                 |
- *           |                 |
- *
- *  Modified:   Prawar Poudel
- *  Date:       August 2020
- ****************************************************************************/
+;/******************************************************************************
+ ;*  File:        Lab5_D4.asm
+ ;*  Description: MSP430F5529 Demo: This program defines two integer variables
+ ;*					.. and performs multiplication of these two intergers and
+ ;*					.. and stores the result in another variable
+ ;*
+ ;*  Clocks:      ACLK = 32768Hz,
+ ;*               MCLK = SMCLK = 1 Mhz
+ ;*
+ ;* Input:       None
+ ;* Output:      None
+ ;*
+ ;*                MSP430F5529
+ ;*            -----------------
+ ;*        /|\|              XIN|-
+ ;*         | |                 | 32kHz
+ ;*         --|RST          XOUT|-
+ ;*           |                 |
+ ;*      	 |           	   |
+ ;*    		 |                 |
+ ;*           |                 |
+ ;*           |                 |
+ ;*           |                 |
+ ;*
+ ;*  Modified:   Prawar Poudel
+ ;*  Date:       August 2020
+ ;****************************************************************************/
 
 ;-------------------------------------------------------------------------------
             .cdecls C,LIST,"msp430.h"       ; Include device header file
