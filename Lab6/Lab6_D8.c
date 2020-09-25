@@ -111,7 +111,7 @@ __interrupt void PORT2_ISR(void)
 void change_clock_freq_8Mhz()
 {
     __bis_SR_register(SCG0);                  // Disable the FLL control loop
-    UCSCTL1 = DCORSEL_5;                      // Select DCO range 16MHz operation
+    UCSCTL1 = DCORSEL_5;                      // Select DCO range 8MHz operation
     UCSCTL2 = 249;                            // Set DCO Multiplier for 8MHz
                                               // (N + 1) * FLLRef = Fdco
                                               // (249 + 1) * 32768 = 8MHz
