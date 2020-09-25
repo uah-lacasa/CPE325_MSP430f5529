@@ -2,11 +2,11 @@
  *  File:        Lab6_D8.c
  *  Description: MSP430F5529 Demo - FLL, Runs Internal DCO at 1MHz
  *               This program demonstrates setting the internal DCO to run at
- *               8MHz when SW2 is pressed.
+ *               8MHz when SW1 is pressed.
  *
  *               A LED will keep blinking at 1Hz (0.5s ON and 0.5s OFF) at
- *               clock running at default frequency of 1Mhz. When SW2 is pressed,
- *               the frequency is changed to ~ 8 Mhz. When SW2 is pressed again,
+ *               clock running at default frequency of 1Mhz. When SW1 is pressed,
+ *               the frequency is changed to ~ 8 Mhz. When SW1 is pressed again,
  *               the frequency is restored to 1Mhz.
  *
  *  Clocks:      ACLK = 32768Hz,
@@ -21,7 +21,7 @@
  *         | |                 | 32kHz
  *         --|RST          XOUT|-
  *           |                 |
- *     SW2-->|P2.1         P7.7|--> MCLK = 1 or 8MHz
+ *     SW1-->|P2.1         P7.7|--> MCLK = 1 or 8MHz
  *    LED2<--|P4.7             |
  *           |             P2.2|--> SMCLK = 1 or 8MHz
  *           |             P1.0|--> ACLK = 32kHz
@@ -62,8 +62,9 @@ void main(void)
    P7SEL |= BIT7;
 
    _EINT();                             // enable interrupts
-   P2DIR &= ~BIT1;                      // set P2.1 as input (SW2)
+   P2DIR &= ~BIT1;                      // set P2.1 as input (SW1)
    P2REN |= BIT1;                       // enable pull-up resistor
+   P2OUT |= BIT1;
    P2IE |= BIT1;                        // enable interrupt at P2.1
    P2IES |= BIT1;                       // enable hi->lo edge for interrupt
    P2IFG &= ~BIT1;                      // clear any errornous interrupt flag
@@ -79,7 +80,7 @@ void main(void)
    }
 }
 
-// this ISR handles the SW2 key press
+// this ISR handles the SW1 key press
 #pragma vector = PORT2_VECTOR
 __interrupt void PORT2_ISR(void)
 {
