@@ -47,7 +47,7 @@ void main(void)
   } while (SFRIFG1&OFIFG);                  // Test oscillator fault flag
 
   __bis_SR_register(SCG0);                  // Disable the FLL control loop
-  UCSCTL1 = DCORSEL_5;                      // Select DCO range 16MHz operation
+  UCSCTL1 = DCORSEL_5;                      // Select DCO range for operation
   UCSCTL2 |= 74;                            // Set DCO Multiplier for 2.45MHz
                                             // (N + 1) * FLLRef = Fdco
                                             // (74 + 1) * 32768 = 2.45MHz
