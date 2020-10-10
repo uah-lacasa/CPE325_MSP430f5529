@@ -1,13 +1,13 @@
 /*------------------------------------------------------------------------------
-* Instructor:	Aleksandar Milenkovic
-* Program:		Subroutines ifact and lifact for lab1 demo 
-* Date:			Aug 16, 2017
-* Input:		Integer variable p
-* Output:		Factorial of input (integer and long integer)
-* Description:	This C code calculates the factorial of a given number
-				ifact gives an integer output;
-				lifact gives a long integer output.
-*-----------------------------------------------------------------------------*/ 
+ * File:		twofact.c
+ * Function:	Subroutines ifact and lifact for lab_01 demo 
+ * Description:	This C code calculates the factorial of a given number
+				ifact gives an int output; lifact gives a long int output.
+ * Input:		Integer variable p
+ * Output:		Factorial of input (integer and long integer)
+ * Author(s):	Aleksandar Milenkovic, milenkovic@computer.org
+ * Date:		Aug 16, 2017
+ * ---------------------------------------------------------------------------*/
 int ifact(int p)
 {
 	int j = 0;

@@ -1,25 +1,26 @@
 /*------------------------------------------------------------------------------
- * File:		Lab06_D4.c
- * Description:	The program detects when S2 is pressed and turns on LED1.
- *				LED1 is kept on as long as S2 is pressed.
+ * File:		Lab_06_D4.c
+ * Function:	The program detects when S2 is pressed and turns on LED1.
+ * Description:	LED1 is kept on as long as S2 is pressed.
  *				P1_ISR is used to detect when S2 is pressed.
  *				Main program polls S2 and turns off when a release is detected.
- * Board:		MSP-EXP430F5529LP Launchpad
- * Clocks:		ACLK = 32.768kHz, MCLK = SMCLK = default DCO
- *
- *				 MSP430F5529
- *			+-----------------+
- *			|				 |
- *			|				 |
- *			|				 |
- *			|				 |
- *			|			 P1.0|--> LED1
- *			|			 P1.1|<-- S2
- *
- * Author:		Aleksandar Milenkovic, milenkovic@computer.org
+ * Clocks:	  	ACLK = 32.768kHz, MCLK = SMCLK = default DCO = 2^20=1,048,576 Hz
+ *						MSP-EXP430F5529LP
+ * 					  -------------------
+ *					  |				 	|
+ *					  |					| 
+ *					  |					|
+ *					  |					|
+ *					  |			 	P1.0|--> LED1(RED)
+ *					  |			 	P1.1|<-- S2
+ *					  |					|
+ * Input:		Pressing S2
+ * Output:		LED1
+ * Author(s):	Aleksandar Milenkovic, milenkovic@computer.org
  * Date:		September 2010
- * Modified:	Prawar Poudel, August 08, 2019
- *----------------------------------------------------------------------------*/
+ * Modified:	Prawar Poudel, prawar.poudel@uah.edu
+ * Date:		August 08, 2019
+ * ---------------------------------------------------------------------------*/
 #include  <msp430.h>
 #define	S2 BIT1&P1IN				// S2 is P1IN&BIT1
 

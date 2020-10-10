@@ -1,14 +1,14 @@
-;-------------------------------------------------------------------------------
-; File:			Lab4_D1.asm (CPE 325 Lab4 Demo code)
-; Function: 	Counts the number of characters E in a given string
+; ------------------------------------------------------------------------------
+; File:			Lab_04_D1.asm
+; Function:		Counts the number of characters E in a given string
 ; Description:	Program traverses an input array of characters
-;				to detect a character 'E'; exits when a NULL is detected
-; Input: 		The input string is specified in myStr
-; Output: 		The port P1OUT displays the number of E's in the string
-; Author: 		A. Milenkovic, milenkovic@computer.org
-; Date: 		August 14, 2008
-; 				August 5, 2020 (revised)
-;-------------------------------------------------------------------------------
+;				to detect a character 'E'; exits when a NULL is detected	
+; Input:		The input string specified in myStr
+; Output:		The port P1OUT displays the number of E's in the string
+; Author(s):	Aleksandar Milenkovic, milenkovic@computer.org
+; Date:			August 14, 2008
+; Revised:		August 5, 2020
+; ------------------------------------------------------------------------------
 		.cdecls C, LIST, "msp430.h"		; Include device header file
 ;-------------------------------------------------------------------------------
 		.def	RESET					; Export program entry-point to
@@ -35,14 +35,14 @@ main:	; bis.b	#0FFh,&P1DIR			; do not output the result on port pins
 		mov.w	#myStr, R4				; load the starting address of the string into R4
 		clr.b	R5						; register R5 will serve as a counter
 gnext:	mov.b	@R4+, R6				; get a new character
-		cmp	 #0,R6						; is it a null character
-		jeq	 lend						; if yes, go to the end
+		cmp	 	#0,R6					; is it a null character
+		jeq	 	lend					; if yes, go to the end
 		cmp.b	#'E',R6				 	; is it an 'E' character
-		jne	 gnext							; if not, go to the next
+		jne	 	gnext					; if not, go to the next
 		inc.w	R5						; if yes, increment counter
-		jmp	 gnext							; go to the next character
+		jmp	 	gnext					; go to the next character
 
-lend:	mov.b	R5,&P1OUT					; write result in P1OUT (not visible on port pins)
+lend:	mov.b	R5,&P1OUT				; write result in P1OUT (not visible on port pins)
 		bis.w	#LPM4,SR				; LPM4
 		nop								; required only for Debugger
 

@@ -1,22 +1,20 @@
 /*------------------------------------------------------------------------------
- * File:		Lab03_D1.c (CPE 325 Lab3 Demo code)
- * Function:	Turning on LED1 (EXP-MSP430F5529)
- * Description:	This C program turns on LED1 connected to P1.0 by writing 1
- *				(P1.0 = 1).
- * Clocks:		ACLK = 32.768kHz, MCLK = SMCLK = default DCO (~1 MHz)
- *
- *							MSP430F552x
- *					  -----------------
- *					/|\|				 |
- *					| |				 |
- *					--|RST			 |
- *					  |			 P1.0|-->LED1(RED)
- *					  |				 |
+ * File:		Lab_03_D1.c
+ * Function:	Turning on LED1
+ * Description:	This C program turns on LED1 by writing 1 (P1.0 = 1).
+ * Clocks:			  MSP-EXP430F5529LP
+ *					  -------------------
+ *				   /|\|					|
+ *					| |					|
+ *					--|RST				|
+ *					  |				P1.0|-->LED1(RED)
+ *					  |					|
  * Input:		None
  * Output:		LED1 is turned on
- * Author:		Aleksandar Milenkovic, milenkovic@computer.org
- *				Prawar Poudel
- *------------------------------------------------------------------------------*/
+ * Author(s):	Aleksandar Milenkovic, milenkovic@computer.org
+ * 				Prawar Poudel, prawar.poudel@uah.edu
+ * Date:		
+ * ---------------------------------------------------------------------------*/
 #include <msp430.h>
 
 void main(void)

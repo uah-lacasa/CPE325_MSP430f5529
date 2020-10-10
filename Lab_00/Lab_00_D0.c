@@ -1,5 +1,5 @@
 /*------------------------------------------------------------------------------
- * File:		Lab00_D0.c (CPE 325 Lab0 Demo code)
+ * File:		Lab00_D0.c
  * Function:	Toggle blinking of LED1 and LED2 (MPS430F5529)
  * Description: This C program initializes LED1 and LED2 as output
  *				with values 0 and 1 respectively. In the while loop,
@@ -16,7 +16,8 @@
  *					  |				 	|
  * Input:		None
  * Output:		LED1 and LED2 toggle blinking
- * Authors:	 	Prawar Poudel, pp0030@uah.edu
+ * Author(s): 	Aleksandar Milenkovic, milenkovic@computer.org		
+				Prawar Poudel, prawar.poudel@uah.edu
  *----------------------------------------------------------------------------*/
 #include <stdio.h>
 #include <msp430.h>

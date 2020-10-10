@@ -1,14 +1,14 @@
-;-------------------------------------------------------------------------------
-; File: 		Lab5_D1.asm (CPE 325 Lab5 Demo code)
-; Function: 	Finds a sum of two integer arrays
-; Description: 	The program initializes ports,
-;				sums up elements of two integer arrays and
+; ------------------------------------------------------------------------------
+; File:			Lab_05_D1.asm
+; Function:		Finds a sum of two integer arrays
+; Description:	Initializes ports, sums up elements of two integer arrays, and
 ;				display sums on on parallel port output registers
-; Input: 		The input arrays are signed 16-bit integers in arr1 and arr2
-; Output: 		P1OUT&P2OUT displays sum of arr1, P3OUT&P4OUT displays sum of arr2
-; Author: 		A. Milenkovic, milenkovic@computer.org
-; Date: 		September 14, 2008
-;-------------------------------------------------------------------------------
+; Input:		The input arrays are signed 16-bit integers in arr1 and arr2
+; Output:		P1OUT&P2OUT displays sum of arr1, P3OUT&P4OUT displays sum of arr2
+; Author(s):	Aleksandar Milenkovic, milenkovic@computer.org
+; Date:			September 14, 2008
+; ------------------------------------------------------------------------------
+
 			.cdecls C, LIST, "msp430.h"		; Include device header file
 ;-------------------------------------------------------------------------------
 			.def	RESET					; Export program entry-point to
@@ -33,18 +33,18 @@ main:
 			; Sum arr1 and display
 			clr.w	R7						; holds the sum
 			mov.w	#8, R10					; number of elements in arr1
-lnext1:	 add.w	@R4+, R7					; add the current element to sum
+lnext1:	 	add.w	@R4+, R7				; add the current element to sum
 			dec.w	R10						; decrement arr1 length
-			jnz	 lnext1						; get next element
+			jnz	 	lnext1					; get next element
 			mov.b	R7, P1OUT				; display lor byte of sum of arr1
 			swpb	R7						; swap bytes
 			mov.b	R7, P2OUT				; display upper byte of sum of arr1
 			; Sum arr2 and display
 			clr.w	R7						; Holds the sum
 			mov.w	#7, R10					; number of elements in arr2
-lnext2:	 add.w	@R5+, R7					; get next element
+lnext2:	 	add.w	@R5+, R7				; get next element
 			dec.w	R10						; decrement arr2 length
-			jnz	 lnext2						; get next element
+			jnz	 	lnext2					; get next element
 			mov.b	R7, P3OUT				; display lor byte of sum of arr2
 			swpb	R7						; swap bytes
 			mov.b	R7, P4OUT				; display upper byte of sum of arr2

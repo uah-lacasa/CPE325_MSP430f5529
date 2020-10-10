@@ -1,26 +1,26 @@
-;-------------------------------------------------------------------------------
-;	File:		Lab6_D1.asm
-;	Description: The program toggles LEDs periodically.
-;				LED1 is initialized off, LED2 is initalized on.
-;				Main program loop:
-;					the SWDelay1 loop creates 1s delay before
-;					toggling the LEDs (ON/OFF).
-;
-;	Clocks:	  ACLK = 32.768kHz, MCLK = SMCLK = default DCO = 2^20=1,048,576 Hz
-;	Platform:	TI EXP430F5529LP Launchpad
-;
-;				 MSP430xF5529
-;			 -----------------
-;		 /|\|				 |
-;		  | |				 |
-;		  --|RST			  |
-;			|			 P1.0|-->LED1(RED)
-;			|			 P4.7|-->LED2(GREEN)
-;
-;	Author:	 Aleksandar Milenkovic, milenkovic@computer.org
-;	Date:		September 14, 2018
-;	Modified:	Prawar Poudel, August 08, 2019
-;-------------------------------------------------------------------------------
+; ------------------------------------------------------------------------------
+; File:			Lab_06_D1.asm
+; Function:		The program toggles LEDs periodically.
+; Description:	LED1 is initialized off, LED2 is initalized on.
+;				The SWDelay1 loop creates 1s delay before toggling the LEDs.
+; Clocks:		ACLK = 32.768kHz, MCLK = SMCLK = default DCO = 2^20=1,048,576 Hz
+;						MSP-EXP430F5529LP
+;					  -------------------
+;				   /|\|				 	|
+;					| |					| 
+;					--|RST				|
+;					  |				P1.0|-->LED1(RED)
+;					  |			 	P4.7|-->LED2(GREEN)
+;					  |					|
+;					  |					|
+
+; Input:		None
+; Output:		Blinking LEDs
+; Author(s):	Aleksandar Milenkovic, milenkovic@computer.org
+; Date:			September 14, 2018
+; Modified:		Prawar Poudel, prawar.poudel@uah.edu
+; Date:			August 08, 2019
+; ------------------------------------------------------------------------------
 ; MSP430 Assembler Code Template for use with TI Code Composer Studio
 ;-------------------------------------------------------------------------------
 			.cdecls C, LIST, "msp430.h"		; Include device header file
