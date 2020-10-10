@@ -14,15 +14,15 @@
  *				hear Buzzer ON for 1s and OFF for 1s continuously.
  *
  * Clocks:		ACLK = LFXT1 = 32768Hz, MCLK = SMCLK = DCO = default (2^20 Hz)
- *				An external watch crystal between XIN & XOUT is required for ACLK
+ *				An external watch crystal beten XIN & XOUT is required for ACLK
  *
  *						  MSP430xF5529
- *					   -----------------
- *				   /|\|			  XIN|-
+ *						-----------------
+ *					/|\|			  XIN|-
  *					| |				 | 32kHz
  *					--|RST		  XOUT|-
  *					  |				 |
- *					  |	   P2.4/TA2.1|--> Buzzer
+ *					  |		P2.4/TA2.1|--> Buzzer
  *					  |				 |
  * Input:		None
  * Output:		Toggle output at P2.4 at 0.5Hz frequency using hardware TA2
@@ -39,8 +39,8 @@ void main(void)
 	P2SEL |= BIT4;			  // P7.4 special function (TB0.2 output)
 
 	TA2CCTL1 = OUTMOD_4;		// TB0.2 output is in toggle mode
-	TA2CTL = TBSSEL_1 + MC_1;   // ACLK is clock source, UP mode
+	TA2CTL = TBSSEL_1 + MC_1;	// ACLK is clock source, UP mode
 	TA2CCR0 = 32767;			// Value to count upto for Up mode
 
-	_BIS_SR(LPM3_bits + GIE);   // Enter Low Power Mode 3
+	_BIS_SR(LPM3_bits + GIE);	// Enter Low Por Mode 3
 }

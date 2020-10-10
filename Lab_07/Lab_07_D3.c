@@ -6,11 +6,11 @@
  *				every 1 s. LED1 is toggled by verifying whether this flag
  *				is set or not. After it is detected as set, the WDTIFG is cleared.
  * Clocks:		ACLK = LFXT1 = 32768Hz, MCLK = SMCLK = DCO = default (2^20 Hz)
- *				An external watch crystal between XIN & XOUT is required for ACLK
+ *				An external watch crystal beten XIN & XOUT is required for ACLK
  *
  *						  MSP430F5529
- *					   -----------------
- *				   /|\|			  XIN|-
+ *						-----------------
+ *					/|\|			  XIN|-
  *					| |				 | 32kHz
  *					--|RST		  XOUT|-
  *					  |				 |

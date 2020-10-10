@@ -6,16 +6,16 @@
  * Initial conditions:	The red LED is off, the green LED is on
  *						  MSP430F5529
  *					  -------------------
- *				   /|\|			  XIN|-
- *					| |				 | 32kHz
- *					--|RST		  XOUT|-
- *					  |				 |
- *					  |			 P1.0|---> Red LED
- *					  |				 |
- *					  |			 P4.7|---> Green LED
+ *					/|\|			 XIN|-
+ *					| |				 	| 32kHz
+ *					--|RST			XOUT|-
+ *					  |				 	|
+ *					  |				P1.0|---> Red LED
+ *					  |				 	|
+ *					  |				P4.7|---> Green LED
  *
  * Author: Aleksandar Milenkovic, milenkovic@computer.org
- * Date:   August 2, 2020
+ * Date:	August 2, 2020
  *
  -----------------------------------------------------------------------------*/
 #include <msp430.h>

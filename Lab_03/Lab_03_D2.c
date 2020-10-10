@@ -6,9 +6,9 @@
  *				The LED1 is initialized to be off and LED2 to be on.
  * Clocks:		ACLK = 32.768kHz, MCLK = SMCLK = default DCO (~1 MHz)
  *
- *						   MSP430F552x
- *					   -----------------
- *				   /|\|				 |
+ *							MSP430F552x
+ *						-----------------
+ *					/|\|				 |
  *					| |				 |
  *					--|RST			  |
  *					  |			 P1.0|-->LED1(RED)
@@ -24,13 +24,13 @@
 void main(void)
 {
 	WDTCTL = WDTPW + WDTHOLD;		// Stop watchdog timer to prevent time out
-	P1DIR |= BIT0;			  		// Set P1.0 to output direction
-	P4DIR |= BIT7;			  		// Set P4.7 to output direction
-	P1OUT &= ~BIT0;			 		// LED2 is OFF
-	P4OUT |= BIT7;			  		// LED1 is ON
+	P1DIR |= BIT0;					// Set P1.0 to output direction
+	P4DIR |= BIT7;					// Set P4.7 to output direction
+	P1OUT &= ~BIT0;					// LED2 is OFF
+	P4OUT |= BIT7;					// LED1 is ON
 	unsigned int i = 0;
 	while(1)
-	{					   			 // Infinite loop
+	{								 // Infinite loop
 		for (i = 0; i < 50000; i++); // Delay 0.5s
 									 // 0.5s on, 0.5s off => 1/(1s) = 1Hz
 		P1OUT ^= BIT0;				 // Toggle LED1

@@ -8,9 +8,9 @@
  *				debouncing delay of 20ms is added before turning on the LED1.
  * Clocks:		ACLK = 32.768kHz, MCLK = SMCLK = default DCO (~1 MHz)
  *
- *						   MSP430F552x
- *					   -----------------
- *				   /|\|				 |
+ *							MSP430F552x
+ *						-----------------
+ *					/|\|				 |
  *					| |				 |
  *					--|RST			  |
  *					  |			 P1.0|-->LED1(RED)

@@ -5,19 +5,19 @@
  *				(P1.0 = 1).
  * Clocks:		ACLK = 32.768kHz, MCLK = SMCLK = default DCO (~1 MHz)
  *
- *						   MSP430F552x
+ *							MSP430F552x
  *					  -----------------
- *				   /|\|				 |
+ *					/|\|				 |
  *					| |				 |
  *					--|RST			 |
  *					  |			 P1.0|-->LED1(RED)
  *					  |				 |
- * Input:	   None
- * Output:	  LED1 is turned on
- * Author:	  Aleksandar Milenkovic, milenkovic@computer.org
- *			  Prawar Poudel
+ * Input:		None
+ * Output:		LED1 is turned on
+ * Author:		Aleksandar Milenkovic, milenkovic@computer.org
+ *				Prawar Poudel
  *------------------------------------------------------------------------------*/
-#include  <msp430.h>
+#include <msp430.h>
 
 void main(void)
 {

@@ -11,12 +11,12 @@
  *		/|\|			  XIN|-
  *		 | |				 | 32kHz
  *		 --|RST		  XOUT|-
- *		   |				 |
- *		   |			 P7.7|--> MCLK = 2.45MHz
- *		   |				 |
- *		   |			 P2.2|--> SMCLK = 2.45MHz
- *		   |			 P1.0|--> ACLK = 32kHz
- *		   |				 |
+ *			|				 |
+ *			|			 P7.7|--> MCLK = 2.45MHz
+ *			|				 |
+ *			|			 P2.2|--> SMCLK = 2.45MHz
+ *			|			 P1.0|--> ACLK = 32kHz
+ *			|				 |
  *
  * Author:		Aleksandar Milenkovic, milenkovic@computer.og
  * Date:		September 2010
@@ -36,7 +36,7 @@ void main(void)
 
 	UCSCTL3 = SELREF_2;				// Set DCO FLL reference = REFO
 	UCSCTL4 |= SELA_2;				// Set ACLK = REFO
-	UCSCTL0 = 0x0000;				// Set lowest possible DCOx, MODx
+	UCSCTL0 = 0x0000;				// Set lost possible DCOx, MODx
 
 // Loop until XT1, XT2 & DCO stabilizes - In this case only DCO has to stabilize
 	do

@@ -19,16 +19,17 @@ long int lifact(int);	// Prototype of lifact (long interger)
 int main(void)
 {
 	WDTCTL = WDTPW + WDTHOLD;		// Stop watchdog timer to prevent time out
-	int i;	   // step counter
-	int a;	   // result for type int 
-	long int b;  // result for type long int
+	int i;							// step counter
+	int a;							// result for type int 
+	long int b;						// result for type long int
 	// Print header
-	printf("( i)!   :  int-dec,  int-hex :   long int-dec,   long int-hex;\n");
-	for (i = 1; i < MAXF; i++) {
-		a = ifact(i);   // Call subroutine ifact to calculate factoriel
-		b = lifact(i);  // Call subroutine lifact to caculate factoriel
+	printf("( i)!	:  int-dec,  int-hex :	long int-dec,	long int-hex;\n");
+	for (i = 1; i < MAXF; i++)
+	{
+		a = ifact(i);				// Call subroutine ifact to calculate factoriel
+		b = lifact(i);				// Call subroutine lifact to caculate factoriel
 		// Print output
-		printf("(%2d)!   : %8d, %8x : %14ld, %14lx;\n", i, a, a, b, b);
+		printf("(%2d)!	: %8d, %8x : %14ld, %14lx;\n", i, a, a, b, b);
 	}
 	return 0;
 }

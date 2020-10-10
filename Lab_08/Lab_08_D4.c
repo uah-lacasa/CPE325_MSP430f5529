@@ -1,9 +1,9 @@
 /*------------------------------------------------------------------------------
  * File:			Demo08_D4.c
  * Function:		Send floating data to Serial port
- * Description: 	UAH serial app expects lower byte first so send each byte at a
- *			  		time sending Lowest byte first
- * Clocks:	  		ACLK = LFXT1 = 32768Hz, MCLK = SMCLK = default DCO
+ * Description: 	UAH serial app expects lor byte first so send each byte at a
+ *					time sending Lost byte first
+ * Clocks:			ACLK = LFXT1 = 32768Hz, MCLK = SMCLK = default DCO
  *
  * Instructions: 	Set the following parameters in putty
  * Port: 			COM1
@@ -16,17 +16,17 @@
  *		MSP430f5529
  *	 -----------------
  * /|\ |			XIN|-
- *  |  |			   | 32kHz
+ *  |  |				| 32kHz
  *  |--|RST		XOUT|-
- *	 |			   |
- *	 |   P3.3/UCA0TXD|------------>
- *	 |			   | 115200 - 8N1
- *	 |   P3.4/UCA0RXD|<------------
- *	 |			   |
+ *	 |				|
+ *	 |	P3.3/UCA0TXD|------------>
+ *	 |				| 115200 - 8N1
+ *	 |	P3.4/UCA0RXD|<------------
+ *	 |				|
  * Input:	 		None
  * Output:			Ramp signal in UAH Serial app
  * Author:			Prawar Poudel
- * Date:	  		October 2018
+ * Date:			October 2018
  *----------------------------------------------------------------------------*/
 #include <msp430.h>
 #include <stdint.h>
@@ -35,22 +35,22 @@ volatile float myData;
 
 void UART_setup(void)
 {
-	P3SEL |= BIT3 + BIT4;   // Set USCI_A0 RXD/TXD to receive/transmit data
+	P3SEL |= BIT3 + BIT4;	// Set USCI_A0 RXD/TXD to receive/transmit data
 	UCA0CTL1 |= UCSWRST;	// Set software reset during initialization
-	UCA0CTL0 = 0;		   // USCI_A0 control register
-	UCA0CTL1 |= UCSSEL_2;   // Clock source SMCLK
+	UCA0CTL0 = 0;			// USCI_A0 control register
+	UCA0CTL1 |= UCSSEL_2;	// Clock source SMCLK
 
-	UCA0BR0 = 0x09;		 // 1048576 Hz  / 115200 lower byte
+	UCA0BR0 = 0x09;		 // 1048576 Hz  / 115200 lor byte
 	UCA0BR1 = 0x00;		 // upper byte
 	UCA0MCTL = 0x02;		// Modulation (UCBRS0=0x01, UCOS16=0)
 
-	UCA0CTL1 &= ~UCSWRST;   // Clear software reset to initialize USCI state machine
+	UCA0CTL1 &= ~UCSWRST;	// Clear software reset to initialize USCI state machine
 }
 
 void UART_putCharacter(char c)
 {
 	while (!(UCA0IFG&UCTXIFG)); // Wait for previous character to transmit
-	UCA0TXBUF = c;			   // Put character into tx buffer
+	UCA0TXBUF = c;				// Put character into tx buffer
 }
 
 int main()

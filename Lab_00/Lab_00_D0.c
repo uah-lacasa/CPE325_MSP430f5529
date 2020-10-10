@@ -6,14 +6,14 @@
  *				it toggles the values with an arbitrary delay.
  * Clocks:		ACLK = 32.768kHz, MCLK = SMCLK = default DCO (~1 MHz)
  *
- *						   MSP430F552x
- *					   -----------------
- *				   /|\|				 |
- *					| |				 |
- *					--|RST			  |
- *					  |			 P1.0|-->LED1(RED)
- *					  |			 P4.7|-->LED2(GREEN)
- *					  |				 |
+ *							MSP430F552x
+ *						-----------------
+ *					/||					|
+ *					| |					|
+ *					--|RST				|
+ *					  |			 	P1.0|-->LED1(RED)
+ *					  |			 	P4.7|-->LED2(GREEN)
+ *					  |				 	|
  * Input:		None
  * Output:		LED1 and LED2 toggle blinking
  * Authors:	 	Prawar Poudel, pp0030@uah.edu

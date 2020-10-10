@@ -20,15 +20,15 @@
  *				and vice versa.
  *
  * Clocks:		ACLK = LFXT1 = 32768Hz, MCLK = SMCLK = DCO = default (2^20 Hz)
- *				An external watch crystal between XIN & XOUT is required for ACLK
+ *				An external watch crystal beten XIN & XOUT is required for ACLK
  *
  *						  MSP430F5529
- *					   -----------------
- *				   /|\|			  XIN|-
+ *						-----------------
+ *					/|\|			  XIN|-
  *					| |				 | 32kHz
  *					--|RST		  XOUT|-
  *					  |				 |
- *					  |	   P2.4/TA2.1|-->Buzzer
+ *					  |		P2.4/TA2.1|-->Buzzer
  *					  |				 |
  * Input:		None
  * Output:		Toggle output at P2.4 at 8Hz frequency using hardware TA2
@@ -47,5 +47,5 @@ void main(void)
 	TA2CCTL1 = OUTMOD_4;	  // TA2.1 output is in toggle mode
 	TA2CTL = TASSEL_2 + MC_2; // SMCLK is clock source, Continuous mode
 
-	_BIS_SR(LPM0_bits + GIE); // Enter Low Power Mode 0
+	_BIS_SR(LPM0_bits + GIE); // Enter Low Por Mode 0
 }

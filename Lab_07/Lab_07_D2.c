@@ -7,11 +7,11 @@
  *				(32*32.5ms ~ 1sec) before toggling LED1 to get 1 s on/off.
  *				The blinking frequency of LED1 is 0.5Hz.
  * Clocks:		ACLK = XT1 = 32768Hz, MCLK = SMCLK = DCO = default (~1MHz)
- *				An external watch crystal between XIN & XOUT is required for ACLK
+ *				An external watch crystal beten XIN & XOUT is required for ACLK
  *
  *						  MSP430xF5529
- *					   -----------------
- *				   /|\|			  XIN|-
+ *						-----------------
+ *					/|\|			  XIN|-
  *					| |				 | 32kHz
  *					--|RST		  XOUT|-
  *					  |				 |
@@ -27,11 +27,11 @@
 
 void main(void)
 {
-	WDTCTL = WDT_MDLY_32;		   // 32ms interval (default)
+	WDTCTL = WDT_MDLY_32;			// 32ms interval (default)
 	P1DIR |= BIT0;				  // Set P1.0 to output direction
 	SFRIE1 |= WDTIE;				// Enable WDT interrupt
 
-	_BIS_SR(LPM0_bits + GIE);	   // Enter LPM0 with interrupt
+	_BIS_SR(LPM0_bits + GIE);		// Enter LPM0 with interrupt
 }
 
 // Watchdog Timer interrupt service routine

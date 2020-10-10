@@ -19,15 +19,15 @@
  *		MSP430F5529
  *	 -----------------
  * /|\ |			XIN|-
- *  |  |			   | 32kHz
+ *  |  |				| 32kHz
  *  |--|RST		XOUT|-
- *	 |			   |
- *	 |   P3.3/UCA0TXD|------------>
- *	 |			   | 9600 - 8N1
- *	 |   P3.4/UCA0RXD|<------------
- *	 |		   P1.0|----> LED1
+ *	 |				|
+ *	 |	P3.3/UCA0TXD|------------>
+ *	 |				| 9600 - 8N1
+ *	 |	P3.4/UCA0RXD|<------------
+ *	 |			P1.0|----> LED1
  *
- * Author:	  		A. Milenkovic, milenkovic@computer.org
+ * Author:			A. Milenkovic, milenkovic@computer.org
  * Date:			October 2018
 --------------------------------------------------------------------------------*/
 #include <msp430.h>
@@ -45,7 +45,7 @@ void UART_setup(void)
 	UCA0CTL1 |= UCSSEL_2;					 // SMCLK
 	UCA0BR0 = 6;							  // 1MHz 9600 (see User's Guide)
 	UCA0BR1 = 0;							  // 1MHz 9600
-	UCA0MCTL = UCBRS_0 + UCBRF_13 + UCOS16;   // Mod. UCBRSx=0, UCBRFx=0,
+	UCA0MCTL = UCBRS_0 + UCBRF_13 + UCOS16;	// Mod. UCBRSx=0, UCBRFx=0,
 											  // over sampling
 	UCA0CTL1 &= ~UCSWRST;					 // **Initialize USCI state machine**
 }
@@ -89,13 +89,13 @@ void SendTime(void)
 void main(void)
 {
 	WDTCTL = WDTPW + WDTHOLD;		// Stop watchdog timer to prevent time out
-	UART_setup();				   // Initialize UART
+	UART_setup();					// Initialize UART
 	TimerA_setup();				 // Initialize Timer_B
 	P1DIR |= BIT0;				  // P1.0 is output;
 
 	while (1)
 	{
-		_BIS_SR(LPM0_bits + GIE);   // Enter LPM0 w/ interrupts
+		_BIS_SR(LPM0_bits + GIE);	// Enter LPM0 w/ interrupts
 		SendTime();				 // Send Time to HyperTerminal/putty
 	}
 }
@@ -103,6 +103,6 @@ void main(void)
 #pragma vector = TIMER0_A0_VECTOR
 __interrupt void TIMERA_ISA(void)
 {
-	SetTime();					   // Update time
+	SetTime();						// Update time
 	_BIC_SR_IRQ(LPM0_bits);		  // Clear LPM0 bits from 0(SR)
 }

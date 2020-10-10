@@ -13,11 +13,11 @@
  *				PWM signal.
  *
  * Clocks:		ACLK = LFXT1 = 32768Hz, MCLK = SMCLK = DCO = default (2^20 Hz)
- *				An external watch crystal between XIN & XOUT is required for ACLK
+ *				An external watch crystal beten XIN & XOUT is required for ACLK
  *
  *						  MSP430xG461x
- *					   -----------------
- *				   /|\|			  XIN|-
+ *						-----------------
+ *					/|\|			  XIN|-
  *					| |				 | 32kHz
  *					--|RST		  XOUT|-
  *					  |				 |
@@ -40,18 +40,18 @@ void main(void)
 	P1DIR |= BIT0;				//LED1 as output
 	P4DIR |= BIT7;				//LED2 as output
 
-	P1OUT &= ~BIT0;			   // ensure LED1 and LED2 are off
+	P1OUT &= ~BIT0;				// ensure LED1 and LED2 are off
 	P4OUT &= ~BIT7;
 
 	TA0CCTL0 = CCIE;			  // TA0 count triggers interrupt
 	TA0CCR0 = 10000;			  // Set TA0 (and maximum) count value
 
 	TA0CCTL1 = CCIE;			  // TA0.1 count triggers interrupt
-	TA0CCR1 = 2000;			   // Set TA0.1 count value
+	TA0CCR1 = 2000;				// Set TA0.1 count value
 
 	TA0CTL = TASSEL_1 | MC_3;	 // ACLK is clock source, UP/DOWN mode
 
-	_BIS_SR(LPM3);				// Enter Low Power Mode 3
+	_BIS_SR(LPM3);				// Enter Low Por Mode 3
 }
 
 #pragma vector = TIMER0_A0_VECTOR

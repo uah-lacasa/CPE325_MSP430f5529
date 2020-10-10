@@ -20,12 +20,12 @@
  *		/|\|			  XIN|-
  *		 | |				 | 32kHz
  *		 --|RST		  XOUT|-
- *		   |				 |
+ *			|				 |
  *	 SW1-->|P2.1		 P7.7|--> MCLK = 1 or 8MHz
  *	LED2<--|P4.7			 |
- *		   |			 P2.2|--> SMCLK = 1 or 8MHz
- *		   |			 P1.0|--> ACLK = 32kHz
- *		   |				 |
+ *			|			 P2.2|--> SMCLK = 1 or 8MHz
+ *			|			 P1.0|--> ACLK = 32kHz
+ *			|				 |
  *
  * Modified:	Prawar Poudel
  * Date:		August 2020
@@ -143,7 +143,7 @@ void configure_clock_sources()
 {
 	UCSCTL3 = SELREF_2;						// Set DCO FLL reference = REFO
 	UCSCTL4 |= SELA_2;						// Set ACLK = REFO
-	UCSCTL0 = 0x0000;						// Set lowest possible DCOx, MODx
+	UCSCTL0 = 0x0000;						// Set lost possible DCOx, MODx
 
 	// Loop until XT1,XT2 & DCO stabilizes - In this case only DCO has to stabilize
 	do
