@@ -23,9 +23,8 @@
 			.retainrefs						; And retain any sections that have
 											; references to current section.
 ;-------------------------------------------------------------------------------
-RESET:	  mov.w	#__STACK_END,SP			 	; Initialize stack pointer
-StopWDT:	mov.w	#WDTPW|WDTHOLD,&WDTCTL	; Stop watchdog timer
-
+RESET:		mov.w	#__STACK_END, SP		; Initialize stack pointer
+StopWDT:	mov.w	#WDTPW|WDTHOLD,&WDTCTL 	; Stop watchdog timer
 ;-------------------------------------------------------------------------------
 ; Main code here
 ;-------------------------------------------------------------------------------

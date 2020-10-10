@@ -24,25 +24,24 @@
 											; references to current section.
 
 ;-------------------------------------------------------------------------------
-RESET:	  mov.w	#__STACK_END,SP		 		; Initialize stackpointer
-StopWDT:	mov.w	#WDTPW|WDTHOLD,&WDTCTL  ; Stop watchdog timer
+RESET:		mov.w	#__STACK_END, SP		; Initialize stack pointer
+StopWDT:	mov.w	#WDTPW|WDTHOLD,&WDTCTL 	; Stop watchdog timer
 ;-------------------------------------------------------------------------------
 ; Main code here
 ;-------------------------------------------------------------------------------
 main:
-			mov.w	#arr1, R12			  ; put address into R12
-			mov.w	#8, R13				 ; put array length into R13
+			mov.w	#arr1, R12				; put starting address of arr1 into R12
+			mov.w	#8, R13					; put array length into R13
 			call	#suma_rp
 			; P1OUT is at address 0x02, P2OUT is address 0x03
-			;  can write the 16-bit result to both at the same time
-			; P2OUT contains the upper byte and P1OUT the lor byte
-			mov.w	R14, &P1OUT			 ; result goes to P2OUT&P1OUT
-
-			mov.w	#arr2, R12			  ; put address into R12
-			mov.w	#7, R13				 ; put array length into R13
-			mov.w	#1, R14				 ; display #0 (P3&P4)
+			; Can write the 16-bit result to both at the same time
+			; P2OUT contains the upper byte and P1OUT the lower byte
+			mov.w	R14, &P1OUT			 	; result goes to P2OUT&P1OUT
+			mov.w	#arr2, R12				; put address into R12
+			mov.w	#7, R13					; put array length into R13
+			mov.w	#1, R14					; display #0 (P3&P4)
 			call	#suma_rp
-			mov.w	R14, &P3OUT			 ; result goes to P4OUT&P3OUT
+			mov.w	R14, &P3OUT				; result goes to P4OUT&P3OUT
 			jmp	 $
 
 arr1:		.int	 1, 2, 3, 4, 1, 2, 3, 4	 ; the first array

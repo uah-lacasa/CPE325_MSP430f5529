@@ -34,7 +34,8 @@ void main(void)
 	while(1)
 	{								 // Infinite loop
 		for (i = 0; i < 50000; i++); // Delay 0.5s
-									 // 0.5s on, 0.5s off => 1/(1s) = 1Hz
+									 // 0.5s on, 0.5s off
+									 // 1/(0.5 + 0.5)s = 1Hz
 		P1OUT ^= BIT0;				 // Toggle LED1
 		P4OUT ^= BIT7;				 // Toggle LED1
 	}

@@ -25,15 +25,15 @@
 void main(void)
 {
 	WDTCTL = WDTPW + WDTHOLD;		// Stop watchdog timer to prevent time out
-	P1DIR |= REDLED;				// configure P1.0 as output
-	P4DIR |= GREENLED;				// configure P4.7 as output
+	P1DIR |= REDLED;				// Configure P1.0 as output
+	P4DIR |= GREENLED;				// Configure P4.7 as output
 
 	P1OUT = P1OUT & ~REDLED;		// P1.0 is cleared
 	P4OUT = P4OUT | GREENLED;		// P4.7 is on
 	while(1)
-	{								// main application loop
-		__delay_cycles(500000);		// delay of ~250 ms
-		P1OUT ^= REDLED;			// toggle P1.0
-		P4OUT ^= GREENLED;			// toggle P4.7
+	{
+		__delay_cycles(500000);		// Delay of ~250 ms
+		P1OUT ^= REDLED;			// Toggle P1.0
+		P4OUT ^= GREENLED;			// Toggle P4.7
 	}
 }

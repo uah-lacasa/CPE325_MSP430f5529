@@ -35,7 +35,7 @@
 
 ;-------------------------------------------------------------------------------
 RESET:		mov.w	#__STACK_END, SP		; Initialize stack pointer
-StopWDT:	mov.w	#WDTPW|WDTHOLD, &WDTCTL ; Stop watchdog timer
+StopWDT:	mov.w	#WDTPW|WDTHOLD,&WDTCTL 	; Stop watchdog timer
 ;-------------------------------------------------------------------------------
 Setup:
 			bis.b	#0x01, &P1DIR			; Set P1.0 to output

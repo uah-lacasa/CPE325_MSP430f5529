@@ -34,9 +34,8 @@
 											; references to current section.
 
 ;-------------------------------------------------------------------------------
-RESET		mov.w	#__STACK_END,SP			; Initialize stackpointer
-StopWDT	 	mov.w	#WDTPW|WDTHOLD,&WDTCTL  ; Stop watchdog timer
-
+RESET:		mov.w	#__STACK_END, SP		; Initialize stack pointer
+StopWDT:	mov.w	#WDTPW|WDTHOLD,&WDTCTL 	; Stop watchdog timer
 SETUP:
 			bis.b	#0x01,&P1DIR			; set P1.0 as output, 0'b0000 0001
 			bis.b	#0x80,&P4DIR			; set P4.7 as output, 0'b1000 0000

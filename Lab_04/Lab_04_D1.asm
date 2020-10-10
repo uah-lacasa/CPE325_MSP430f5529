@@ -20,11 +20,11 @@ myStr: .string "HELLO WORLD, I AM THE MSP430!", ''
 		; You can alternatively use .cstring "HELLO WORLD, I AM THE MSP430!"
 		;	that adds a NULL character at the end of the string automatically.
 ;-------------------------------------------------------------------------------
-		.text						; Assemble into program memory.
-		.retain						; Override ELF conditional linking
-									; and retain current section.
-		.retainrefs					; And retain any sections that have
-									; references to current section.
+		.text							; Assemble into program memory.
+		.retain							; Override ELF conditional linking
+										; and retain current section.
+		.retainrefs						; And retain any sections that have
+										; references to current section.
 ;-------------------------------------------------------------------------------
 RESET:	mov.w	#__STACK_END,SP			; Initialize stack pointer
 		mov.w	#WDTPW|WDTHOLD,&WDTCTL	; Stop watchdog timer
@@ -32,7 +32,7 @@ RESET:	mov.w	#__STACK_END,SP			; Initialize stack pointer
 ; Main loop here
 ;-------------------------------------------------------------------------------
 main:	; bis.b	#0FFh,&P1DIR			; do not output the result on port pins
-		mov.w	#myStr, R4				; load the starting address of the string into R4
+		mov.w	#myStr, R4				; put starting address of myStr into R4
 		clr.b	R5						; register R5 will serve as a counter
 gnext:	mov.b	@R4+, R6				; get a new character
 		cmp	 	#0,R6					; is it a null character
@@ -42,7 +42,8 @@ gnext:	mov.b	@R4+, R6				; get a new character
 		inc.w	R5						; if yes, increment counter
 		jmp	 	gnext					; go to the next character
 
-lend:	mov.b	R5,&P1OUT				; write result in P1OUT (not visible on port pins)
+lend:	mov.b	R5,&P1OUT				; write result in P1OUT
+										; (not visible on port pins)
 		bis.w	#LPM4,SR				; LPM4
 		nop								; required only for Debugger
 

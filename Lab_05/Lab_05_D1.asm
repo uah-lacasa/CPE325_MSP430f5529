@@ -20,16 +20,14 @@
 			.retainrefs						; And retain any sections that have
 											; references to current section.
 ;-------------------------------------------------------------------------------
-RESET:		mov.w	#__STACK_END,SP			; Initialize stack pointer
-StopWDT:	 mov.w	#WDTPW|WDTHOLD,&WDTCTL 	; Stop watchdog timer
+RESET:		mov.w	#__STACK_END, SP		; Initialize stack pointer
+StopWDT:	mov.w	#WDTPW|WDTHOLD,&WDTCTL 	; Stop watchdog timer
 ;-------------------------------------------------------------------------------
 ; Main code here
 ;-------------------------------------------------------------------------------
 main:
-			; load the starting address of the array1 into the register R4
-			mov.w	#arr1, R4
-			; load the starting address of the array2 into the register R5
-			mov.w	#arr2, R5
+			mov.w	#arr1, R4 				; put starting address of arr1 into R4
+			mov.w	#arr2, R5 				; put starting address of arr2 into R5
 			; Sum arr1 and display
 			clr.w	R7						; holds the sum
 			mov.w	#8, R10					; number of elements in arr1
