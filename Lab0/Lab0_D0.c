@@ -14,7 +14,7 @@
  *                      |             P1.0|-->LED1(RED)
  *                      |             P4.7|-->LED2(GREEN)
  *                      |                 |
- * Input:       none
+ * Input:       None
  * Output:      LED1 and LED2 toggle blinking
  * Authors:     Prawar Poudel, pp0030@uah.edu
  *------------------------------------------------------------------------------*/
@@ -24,14 +24,14 @@
 int main()
 {
 
-    // stop watchdog timer
+    // Stop watchdog timer
     WDTCTL = WDTPW+WDTHOLD;
 
-    // initialize LED1 and LED2 as output
+    // Initialize LED1 and LED2 as output
     P4DIR |= BIT7;
     P1DIR |= BIT0;
 
-    // initialize the values of outputs to
+    // Initialize the values of outputs to
     // P4.7 as 1 (LED2 ON)
     // P1.0 as 0 (LED1 OFF)
     P4OUT |= BIT7;
@@ -39,10 +39,10 @@ int main()
 
     while(1)
     {
-        // toggle values on each LEDS
+        // Toggle values on each LEDS
         P4OUT ^= BIT7;
         P1OUT ^= BIT0;
-        // arbitrary delays
+        // Arbitrary delays
         __delay_cycles(100000);
     }
     return 0;
