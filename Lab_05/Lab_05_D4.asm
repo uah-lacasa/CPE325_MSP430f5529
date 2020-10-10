@@ -27,29 +27,28 @@
  ;****************************************************************************/
 
 ;-------------------------------------------------------------------------------
-			.cdecls C,LIST,"msp430.h"		; Include device header file
-			
+			.cdecls C, LIST, "msp430.h"	; Include device header file
 ;-------------------------------------------------------------------------------
-			.def	RESET					; Export program entry-point to
-											; make it known to linker.
+			.def	RESET				; Export program entry-point to
+										; make it known to linker.
 ;-----------------------------------------------------------------------------
 ;			USER DATA
 ;-----------------------------------------------------------------------------
-			.data							; so that it goes to data section
-val1:		.int	45						; val1 is an integer of value 45
-val2:		.int	3						; val2 is an integer of value 3
-val3:		.int	0						; val3 will hold result of val1*val2
-											; .. let us init it with 0 for now
+			.data						; so that it goes to data section
+val1:		.int	45					; val1 is an integer of value 45
+val2:		.int	3					; val2 is an integer of value 3
+val3:		.int	0					; val3 will hold result of val1*val2
+										; .. let us init it with 0 for now
 ;-------------------------------------------------------------------------------
-			.text							; Assemble into program memory.
-			.retain						 ; Override ELF conditional linking
-											; and retain current section.
-			.retainrefs					 ; And retain any sections that have
-											; references to current section.
+			.text						; Assemble into program memory.
+			.retain						; Override ELF conditional linking
+										; and retain current section.
+			.retainrefs					; And retain any sections that have
+										; references to current section.
 
 ;-------------------------------------------------------------------------------
-RESET		mov.w	#__STACK_END,SP		 ; Initialize stackpointer
-StopWDT	 mov.w	#WDTPW|WDTHOLD,&WDTCTL  ; Stop watchdog timer
+RESET		mov.w	#__STACK_END,SP		; Initialize stackpointer
+StopWDT	 mov.w	#WDTPW|WDTHOLD,&WDTCTL	; Stop watchdog timer
 
 
 ;-------------------------------------------------------------------------------
@@ -58,19 +57,14 @@ StopWDT	 mov.w	#WDTPW|WDTHOLD,&WDTCTL  ; Stop watchdog timer
 main:
 			mov val1,&MPY				; moves val1 to R5
 			mov val2,&OP2				; moves val2 to R6
-
 			; since  have both the numbers already, let us get the results
 			; after three clock cycles (for 16X16 multiplication)
 			nop
 			nop
 			nop
-
 			mov  RESLO,&val3
-
 			jmp $						; infinite loop
-
-											
-
+			
 ;-------------------------------------------------------------------------------
 ; Stack Pointer definition
 ;-------------------------------------------------------------------------------

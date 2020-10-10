@@ -22,24 +22,21 @@
 ;	Modified:	Prawar Poudel, August 08, 2019
 ;-------------------------------------------------------------------------------
 ; MSP430 Assembler Code Template for use with TI Code Composer Studio
-;
-;
 ;-------------------------------------------------------------------------------
-			.cdecls C,LIST,"msp430.h"		; Include device header file
-			
+			.cdecls C, LIST, "msp430.h"		; Include device header file
 ;-------------------------------------------------------------------------------
 			.def	RESET					; Export program entry-point to
 											; make it known to linker.
 ;-------------------------------------------------------------------------------
 			.text							; Assemble into program memory.
-			.retain						 ; Override ELF conditional linking
+			.retain							; Override ELF conditional linking
 											; and retain current section.
-			.retainrefs					 ; And retain any sections that have
+			.retainrefs						; And retain any sections that have
 											; references to current section.
 
 ;-------------------------------------------------------------------------------
-RESET		mov.w	#__STACK_END,SP		 ; Initialize stackpointer
-StopWDT	 mov.w	#WDTPW|WDTHOLD,&WDTCTL  ; Stop watchdog timer
+RESET		mov.w	#__STACK_END,SP			; Initialize stackpointer
+StopWDT	 	mov.w	#WDTPW|WDTHOLD,&WDTCTL  ; Stop watchdog timer
 
 SETUP:
 			bis.b	#0x01,&P1DIR			; set P1.0 as output, 0'b0000 0001
@@ -66,13 +63,12 @@ SWDelay1:
 			nop
 			nop
 			nop
-			dec.w R5						; 1cc
-			jnz SWDelay1					; 2cc
-			xor.b #0x01,&P1OUT			  ; toggle 1.0
-			xor.b #0x80,&P4OUT			  ; toggle 4.7
-			jmp InfLoop					 ; go to InfLoop
+			dec.w R5					; 1cc
+			jnz SWDelay1				; 2cc
+			xor.b #0x01,&P1OUT			; toggle 1.0
+			xor.b #0x80,&P4OUT			; toggle 4.7
+			jmp InfLoop					; go to InfLoop
 			nop
-											
 
 ;-------------------------------------------------------------------------------
 ; Stack Pointer definition

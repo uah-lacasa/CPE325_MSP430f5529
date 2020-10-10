@@ -9,8 +9,8 @@
 ; Author	 : A. Milenkovic, milenkovic@computer.org
 ; Date		: September 14, 2008 (revised on August 2020)
 ;------------------------------------------------------------------------------
-			.cdecls C,LIST,"msp430.h"	  ; Include device header file
-
+			.cdecls C, LIST, "msp430.h"		; Include device header file
+;-------------------------------------------------------------------------------
 			.def suma_rp
 
 			.text

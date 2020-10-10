@@ -9,12 +9,12 @@
 ; Date: 		August 14, 2008
 ; 				August 5, 2020 (revised)
 ;-------------------------------------------------------------------------------
-		.cdecls C,LIST,"msp430.h"		; Include device header file
+		.cdecls C, LIST, "msp430.h"		; Include device header file
 ;-------------------------------------------------------------------------------
 		.def	RESET					; Export program entry-point to
 										; make it known to linker.
 
-myStr:  .string "HELLO WORLD, I AM THE MSP430!", ''
+myStr: .string "HELLO WORLD, I AM THE MSP430!", ''
 		; .string does add NULL at the end of the string;
 		;	'' ensures that a NULL follows the string.
 		; You can alternatively use .cstring "HELLO WORLD, I AM THE MSP430!"
@@ -25,18 +25,16 @@ myStr:  .string "HELLO WORLD, I AM THE MSP430!", ''
 									; and retain current section.
 		.retainrefs					; And retain any sections that have
 									; references to current section.
-
 ;-------------------------------------------------------------------------------
 RESET:	mov.w	#__STACK_END,SP			; Initialize stack pointer
 		mov.w	#WDTPW|WDTHOLD,&WDTCTL	; Stop watchdog timer
-
 ;-------------------------------------------------------------------------------
 ; Main loop here
 ;-------------------------------------------------------------------------------
 main:	; bis.b	#0FFh,&P1DIR			; do not output the result on port pins
 		mov.w	#myStr, R4				; load the starting address of the string into R4
 		clr.b	R5						; register R5 will serve as a counter
-gnext:  mov.b	@R4+, R6				; get a new character
+gnext:	mov.b	@R4+, R6				; get a new character
 		cmp	 #0,R6						; is it a null character
 		jeq	 lend						; if yes, go to the end
 		cmp.b	#'E',R6				 	; is it an 'E' character
@@ -58,5 +56,5 @@ lend:	mov.b	R5,&P1OUT					; write result in P1OUT (not visible on port pins)
 ; Interrupt Vectors
 ;-------------------------------------------------------------------------------
 		 .sect	".reset"				; MSP430 RESET Vector
-		 .short  RESET
+		 .short	RESET
 		 .end

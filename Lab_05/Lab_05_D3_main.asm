@@ -9,21 +9,20 @@
 ; Author	 : A. Milenkovic, milenkovic@computer.org
 ; Date		: September 14, 2008 (revised August 2020)
 ;-------------------------------------------------------------------------------
-			.cdecls C,LIST,"msp430.h"			; Include device header file
-			
+			.cdecls C, LIST, "msp430.h"		; Include device header file
 ;-------------------------------------------------------------------------------
-			.def	RESET						; Export program entry-point to
-												; make it known to linker.
+			.def	RESET					; Export program entry-point to
+											; make it known to linker.
 			.ref	suma_sp
 ;-------------------------------------------------------------------------------
-			.text								; Assemble into program memory.
-			.retain							 ; Override ELF conditional linking
-												; and retain current section.
-			.retainrefs						 ; And retain any sections that have
-												; references to current section.
+			.text							; Assemble into program memory.
+			.retain							; Override ELF conditional linking
+											; and retain current section.
+			.retainrefs						; And retain any sections that have
+											; references to current section.
 ;-------------------------------------------------------------------------------
-RESET:	  mov.w	#__STACK_END,SP			 ; Initialize stack pointer
-StopWDT:	mov.w	#WDTPW|WDTHOLD,&WDTCTL	  ; Stop watchdog timer
+RESET:	  mov.w	#__STACK_END,SP			 	; Initialize stack pointer
+StopWDT:	mov.w	#WDTPW|WDTHOLD,&WDTCTL	; Stop watchdog timer
 
 ;-------------------------------------------------------------------------------
 ; Main code here

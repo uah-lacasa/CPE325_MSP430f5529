@@ -21,21 +21,19 @@
 ;	Date:		September 14, 2018
 ;	Modified:	Prawar Poudel, August 08, 2019
 ;-------------------------------------------------------------------------------
-
-			.cdecls C,LIST,"msp430.h"		; Include device header file
-			
+			.cdecls C, LIST, "msp430.h"		; Include device header file
 ;-------------------------------------------------------------------------------
 			.def	RESET					; Export program entry-point to
 											; make it known to linker.
 ;-------------------------------------------------------------------------------
 			.text							; Assemble into program memory.
-			.retain						 ; Override ELF conditional linking
+			.retain							; Override ELF conditional linking
 											; and retain current section.
-			.retainrefs					 ; And retain any sections that have
+			.retainrefs						; And retain any sections that have
 											; references to current section.
 
 ;-------------------------------------------------------------------------------
-RESET:	  mov.w	#__STACK_END,SP		 ; Initialize stack pointer
+RESET:		mov.w	#__STACK_END,SP		 	; Initialize stack pointer
 StopWDT:	mov.w	#WDTPW|WDTHOLD,&WDTCTL  ; Stop watchdog timer
 ;-------------------------------------------------------------------------------
 SetupP2:
@@ -49,13 +47,13 @@ SetupP2:
 			bis.b	#002h, &P2OUT			; required for proper IO set up
 
 ChkSW1:	 bic.b	#001h, &P1OUT
-			bit.b	#002h, &P2IN			 ; Check if SW1 is pressed
+			bit.b	#002h, &P2IN			; Check if SW1 is pressed
 											; (0000_0010 on P1IN)
-			jnz	 ChkSW1				  ; If not zero, SW1 is not pressed
+			jnz	 ChkSW1				  		; If not zero, SW1 is not pressed
 											; loop and check again
 Debounce:
-			mov.w	#2000, R15			  ; Set to (2000 * 10 cc = 20,000 cc)
-SWD20ms:	dec.w	R15					 ; Decrement R15
+			mov.w	#2000, R15			  	; Set to (2000 * 10 cc = 20,000 cc)
+SWD20ms:	dec.w	R15					 	; Decrement R15
 			nop
 			nop
 			nop
@@ -63,17 +61,17 @@ SWD20ms:	dec.w	R15					 ; Decrement R15
 			nop
 			nop
 			nop
-			jnz	 SWD20ms				 ; Delay over?
+			jnz	 SWD20ms				 	; Delay over?
 			bit.b	#00000010b, &P2IN		; Verify SW1 is still pressed
-			jnz	 ChkSW1				  ; If not, wait for SW1 press
+			jnz	 ChkSW1				  		; If not, wait for SW1 press
 
-LEDon:	  bis.b	#001h, &P1OUT			; Turn on LED1
+LEDon:	  bis.b	#001h, &P1OUT				; Turn on LED1
 SW1wait:	bit.b	#002h, &P2IN			; Test SW1
-			jz	  SW1wait				 ; Wait until SW1 is released
+			jz	  SW1wait					; Wait until SW1 is released
 			bic.b	#001h, &P1OUT			; Turn off LED1
-			jmp	 ChkSW1				  ; Loop to beginning
+			jmp	 ChkSW1				  		; Loop to beginning
 			nop
-											
+
 ;-------------------------------------------------------------------------------
 ; Stack Pointer definition
 ;-------------------------------------------------------------------------------

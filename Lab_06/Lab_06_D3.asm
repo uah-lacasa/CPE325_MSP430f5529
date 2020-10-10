@@ -20,21 +20,20 @@
 ;	Date:		September 14, 2018
 ;	Modified:	Prawar Poudel, Auguest 8, 2019
 ;-------------------------------------------------------------------------------
-			.cdecls C,LIST,"msp430.h"		; Include device header file
-
+			.cdecls C, LIST, "msp430.h"		; Include device header file
 ;-------------------------------------------------------------------------------
 			.def	RESET					; Export program entry-point to
 											; make it known to linker.
 			.def	S2_ISR
 ;-------------------------------------------------------------------------------
 			.text							; Assemble into program memory.
-			.retain						 ; Override ELF conditional linking
+			.retain						 	; Override ELF conditional linking
 											; and retain current section.
-			.retainrefs					 ; And retain any sections that have
+			.retainrefs					 	; And retain any sections that have
 											; references to current section.
 
 ;-------------------------------------------------------------------------------
-RESET:	  mov.w	#__STACK_END, SP		; Initialize stack pointer
+RESET:		mov.w	#__STACK_END, SP		; Initialize stack pointer
 StopWDT:	mov.w	#WDTPW|WDTHOLD, &WDTCTL ; Stop watchdog timer
 ;-------------------------------------------------------------------------------
 Setup:
@@ -52,19 +51,19 @@ Setup:
 			bis.b	#002h, &P1IES			; Set interrupt to call from hi to low
 			bic.b	#002h, &P1IFG			; Clear interrupt flag
 InfLoop:
-			jmp	 $						; Loop here until interrupt
-											
+			jmp	 $							; Loop here until interrupt
+
 ;----------------------------------------------------------------------------
 ; P1_0 (S2) interrupt service routine (ISR)
 ;----------------------------------------------------------------------------
 S2_ISR:
-			bic.b	#002h, &P1IFG			; Clear interrupt flag
-ChkSW2:	 bit.b	#02h, &P1IN			 ; Check if S2 is pressed
-											; (0000_0010 on P1IN)
+			bic.b	#002h, &P1IFG		; Clear interrupt flag
+ChkSW2:	 bit.b	#02h, &P1IN			 	; Check if S2 is pressed
+										; (0000_0010 on P1IN)
 			jnz	 LExit					; If not zero, SW is not pressed
-											; loop and check again
-Debounce:	mov.w	#2000, R15			  ; Set to (2000 * 10 cc )
-SWD20ms:	dec.w	R15					 ; Decrement R15
+										; loop and check again
+Debounce:	mov.w	#2000, R15			; Set to (2000 * 10 cc )
+SWD20ms:	dec.w	R15					; Decrement R15
 			nop
 			nop
 			nop
@@ -72,13 +71,13 @@ SWD20ms:	dec.w	R15					 ; Decrement R15
 			nop
 			nop
 			nop
-			jnz	 SWD20ms				 ; Delay over?
-			bit.b	#00000010b,&P1IN		; Verify S2 is still pressed
+			jnz	 SWD20ms				; Delay over?
+			bit.b	#00000010b,&P1IN	; Verify S2 is still pressed
 			jnz	 LExit					; If not, wait for S2 press
 LEDon:	  bis.b	#001h,&P1OUT			; Turn on LED1
-SW2wait:	bit.b	#002h,&P1IN			 ; Test S2
-			jz	  SW2wait				 ; Wait until S2 is released
-			bic.b	#001,&P1OUT			 ; Turn off LED1
+SW2wait:	bit.b	#002h,&P1IN			; Test S2
+			jz	  SW2wait				; Wait until S2 is released
+			bic.b	#001,&P1OUT			; Turn off LED1
 LExit:	  reti							; Return from interrupt
 ;-------------------------------------------------------------------------------
 ; Stack Pointer definition
@@ -89,8 +88,8 @@ LExit:	  reti							; Return from interrupt
 ;-------------------------------------------------------------------------------
 ; Interrupt Vectors
 ;-------------------------------------------------------------------------------
-			.sect	".reset"		; MSP430 RESET Vector
+			.sect	".reset"			; MSP430 RESET Vector
 			.short  RESET
-			.sect	".int47"		; PORT1_VECTOR,
-			.short  S2_ISR		 ; please check the MSP430F5529.h header file
+			.sect	".int47"			; PORT1_VECTOR,
+			.short  S2_ISR		 		; please check the MSP430F5529.h header file
 			.end
