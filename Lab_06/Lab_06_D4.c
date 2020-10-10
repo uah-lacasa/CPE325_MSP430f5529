@@ -6,7 +6,7 @@
  *				Main program polls S2 and turns off when a release is detected.
  * Clocks:	  	ACLK = 32.768kHz, MCLK = SMCLK = default DCO = 2^20=1,048,576 Hz
  *						MSP-EXP430F5529LP
- * 					  -------------------
+ *            		  --------------------
  *					  |				 	|
  *					  |					| 
  *					  |					|

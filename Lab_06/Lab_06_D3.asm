@@ -6,7 +6,7 @@
 ;				debouncing and waits for a S2 to be released.
 ; Clocks:	  	ACLK = 32.768kHz, MCLK = SMCLK = default DCO = 2^20=1,048,576 Hz
 ;						MSP-EXP430F5529LP
-;					  -------------------
+;            		  --------------------
 ;				   /|\|				 	|
 ;					| |					| 
 ;					--|RST				|

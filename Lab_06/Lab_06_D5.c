@@ -4,7 +4,7 @@
  * Description:	P1_ISR is used to detect both S2 presses and releases.
  * Clocks:	  	ACLK = 32.768kHz, MCLK = SMCLK = default DCO = 2^20=1,048,576 Hz
  *						MSP-EXP430F5529LP
- * 					  -------------------
+ *            		  --------------------
  *					  |				 	|
  *					  |					| 
  *					  |					|

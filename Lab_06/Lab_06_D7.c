@@ -5,7 +5,7 @@
  * Clocks:	  	ACLK = 32.768kHz
  * 				MCLK = SMCLK = DCO = (121+1) x 2 x ACLK = 7995392Hz
  *						MSP-EXP430F5529LP
- *            		  ------------------
+ *            		  --------------------
  *        		   /|\|              XIN|-
  *        		    | |                 | 32kHz
  *         			--|RST          XOUT|-

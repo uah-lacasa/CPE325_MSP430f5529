@@ -5,10 +5,9 @@
  *				with values 0 and 1 respectively. In the while loop,
  *				it toggles the values with an arbitrary delay.
  * Clocks:		ACLK = 32.768kHz, MCLK = SMCLK = default DCO (~1 MHz)
- *
- *							MSP430F552x
- *						-----------------
- *					/||					|
+ *						MSP-EXP430F5529LP
+ *            		  --------------------
+ *				   /|\|					|
  *					| |					|
  *					--|RST				|
  *					  |			 	P1.0|-->LED1(RED)

@@ -6,7 +6,7 @@
 ;				again, and if it's on, LED1 is turned on until S1 is released.
 ; Clocks:	  	ACLK = 32.768kHz, MCLK = SMCLK = default DCO = 2^20=1,048,576 Hz
 ;						MSP-EXP430F5529LP
-;					  -------------------
+;            		  --------------------
 ;				   /|\|				 	|
 ;					| |					| 
 ;					--|RST				|
