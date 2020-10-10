@@ -25,23 +25,18 @@ int main(void)
 {
 	WDTCTL = WDTPW + WDTHOLD;		// Stop watchdog timer to prevent time out
 
-	// Initialize LED1 and LED2 as output
-	P4DIR |= BIT7;
-	P1DIR |= BIT0;
+	P4DIR |= BIT7;				// Initialize LED1 as output
+	P1DIR |= BIT0;				// Initialize LED2 as output
 
-	// Initialize the values of outputs to
-	// P4.7 as 1 (LED2 ON)
-	// P1.0 as 0 (LED1 OFF)
-	P4OUT |= BIT7;
-	P1OUT &= ~BIT0;
+	// Initialize the values of outputs
+	P4OUT |= BIT7;				// P4.7 as 1 (LED2 ON)
+	P1OUT &= ~BIT0;				// P1.0 as 0 (LED1 OFF)
 
-	while(1)
+	while(1)				// Infinite loop
 	{
-		// Toggle values on each LEDS
-		P4OUT ^= BIT7;
-		P1OUT ^= BIT0;
-		// Arbitrary delays
-		__delay_cycles(100000);
+		P4OUT ^= BIT7; 			// Toggle values on LEDS
+		P1OUT ^= BIT0; 			// Toggle values on LEDS
+		__delay_cycles(100000); 	// Delay
 	}
 	return 0;
 }
