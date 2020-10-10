@@ -13,7 +13,6 @@
 ;					  |			 	P4.7|-->LED2(GREEN)
 ;					  |					|
 ;					  |					|
-
 ; Input:		None
 ; Output:		Blinking LEDs
 ; Author(s):	Aleksandar Milenkovic, milenkovic@computer.org

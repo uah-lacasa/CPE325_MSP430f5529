@@ -4,7 +4,6 @@
 ; Description:	The main program enables interrupts	from P1.BIT1 (S2) and
 ;				remains in an infinite loop doing nothing. P1_ISR implements
 ;				debouncing and waits for a S2 to be released.
-;				
 ; Clocks:	  	ACLK = 32.768kHz, MCLK = SMCLK = default DCO = 2^20=1,048,576 Hz
 ;						MSP-EXP430F5529LP
 ;					  -------------------
@@ -15,7 +14,6 @@
 ;					  |			 	P1.1|<--S2
 ;					  |					|
 ;					  |					|
-
 ; Input:		Pressing S2
 ; Output:		LED1 when S2 is pressed
 ; Author(s):	Aleksandar Milenkovic, milenkovic@computer.org

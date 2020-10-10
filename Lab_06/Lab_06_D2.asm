@@ -4,7 +4,6 @@
 ; Description:	When an S1 press is detected, a software delay of 20 ms
 ;				is used to implement debouncing. The switch is checked
 ;				again, and if it's on, LED1 is turned on until S1 is released.
-;				
 ; Clocks:	  	ACLK = 32.768kHz, MCLK = SMCLK = default DCO = 2^20=1,048,576 Hz
 ;						MSP-EXP430F5529LP
 ;					  -------------------
@@ -15,7 +14,6 @@
 ;					  |			 	P2.1|<--S1
 ;					  |					|
 ;					  |					|
-
 ; Input:		Pressing S1
 ; Output:		LED1 when S1 is pressed
 ; Author(s):	Aleksandar Milenkovic, milenkovic@computer.org

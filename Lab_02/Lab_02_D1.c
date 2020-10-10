@@ -6,7 +6,7 @@
  * Input:		None
  * Output:		Console print statements
  * Author(s):	Aleksandar Milenkovic, milenkovic@computer.org
- * Date:		
+ * Date:		Aug 16, 2017
  * ---------------------------------------------------------------------------*/
 #include <msp430.h> 
 #include <stdio.h>

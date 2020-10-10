@@ -7,7 +7,7 @@
  * Input: 		None
  * Output: 		Factorials of integer numbers from 1 to MAXF
  * Author(s): 	Aleksandar Milenkovic, milenkovic@computer.org
- * Date:			Aug 16, 2017
+ * Date:		Aug 16, 2017
  *-----------------------------------------------------------------------------*/
 #include <msp430.h>
 #include <stdio.h>
