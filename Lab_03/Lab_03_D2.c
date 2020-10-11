@@ -20,7 +20,6 @@
  * 				Prawar Poudel, prawar.poudel@uah.edu
  * Date:		
  * ---------------------------------------------------------------------------*/
-
 #include <msp430.h>
 
 void main(void)

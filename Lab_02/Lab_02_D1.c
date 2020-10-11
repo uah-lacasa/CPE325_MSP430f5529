@@ -19,8 +19,8 @@ int main(void)
 	long int l2 = -2;
 	char c1 = 'A';					// 8-bit character
 	float f1 = 1.25;				// single-precision floating-point
-	unsigned long int * p1 = &f1;	// p1 points to memory where f1 is stored
-	unsigned long int l3 = *p1;		// interpret floating-point number as long integer
+	unsigned long int* p1 = &f1;	// p1 points to memory where f1 is stored
+	unsigned long int l3 = *p1;		// interpret floating point as long int
 
 	WDTCTL = WDTPW + WDTHOLD;		// Stop watchdog timer to prevent time out
 	printf("Each variable below is printed in decimal, hex, and octal representations.\n");

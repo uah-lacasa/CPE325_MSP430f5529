@@ -49,14 +49,14 @@ Setup:
 
 			bis.w	#GIE, SR				; Enable Global Interrupts
 			bis.b	#0x02, &P1IE			; Enable Port 1 interrupt from bit 1
-			bis.b	#0x02, &P1IES			; Set interrupt to call from hi to low
+			bis.b	#0x02, &P1IES			; Set interrupt to call hi to low
 			bic.b	#0x02, &P1IFG			; Clear interrupt flag
 InfLoop:
 			jmp	 $							; Loop here until interrupt
 
-;----------------------------------------------------------------------------
+;-------------------------------------------------------------------------------
 ; P1_0 (S2) interrupt service routine (ISR)
-;----------------------------------------------------------------------------
+;-------------------------------------------------------------------------------
 S2_ISR:
 			bic.b	#0x02, &P1IFG		; Clear interrupt flag
 ChkSW2:	 bit.b	#02h, &P1IN			 	; Check if S2 is pressed
@@ -92,5 +92,5 @@ LExit:	  reti							; Return from interrupt
 			.sect	".reset"			; MSP430 RESET Vector
 			.short  RESET
 			.sect	".int47"			; PORT1_VECTOR,
-			.short  S2_ISR		 		; please check the MSP430F5529.h header file
+			.short  S2_ISR		 		; check the MSP430F5529.h header file
 			.end

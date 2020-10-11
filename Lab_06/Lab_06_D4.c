@@ -22,6 +22,7 @@
  * Date:		August 08, 2019
  * ---------------------------------------------------------------------------*/
 #include  <msp430.h>
+
 #define	S2 BIT1&P1IN				// S2 is P1IN&BIT1
 
 void main(void)

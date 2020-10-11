@@ -1,9 +1,9 @@
 ; ------------------------------------------------------------------------------
 ; File:			Lab_05_D3_main.asm
 ; Function:		Finds a sum of two integer arrays using a subroutine suma_sp
-; Description:	The program calls suma_sp to sum up elements of integer arrays and
-;				stores the respective sums in parallel ports' output registers.
-;				Parameters to suma_sp are passed through the stack.
+; Description:	The program calls suma_sp to sum up elements of integer arrays
+;				and stores the respective sums in parallel ports' output
+;				registers. Parameters to suma_sp are passed through the stack.
 ; Input:		The input arrays are signed 16-bit integers in arr1 and arr2
 ; Output:		P2OUT&P1OUT stores the sum of arr1
 ;				P4OUT&P3OUT stores the sum of arr2

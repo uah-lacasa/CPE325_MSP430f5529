@@ -6,7 +6,7 @@
 ;			  	Parameters to suma_rp are passed through registers, R12, R13.
 ;			  	The subroutine suma_rp return the result in register R14.
 ; Input:		The input arrays are signed 16-bit integers in arr1 and arr2
-; Output:		P1OUT&P2OU displays sum of arr1, P3OUT&P4OUT displays sum of arr2
+; Output:		P1OUT&P2OU displays arr1 sum, P3OUT&P4OUT displays arr2 sum
 ; Author(s):	Aleksandar Milenkovic, milenkovic@computer.org
 ; Date:			August 14, 2008
 ; Revised:		August 5, 2020
@@ -30,7 +30,7 @@ StopWDT:	mov.w	#WDTPW|WDTHOLD,&WDTCTL 	; Stop watchdog timer
 ; Main code here
 ;-------------------------------------------------------------------------------
 main:
-			mov.w	#arr1, R12				; put starting address of arr1 into R12
+			mov.w	#arr1, R12				; put starting address of arr1 in R12
 			mov.w	#8, R13					; put array length into R13
 			call	#suma_rp
 			; P1OUT is at address 0x02, P2OUT is address 0x03

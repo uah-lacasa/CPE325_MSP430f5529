@@ -8,7 +8,7 @@
  * Output: 		Factorials of integer numbers from 1 to MAXF
  * Author(s): 	Aleksandar Milenkovic, milenkovic@computer.org
  * Date:		Aug 16, 2017
- *-----------------------------------------------------------------------------*/
+ *----------------------------------------------------------------------------*/
 #include <msp430.h>
 #include <stdio.h>
 
@@ -26,8 +26,8 @@ int main(void)
 	printf("( i)!	:  int-dec,  int-hex :	long int-dec,	long int-hex;\n");
 	for (i = 1; i < MAXF; i++)
 	{
-		a = ifact(i);				// Call subroutine ifact to calculate factorial
-		b = lifact(i);				// Call subroutine lifact to caculate factorial
+		a = ifact(i);				// Call subroutine ifact for calculation
+		b = lifact(i);				// Call subroutine lifact for calculation
 		// Print output
 		printf("(%2d)!	: %8d, %8x : %14ld, %14lx;\n", i, a, a, b, b);
 	}

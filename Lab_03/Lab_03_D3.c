@@ -22,7 +22,6 @@
  * 				Prawar Poudel, prawar.poudel@uah.edu
  * Date:		
  * ---------------------------------------------------------------------------*/
-
 #include <msp430.h>
 
 #define S1 P2IN&BIT1

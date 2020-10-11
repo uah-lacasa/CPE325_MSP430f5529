@@ -12,14 +12,14 @@
 #include <math.h>
 #include "msp430.h"
 
-long int exponential(int, int); 				// Function prototype
+long int exponential(int, int); 	// Function prototype
 
 int main(void)
 {
-	WDTCTL = WDTPW + WDTHOLD;					// Stop watchdog timer to prevent time out
+	WDTCTL = WDTPW + WDTHOLD;		// Stop watchdog timer to prevent time out
 
-	int base = 12;								// Base
-	int power = 4;								// Exponent, must be greater than 1 
+	int base = 12;					// Base
+	int power = 4;					// Exponent, must be greater than 1 
 	long int ansr = exponential(base, power);	// Find the power
 
 	printf("%d raised to the %d power is %ld", base, power, ansr);
@@ -32,13 +32,13 @@ long int exponential(int base, int power)
 {
 	long int ansr;						// Solution
 	if (power > 1)						// If the current call has power > 1,
-										// decrement power and call function again
+										// decrement power and call function
 	{
 		power--;
 		ansr = base*exponential(base, power);
 	}
 
-	else								// else power = 1 and the ansr is the base
+	else								// power = 1 and the ansr is the base
 	{
 		ansr = base;
 	}

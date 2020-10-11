@@ -4,7 +4,7 @@
 ; Description:	Initializes ports, sums up elements of two integer arrays, and
 ;				display sums on on parallel port output registers
 ; Input:		The input arrays are signed 16-bit integers in arr1 and arr2
-; Output:		P1OUT&P2OUT displays sum of arr1, P3OUT&P4OUT displays sum of arr2
+; Output:		P1OUT&P2OUT displays arr1 sum, P3OUT&P4OUT displays arr2 sum
 ; Author(s):	Aleksandar Milenkovic, milenkovic@computer.org
 ; Date:			September 14, 2008
 ; ------------------------------------------------------------------------------
@@ -26,8 +26,8 @@ StopWDT:	mov.w	#WDTPW|WDTHOLD,&WDTCTL 	; Stop watchdog timer
 ; Main code here
 ;-------------------------------------------------------------------------------
 main:
-			mov.w	#arr1, R4 				; put starting address of arr1 into R4
-			mov.w	#arr2, R5 				; put starting address of arr2 into R5
+			mov.w	#arr1, R4 				; put starting address of arr1 in R4
+			mov.w	#arr2, R5 				; put starting address of arr2 in R5
 			; Sum arr1 and display
 			clr.w	R7						; holds the sum
 			mov.w	#8, R10					; number of elements in arr1

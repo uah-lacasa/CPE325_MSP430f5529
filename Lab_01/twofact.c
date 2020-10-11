@@ -12,11 +12,11 @@ int ifact(int base)
 {
 	int counter, total = 1;
 	if(base == 0 || base == 1)
-		return 1;			// Factorial of 1 and 0 is = 1
+		return 1;				// Factorial of 1 and 0 is = 1
 	else
 	{
 		for(counter = 2; counter <= base; counter++)
-			total *= counter;		// Factorial multiplication
+			total *= counter;	// Factorial multiplication
 		return total;
 	}
 }
@@ -26,10 +26,10 @@ long int lifact(int base)
 {
 	long int counter, total = 1;
 	if(base == 0 || base == 1)
-		return 1;			// Factorial of 1 and 0 is = 1
+		return 1;				// Factorial of 1 and 0 is = 1
 	else {
 		for(counter = 2; counter <= base; counter++)
-			total *= counter;		// Factorial multiplication
+			total *= counter;	// Factorial multiplication
 		return total;
 	}
 }

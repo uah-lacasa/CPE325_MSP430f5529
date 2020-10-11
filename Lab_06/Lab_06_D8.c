@@ -140,7 +140,7 @@ void configure_clock_sources()
 	UCSCTL4 |= SELA_2;						// Set ACLK = REFO
 	UCSCTL0 = 0x0000;						// Set lost possible DCOx, MODx
 
-	// Loop until XT1,XT2 & DCO stabilizes - In this case only DCO has to stabilize
+// Loop until XT1,XT2 & DCO stabilizes - In this case only DCO has to stabilize
 	do
 	{
 	UCSCTL7 &= ~(XT2OFFG + XT1LFOFFG + DCOFFG);	// Clear XT2,XT1,DCO fault flags

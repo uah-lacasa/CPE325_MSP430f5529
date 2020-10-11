@@ -16,7 +16,6 @@
  * Author(s):	Aleksandar Milenkovic, milenkovic@computer.org
  * Date:		August 2, 2020
  * ---------------------------------------------------------------------------*/
-
 #include <msp430.h>
 
 # define REDLED 0x01				// Mask for BIT0=00000001b
