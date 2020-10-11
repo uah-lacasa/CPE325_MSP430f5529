@@ -31,11 +31,10 @@ void main(void)
 	P4OUT |= BIT7;					// LED1 is ON
 	unsigned int i = 0;
 	while(1)
-	{								 // Infinite loop
-		for (i = 0; i < 50000; i++); // Delay 0.5s
-									 // 0.5s on, 0.5s off
-									 // 1/(0.5 + 0.5)s = 1Hz
-		P1OUT ^= BIT0;				 // Toggle LED1
-		P4OUT ^= BIT7;				 // Toggle LED1
+	{								// Infinite loop
+		for (i = 0; i < 50000; i++);// Delay 0.5s. 0.5s on + 0.5s off = 1s
+									// 1/1s = 1Hz
+		P1OUT ^= BIT0;				// Toggle LED1
+		P4OUT ^= BIT7;				// Toggle LED1
 	}
 }

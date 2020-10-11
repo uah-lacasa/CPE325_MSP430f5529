@@ -1,14 +1,14 @@
 /*------------------------------------------------------------------------------
  * File:		twofact.c
- * Function:	Subroutines ifact and lifact for lab_01 demo 
+ * Function:	Subroutines int_fact and long_int_fact for lab_01 demo 
  * Description:	This C code calculates the factorial of a given number
-				ifact gives an int output; lifact gives a long int output.
+				int_fact gives an int output; long_int_fact gives a long int.
  * Input:		Integer variable base
  * Output:		Factorial of input (integer and long integer)
  * Author(s):	Aleksandar Milenkovic, milenkovic@computer.org
  * Date:		Aug 16, 2017
  * ---------------------------------------------------------------------------*/
-int ifact(int base)
+int int_fact(int base)
 {
 	int counter, total = 1;
 	if(base == 0 || base == 1)
@@ -22,7 +22,7 @@ int ifact(int base)
 }
 
 
-long int lifact(int base)
+long int long_int_fact(int base)
 {
 	long int counter, total = 1;
 	if(base == 0 || base == 1)

@@ -14,8 +14,8 @@
 
 #define MAXF 16
 
-int ifact(int);						// Prototype of ifact (integer)
-long int lifact(int);				// Prototype of lifact (long interger)
+int int_fact(int);					// Prototype of int_fact
+long int long_int_fact(int);		// Prototype of long_int_fact
 
 int main(void)
 {
@@ -26,8 +26,8 @@ int main(void)
 	printf("( i)!	:  int-dec,  int-hex :	long int-dec,	long int-hex;\n");
 	for (i = 1; i < MAXF; i++)
 	{
-		a = ifact(i);				// Call subroutine ifact for calculation
-		b = lifact(i);				// Call subroutine lifact for calculation
+		a = int_fact(i);			// Call subroutine int_fact
+		b = long_int_fact(i);		// Call subroutine long_int_fact
 		// Print output
 		printf("(%2d)!	: %8d, %8x : %14ld, %14lx;\n", i, a, a, b, b);
 	}

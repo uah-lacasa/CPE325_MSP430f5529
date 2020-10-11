@@ -34,8 +34,8 @@
 // .. sets DCO tap to 0 (UCSCTL0 = 0)
 // .. sets the modulation bit counter value to 0 (UCSCTL0 = 0)
 void configure_clock_sources();
-inline void change_clock_freq_8Mhz(); // changes the frequency of clock to 8 MHZ
-inline void change_clock_freq_1Mhz(); // changes the frequency of clock to 1 MHZ
+inline void change_clock_freq_8Mhz();	// changes the clock frequency to 8 MHZ
+inline void change_clock_freq_1Mhz();	// changes the clock frequency to 1 MHZ
 
 char is8Mhz = 0;
 
@@ -75,7 +75,7 @@ void main(void)
 #pragma vector = PORT2_VECTOR
 __interrupt void PORT2_ISR(void)
 {
-	P2IFG &= ~BIT1; // Clears the flag
+	P2IFG &= ~BIT1;			// Clears the flag
 
 	__delay_cycles(25000); 	// Debouncing
 

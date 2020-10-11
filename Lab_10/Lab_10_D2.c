@@ -99,16 +99,16 @@ void main(void)
 	while (1)
 	{
 		ADC12CTL0 |= ADC12SC;				// Start conversions
-		__bis_SR_register(LPM0_bits + GIE); // Enter LPM0
+		__bis_SR_register(LPM0_bits + GIE);	// Enter LPM0
 	}
 }
 
 #pragma vector = ADC12_VECTOR
 __interrupt void ADC12ISR(void)
 {
-	ADCXval = ADC12MEM0;				  // Move results, IFG is cleared
+	ADCXval = ADC12MEM0;					// Move results, IFG is cleared
 	ADCYval = ADC12MEM1;
-	__bic_SR_register_on_exit(LPM0_bits); // Exit LPM0
+	__bic_SR_register_on_exit(LPM0_bits);	// Exit LPM0
 }
 
 #pragma vector = TIMER0_A0_VECTOR
