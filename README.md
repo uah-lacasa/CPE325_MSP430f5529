@@ -1,10 +1,10 @@
 # CPE 325: Embedded Systems Laboratory @ The University of Alabama in Huntsville
-Demonstration programs for MSP-EXP430F5529LP
+Demonstration programs for the MSP-EXP430F5529LP.
 
 This repository contains demonstration code files for programs to be used with MSP430F5529LP boards. The course **Introduction to Embedded Computer Systems** i.e. CPE 323 and the corequisite laboratory CPE 325 **Embedded Systems Laboratory** at **The University of Alabama in Huntsville** deals with practical programming with MSP430 microcontrollers. Please refer to the official [UAH LACASA bsite](http://lacasa.uah.edu/portal/index.php/teaching/47-cpe-323-introduction-to-embedded-computer-systems) for all tutorial documents.
 
 ## [Lab 00](https://github.com/uah-lacasa/CPE325_MSP430f5529/tree/master/Lab00)
-- Lab 00 demonstrates the installation procedure for [[**Code Compose Studio**]](https://www.ti.com/tool/CCSTUDIO) (CCS) on a Windows machine. CCS is the integrated development environment (IDE) from **Texas Instruments** that will be used for this course. Please find the demo file for toggling the LEDs to verify setup [here](Lab0/Lab0_D0.c). 
+- Lab 00 demonstrates the installation procedure for [**Code Compose Studio**](https://www.ti.com/tool/CCSTUDIO) (CCS) on a Windows machine. CCS is the integrated development environment (IDE) from **Texas Instruments** that will be used for this course. Please find the demo file for toggling the LEDs to verify setup [here](Lab0/Lab0_D0.c). 
 
 ## [Lab 01](https://github.com/uah-lacasa/CPE325_MSP430f5529/tree/master/Lab01)
 - Lab 01 discusses various aspects of using the CCS IDE. This lab is designed to give students basic knowledge on debugging, compiling, and inspecting various aspects of the program while using CCS.
