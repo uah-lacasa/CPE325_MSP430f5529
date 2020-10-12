@@ -1,4 +1,4 @@
-/*------------------------------------------------------------------------------
+final commit/*------------------------------------------------------------------------------
  * File:		Lab_08_D3.c
  * Function:	Displays real-time clock in serial communication client.
  * Description:	This program maintains real-time clock and sends time

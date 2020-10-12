@@ -1,4 +1,4 @@
-/*------------------------------------------------------------------------------
+final commit/*------------------------------------------------------------------------------
  * File:		Lab_10_D1.c
  * Function:	Measuring the temperature
  * Description: This C program samples the on-chip temperature sensor and

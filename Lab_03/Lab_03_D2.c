@@ -1,4 +1,4 @@
-/*------------------------------------------------------------------------------
+final commit/*------------------------------------------------------------------------------
  * File:		Lab_03_D2.c
  * Function:	Blinking LED1 and LED2
  * Description:	This C program toggle LED1 and LED2 at 1Hz by xoring P1.0 and

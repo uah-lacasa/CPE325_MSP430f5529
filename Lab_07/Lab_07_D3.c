@@ -1,4 +1,4 @@
-/*------------------------------------------------------------------------------
+final commit/*------------------------------------------------------------------------------
  * File:		Lab_07_D3.c
  * Function:	Blinking LED1 using software polling.
  * Description:	This C program configures the WDT in interval timer mode and

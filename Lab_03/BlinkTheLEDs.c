@@ -1,4 +1,4 @@
-/*------------------------------------------------------------------------------
+final commit/*------------------------------------------------------------------------------
  * File:		BlinkTheLEDs.c
  * Function:	Blink LEDs on MSP-EXP430F5529LP
  * Description:	This program toggles the red and green LEDs on MSP-EXP430F5529LP

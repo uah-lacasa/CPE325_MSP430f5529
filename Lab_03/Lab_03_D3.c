@@ -1,4 +1,4 @@
-/*------------------------------------------------------------------------------
+final commit/*------------------------------------------------------------------------------
  * File:		Lab_03_D3.c
  * Function:	Turning on LED1 when S1 is pressed
  * Description:	This C program turns on LED1 connected to P1.0 when the S1 is

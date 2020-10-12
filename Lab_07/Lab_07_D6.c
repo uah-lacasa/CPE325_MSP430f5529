@@ -1,4 +1,4 @@
-/*------------------------------------------------------------------------------
+final commit/*------------------------------------------------------------------------------
  * File:		Lab_07_D6.c
  * Function:	Blinking LED1 & LED2 using Timer_A0 with interrupts
  * Description:	In this C program, Timer_A0 is configured for up/down mode with

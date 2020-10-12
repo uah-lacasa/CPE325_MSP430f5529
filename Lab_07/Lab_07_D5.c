@@ -1,4 +1,4 @@
-/*------------------------------------------------------------------------------
+final commit/*------------------------------------------------------------------------------
  * File:		Lab_07_D5.c
  * Function:	Toggle signal using Timer_A2 in up mode
  * Description:	In this C program, Timer_A2 is configured for UP mode. In this

@@ -1,4 +1,4 @@
-; ------------------------------------------------------------------------------
+final commit; ------------------------------------------------------------------------------
 ; File:			Lab_05_D1.asm
 ; Function:		Finds a sum of two integer arrays
 ; Description:	Initializes ports, sums up elements of two integer arrays, and

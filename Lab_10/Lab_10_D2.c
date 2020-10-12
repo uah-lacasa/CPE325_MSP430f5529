@@ -1,4 +1,4 @@
-/*------------------------------------------------------------------------------
+final commit/*------------------------------------------------------------------------------
  * File:		Lab_10_D2.c
  * Function:	Interfacing thumbstick
  * Description: This C program interfaces with a thumbstick sensor that has

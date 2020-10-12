@@ -1,4 +1,4 @@
-; ------------------------------------------------------------------------------
+final commit; ------------------------------------------------------------------------------
 ; File:			Lab_05_D2_RP.asm
 ; Function:		Finds a sum of an input integer array
 ; Description:	suma_rp is a subroutine that sums elements of an integer array

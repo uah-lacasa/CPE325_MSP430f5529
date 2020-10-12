@@ -1,4 +1,4 @@
-; ------------------------------------------------------------------------------
+final commit; ------------------------------------------------------------------------------
 ; File:			Lab_05_D2_main.asm
 ; Function:		Finds a sum of two integer arrays using a subroutine.
 ; Description:	The program calls suma_rp to sum up elements of integer arrays

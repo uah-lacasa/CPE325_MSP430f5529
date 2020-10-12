@@ -1,4 +1,4 @@
-/*------------------------------------------------------------------------------
+final commit/*------------------------------------------------------------------------------
  * File:		Lab_07_D4.c
  * Function:	Toggling signal using Timer_A2 in continuous mode
  * Description:	In this C program, Timer_A2 is configured for continuous mode.

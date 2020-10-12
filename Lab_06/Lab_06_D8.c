@@ -1,4 +1,4 @@
-/*------------------------------------------------------------------------------
+final commit/*------------------------------------------------------------------------------
  * File:		Lab_06_D8.c
  * Function:	This program demonstrates setting the internal DCO to run at
  *				8MHz when SW1 is pressed. Runs Internal DCO at 1MHz.

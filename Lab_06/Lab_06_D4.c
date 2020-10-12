@@ -1,4 +1,4 @@
-/*------------------------------------------------------------------------------
+final commit/*------------------------------------------------------------------------------
  * File:		Lab_06_D4.c
  * Function:	The program detects when S2 is pressed and turns on LED1.
  * Description:	LED1 is kept on as long as S2 is pressed.
