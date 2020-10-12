@@ -1,4 +1,4 @@
-/*------------------------------------------------------------------------------final commit
+/*------------------------------------------------------------------------------
  * File:		Lab00_D0.c
  * Function:	Toggle blinking of LED1 and LED2 (MPS430F5529)
  * Description: This C program initializes LED1 and LED2 as output

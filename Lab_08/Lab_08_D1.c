@@ -1,4 +1,4 @@
-final commit/*------------------------------------------------------------------------------
+/*------------------------------------------------------------------------------
  * File:		Lab_08_D1.c
  * Function:	Echo a received character, using polling.
  * Description:	This program echos the character received from UART.

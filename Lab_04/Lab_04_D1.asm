@@ -1,4 +1,4 @@
-final commit; ------------------------------------------------------------------------------
+; ------------------------------------------------------------------------------
 ; File:			Lab_04_D1.asm
 ; Function:		Counts the number of characters E in a given string
 ; Description:	Program traverses an input array of characters

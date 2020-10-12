@@ -1,4 +1,4 @@
-final commit/*------------------------------------------------------------------------------
+/*------------------------------------------------------------------------------
  * File: 		Lab_01_D2.c
  * Function: 	This C code will calculate the power of a given base.
  * Description: This program calculates the power of a given

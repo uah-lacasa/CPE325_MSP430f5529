@@ -1,4 +1,4 @@
-final commit; ------------------------------------------------------------------------------
+; ------------------------------------------------------------------------------
 ; File:			Lab5_D3_SP.asm
 ; Function:		Finds a sum of an input integer array
 ; Description:	suma_sp is a subroutine that sums elements of an integer array

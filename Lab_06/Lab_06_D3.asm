@@ -1,4 +1,4 @@
-final commit; ------------------------------------------------------------------------------
+; ------------------------------------------------------------------------------
 ; File:			Lab_06_D3.asm
 ; Function:		Demonstrates press and release using S2 and LED1.
 ; Description:	The main program enables interrupts	from P1.BIT1 (S2) and

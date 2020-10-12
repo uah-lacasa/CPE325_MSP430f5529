@@ -1,4 +1,4 @@
-final commit; ------------------------------------------------------------------------------
+; ------------------------------------------------------------------------------
 ; File:			Lab_05_D4.asm
 ; Function:		Multiply two integers
 ; Description:	This program defines two integer variables

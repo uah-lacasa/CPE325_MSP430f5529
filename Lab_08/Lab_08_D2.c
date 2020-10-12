@@ -1,4 +1,4 @@
-final commit/*------------------------------------------------------------------------------
+/*------------------------------------------------------------------------------
  * File:		Lab_08_D2.c
  * Function:	Echo a received character, using receiver ISR.
  * Description:	This program echos the character received from UART.

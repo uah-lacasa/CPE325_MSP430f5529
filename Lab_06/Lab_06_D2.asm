@@ -1,4 +1,4 @@
-final commit; ------------------------------------------------------------------------------
+; ------------------------------------------------------------------------------
 ; File:			Lab_06_D2.asm
 ; Function:		Demonstrates press and release using S1 and LED1.
 ; Description:	When an S1 press is detected, a software delay of 20 ms

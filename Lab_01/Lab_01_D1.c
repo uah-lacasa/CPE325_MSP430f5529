@@ -1,4 +1,4 @@
-final commit/*------------------------------------------------------------------------------
+/*------------------------------------------------------------------------------
  * File: 		Lab_01_D1.c
  * Function: 	Calculate the factorial for first 15 integers
  * Description: This C program calculates the factorial for several integers

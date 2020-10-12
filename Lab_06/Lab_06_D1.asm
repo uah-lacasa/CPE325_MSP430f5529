@@ -1,4 +1,4 @@
-final commit; ------------------------------------------------------------------------------
+; ------------------------------------------------------------------------------
 ; File:			Lab_06_D1.asm
 ; Function:		The program toggles LEDs periodically.
 ; Description:	LED1 is initialized off, LED2 is initalized on.

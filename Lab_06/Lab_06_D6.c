@@ -1,4 +1,4 @@
-final commit/*------------------------------------------------------------------------------
+/*------------------------------------------------------------------------------
  * File:		Lab_06_D6.c
  * Function:	Demonstrates setting the internal DCO to run at 2.45MHz.
  * Description:	FLL, Runs Internal DCO at 2.45MHz

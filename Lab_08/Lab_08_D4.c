@@ -1,4 +1,4 @@
-final commit/*------------------------------------------------------------------------------
+/*------------------------------------------------------------------------------
  * File:		Lab_08_D4.c
  * Function:	Send floating data to Serial port
  * Description:	UAH serial app expects lor byte first so send each byte at a

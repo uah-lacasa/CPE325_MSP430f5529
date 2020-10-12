@@ -1,4 +1,4 @@
-final commit/*------------------------------------------------------------------------------
+/*------------------------------------------------------------------------------
  * File:		Lab_06_D5.c
  * Function:	The program detects when S2 is pressed and turns on LED1.
  * Description:	P1_ISR is used to detect both S2 presses and releases.

@@ -1,4 +1,4 @@
-final commit/*------------------------------------------------------------------------------
+/*------------------------------------------------------------------------------
  * File:		twofact.c
  * Function:	Subroutines int_fact and long_int_fact for lab_01 demo 
  * Description:	This C code calculates the factorial of a given number

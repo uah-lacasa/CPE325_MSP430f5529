@@ -1,4 +1,4 @@
-final commit/*------------------------------------------------------------------------------
+/*------------------------------------------------------------------------------
  * File:		Lab_07_D1.c
  * Function:	Blinking LED1 using WDT ISR
  * Description:	This C program configures the WDT in interval timer mode,

@@ -1,4 +1,4 @@
-final commit# CPE 325: Embedded Systems Laboratory @ The University of Alabama in Huntsville
+# CPE 325: Embedded Systems Laboratory @ The University of Alabama in Huntsville
 Demonstration programs for the MSP-EXP430F5529LP.
 
 This repository contains demonstration code files for programs to be used with MSP430F5529LP boards. The course **Introduction to Embedded Computer Systems** i.e. CPE 323 and the corequisite laboratory CPE 325 **Embedded Systems Laboratory** at **The University of Alabama in Huntsville** deals with practical programming with MSP430 microcontrollers. Please refer to the official [UAH LACASA bsite](http://lacasa.uah.edu/portal/index.php/teaching/47-cpe-323-introduction-to-embedded-computer-systems) for all tutorial documents.

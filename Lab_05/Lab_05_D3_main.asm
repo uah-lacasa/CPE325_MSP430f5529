@@ -1,4 +1,4 @@
-final commit; ------------------------------------------------------------------------------
+; ------------------------------------------------------------------------------
 ; File:			Lab_05_D3_main.asm
 ; Function:		Finds a sum of two integer arrays using a subroutine suma_sp
 ; Description:	The program calls suma_sp to sum up elements of integer arrays
