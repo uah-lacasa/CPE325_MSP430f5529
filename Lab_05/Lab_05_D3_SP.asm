@@ -23,11 +23,11 @@ suma_sp:
 			mov.w	12(SP), R4			; retrieve starting address
 lnext:	  	add.w	@R4+, R7			; add next element
 			dec.w	R6					; decrement array length
-			jnz	 lnext					; repeat if not done
+			jnz	 	lnext				; repeat if not done
 			mov.w	R7, 8(SP)			; store the sum on the stack
-lend:		pop	 R4					  	; restore R4
-			pop	 R6					  	; restore R6
-			pop	 R7					  	; restore R7
+lend:		pop	 	R4					; restore R4
+			pop	 	R6					; restore R6
+			pop	 	R7					; restore R7
 			ret							; return
 
 			.end

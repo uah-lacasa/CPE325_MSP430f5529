@@ -46,10 +46,10 @@ SetupP2:
 			bis.b	#0x02, &P2REN			; Enable Pull-Up resister at P2.1
 			bis.b	#0x02, &P2OUT			; required for proper IO set up
 
-ChkSW1:	 bic.b	#0x01, &P1OUT
+ChkSW1:	 bic.b		#0x01, &P1OUT
 			bit.b	#0x02, &P2IN			; Check if SW1 is pressed
 											; (0000_0010 on P1IN)
-			jnz	 ChkSW1				  		; If not zero, SW1 is not pressed
+			jnz	 	ChkSW1				  	; If not zero, SW1 is not pressed
 											; loop and check again
 Debounce:
 			mov.w	#2000, R15			  	; Set to (2000 * 10 cc = 20,000 cc)
@@ -61,15 +61,15 @@ SWD20ms:	dec.w	R15					 	; Decrement R15
 			nop
 			nop
 			nop
-			jnz	 SWD20ms				 	; Delay over?
-			bit.b	#0x02, &P2IN		; Verify SW1 is still pressed
-			jnz	 ChkSW1				  		; If not, wait for SW1 press
+			jnz	 	SWD20ms				 	; Delay over?
+			bit.b	#0x02, &P2IN			; Verify SW1 is still pressed
+			jnz	 	ChkSW1				  	; If not, wait for SW1 press
 
-LEDon:	  bis.b	#0x01, &P1OUT				; Turn on LED1
+LEDon:	  	bis.b	#0x01, &P1OUT			; Turn on LED1
 SW1wait:	bit.b	#0x02, &P2IN			; Test SW1
-			jz	  SW1wait					; Wait until SW1 is released
+			jz	  	SW1wait					; Wait until SW1 is released
 			bic.b	#0x01, &P1OUT			; Turn off LED1
-			jmp	 ChkSW1				  		; Loop to beginning
+			jmp	 	ChkSW1				  	; Loop to beginning
 			nop
 
 ;-------------------------------------------------------------------------------

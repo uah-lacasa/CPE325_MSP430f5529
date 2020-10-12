@@ -47,15 +47,15 @@ StopWDT:	mov.w	#WDTPW|WDTHOLD,&WDTCTL 	; Stop watchdog timer
 ; Main loop here
 ;-------------------------------------------------------------------------------
 main:
-			mov val1,&MPY				; moves val1 to R5
-			mov val2,&OP2				; moves val2 to R6
+			mov 	val1,&MPY			; moves val1 to R5
+			mov 	val2,&OP2			; moves val2 to R6
 			; since  have both the numbers already, let us get the results
 			; after three clock cycles (for 16X16 multiplication)
 			nop
 			nop
 			nop
-			mov  RESLO,&val3
-			jmp $						; infinite loop
+			mov		RESLO,&val3
+			jmp 	$					; infinite loop
 			
 ;-------------------------------------------------------------------------------
 ; Stack Pointer definition
@@ -68,4 +68,4 @@ main:
 ;-------------------------------------------------------------------------------
 			.sect	".reset"				; MSP430 RESET Vector
 			.short  RESET
-			
+			.end
