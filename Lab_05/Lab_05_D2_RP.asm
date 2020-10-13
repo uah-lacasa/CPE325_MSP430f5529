@@ -16,9 +16,9 @@
 			.text
 
 suma_rp:
-			clr 	R14					; clear register R14 (keeps the sum)
-lnext:	  	add 	@R12+, R14			; add a new element
-			dec 	R13					; decrement step counter
+			clr.w	R14					; clear register R14 (keeps the sum)
+lnext:	  	add.w	@R12+, R14			; add a new element
+			dec.w	R13					; decrement step counter
 			jnz	 	lnext				; jump if not finished
 lend:		ret							; return from subroutine
 			.end

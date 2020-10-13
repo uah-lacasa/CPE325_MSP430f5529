@@ -20,28 +20,28 @@
 			.retainrefs						; And retain any sections that have
 											; references to current section.
 ;-------------------------------------------------------------------------------
-RESET:		mov 	#__STACK_END, SP		; Initialize stack pointer
-StopWDT:	mov 	#WDTPW|WDTHOLD,&WDTCTL 	; Stop watchdog timer
+RESET:		mov.w	#__STACK_END, SP		; Initialize stack pointer
+StopWDT:	mov.w	#WDTPW|WDTHOLD,&WDTCTL 	; Stop watchdog timer
 ;-------------------------------------------------------------------------------
 ; Main code here
 ;-------------------------------------------------------------------------------
 main:
-			mov 	#arr1, R4 				; put starting address of arr1 in R4
-			mov 	#arr2, R5 				; put starting address of arr2 in R5
+			mov.w	#arr1, R4 				; put starting address of arr1 in R4
+			mov.w	#arr2, R5 				; put starting address of arr2 in R5
 			; Sum arr1 and display
-			clr 	R7						; holds the sum
-			mov 	#8, R10					; number of elements in arr1
-lnext1:	 	add 	@R4+, R7				; add the current element to sum
-			dec 	R10						; decrement arr1 length
+			clr.w	R7						; holds the sum
+			mov.w	#8, R10					; number of elements in arr1
+lnext1:	 	add.w	@R4+, R7				; add the current element to sum
+			dec.w	R10						; decrement arr1 length
 			jnz	 	lnext1					; get next element
 			mov.b	R7, P1OUT				; display lor byte of sum of arr1
 			swpb	R7						; swap bytes
 			mov.b	R7, P2OUT				; display upper byte of sum of arr1
 			; Sum arr2 and display
-			clr 	R7						; Holds the sum
-			mov 	#7, R10					; number of elements in arr2
-lnext2:	 	add 	@R5+, R7				; get next element
-			dec 	R10						; decrement arr2 length
+			clr.w	R7						; Holds the sum
+			mov.w	#7, R10					; number of elements in arr2
+lnext2:	 	add.w	@R5+, R7				; get next element
+			dec.w	R10						; decrement arr2 length
 			jnz	 	lnext2					; get next element
 			mov.b	R7, P3OUT				; display lor byte of sum of arr2
 			swpb	R7						; swap bytes

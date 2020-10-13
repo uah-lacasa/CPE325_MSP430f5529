@@ -34,8 +34,8 @@
 											; references to current section.
 
 ;-------------------------------------------------------------------------------
-RESET:		mov 	#__STACK_END, SP		; Initialize stack pointer
-StopWDT:	mov 	#WDTPW|WDTHOLD,&WDTCTL 	; Stop watchdog timer
+RESET:		mov.w	#__STACK_END, SP		; Initialize stack pointer
+StopWDT:	mov.w	#WDTPW|WDTHOLD,&WDTCTL 	; Stop watchdog timer
 SETUP:
 			bis.b	#0x01,&P1DIR			; set P1.0 as output, 0'b0000 0001
 			bis.b	#0x80,&P4DIR			; set P4.7 as output, 0'b1000 0000
@@ -46,7 +46,7 @@ SETUP:
 ; Main loop here
 ;-------------------------------------------------------------------------------
 InfLoop:
-			mov  #0xFFFF,R5	; move 0xFFFF to R5 which will be out counter
+			mov.w #0xFFFF,R5	; move 0xFFFF to R5 which will be out counter
 SWDelay1:
 			nop
 			nop
@@ -61,7 +61,7 @@ SWDelay1:
 			nop
 			nop
 			nop
-			dec  R5					; 1cc
+			dec.w R5					; 1cc
 			jnz SWDelay1				; 2cc
 			xor.b #0x01,&P1OUT			; toggle 1.0
 			xor.b #0x80,&P4OUT			; toggle 4.7

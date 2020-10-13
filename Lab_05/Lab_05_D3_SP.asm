@@ -18,13 +18,13 @@ suma_sp:
 			push	R7					; save R7, temporal sum
 			push	R6					; save R6, array length
 			push	R4					; save R5, pointer to array
-			clr 	R7					; clear R7
-			mov 	10(SP), R6			; retrieve array length
-			mov 	12(SP), R4			; retrieve starting address
-lnext:	  	add 	@R4+, R7			; add next element
-			dec 	R6					; decrement array length
+			clr.w	R7					; clear R7
+			mov.w	10(SP), R6			; retrieve array length
+			mov.w	12(SP), R4			; retrieve starting address
+lnext:	  	add.w	@R4+, R7			; add next element
+			dec.w	R6					; decrement array length
 			jnz	 	lnext				; repeat if not done
-			mov 	R7, 8(SP)			; store the sum on the stack
+			mov.w	R7, 8(SP)			; store the sum on the stack
 lend:		pop	 	R4					; restore R4
 			pop	 	R6					; restore R6
 			pop	 	R7					; restore R7

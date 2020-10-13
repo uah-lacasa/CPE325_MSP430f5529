@@ -41,8 +41,8 @@ val3:		.int	0					; val3 will hold result of val1*val2
 										; references to current section.
 
 ;-------------------------------------------------------------------------------
-RESET:		mov 	#__STACK_END, SP		; Initialize stack pointer
-StopWDT:	mov 	#WDTPW|WDTHOLD,&WDTCTL 	; Stop watchdog timer
+RESET:		mov.w	#__STACK_END, SP		; Initialize stack pointer
+StopWDT:	mov.w	#WDTPW|WDTHOLD,&WDTCTL 	; Stop watchdog timer
 ;-------------------------------------------------------------------------------
 ; Main loop here
 ;-------------------------------------------------------------------------------

@@ -23,25 +23,25 @@
 			.retainrefs						; And retain any sections that have
 											; references to current section.
 ;-------------------------------------------------------------------------------
-RESET:		mov 	#__STACK_END, SP		; Initialize stack pointer
-StopWDT:	mov 	#WDTPW|WDTHOLD,&WDTCTL 	; Stop watchdog timer
+RESET:		mov.w	#__STACK_END, SP		; Initialize stack pointer
+StopWDT:	mov.w	#WDTPW|WDTHOLD,&WDTCTL 	; Stop watchdog timer
 ;-------------------------------------------------------------------------------
 ; Main code here
 ;-------------------------------------------------------------------------------
 main:
 			push	#arr1					; push the address of arr1
 			push	#8						; push the number of elements
-			sub 	#2, SP					; allocate space for the sum
+			sub.w	#2, SP					; allocate space for the sum
 			call	#suma_sp
-			mov 	@SP, &P1OUT				; store the sum in P2OUT&P1OUT
-			add 	#6,SP					; collapse the stack
+			mov.w	@SP, &P1OUT				; store the sum in P2OUT&P1OUT
+			add.w	#6,SP					; collapse the stack
 
 			push	#arr2					; push the address of arr1
 			push	#7						; push the number of elements
 			sub	 	#2, SP					; allocate space for the sum
 			call	#suma_sp
-			mov 	@SP, &P3OUT				; store the sume in P4OUT&P3OUT
-			add 	#6,SP					; collapse the stack
+			mov.w	@SP, &P3OUT				; store the sume in P4OUT&P3OUT
+			add.w	#6,SP					; collapse the stack
 
 			jmp	 	$
 
