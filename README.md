@@ -1,11 +1,11 @@
 # CPE325_MSP430f5529
 CPE 325: Embedded Systems Laboratory @ UAH (Demo programs for EXP-MSP430F5529lp Launchpad)
 
-This repository contains demonstration code files for programs to be used with MSP430F5529 Launchpad boards. The course **Introduction to Embedded Computer Systems** i.e CPE 323 and the corresponding laboratory works CPE325 at the **University of Alabama in Huntsville** deals with practical works no MSP430 microcontrollers.
+This repository contains demonstration programs for the **CPE 325: Embeddedd Systems Laboratory** course taught at the **University of Alabama in Huntsville**. The programs are targeting the TI's EXP-MSP530F5529lp Launchpad board. 
 
 ## Laboratory 0:
 
-Laboratory 0 demonstrates the installation procedure for **Code Compose Studio** CCS in Windows machine. Code Composer Studio is the IDE from **Texas Instruments** that will be used for this course. Please find the demo file for toggling the LEDs to verify setup at [this link](Lab0/Lab0_D0.c). 
+Laboratory 0 demonstrates the installation procedure for **Code Composer Studio** CCS in a Windows machine. Code Composer Studio is the IDE from **Texas Instruments** that will be used for this course. Please find the demo file for toggling the LEDs to verify setup at [this link](Lab0/Lab0_D0.c). 
 
 Please refer to official [UAH LACASA site](http://lacasa.uah.edu/portal/index.php/teaching/47-cpe-323-introduction-to-embedded-computer-systems) for the tutorial document.
 
