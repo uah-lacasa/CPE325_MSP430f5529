@@ -36,10 +36,10 @@
 void main(void) {
     WDTCTL = WDTPW +WDTHOLD;    // Stop WDT
 
-    P2DIR |= BIT4;              // P7.4 output
-    P2SEL |= BIT4;              // P7.4 special function (TB0.2 output)
+    P2DIR |= BIT4;              // P2.4 output
+    P2SEL |= BIT4;              // P2.4 special function (TA2.1 output)
 
-    TA2CCTL1 = OUTMOD_4;        // TB0.2 output is in toggle mode
+    TA2CCTL1 = OUTMOD_4;        // TA2.1 output is in toggle mode
     TA2CTL = TBSSEL_1 + MC_1;   // ACLK is clock source, UP mode
     TA2CCR0 = 32767;            // Value to count upto for Up mode
 
