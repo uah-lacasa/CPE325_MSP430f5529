@@ -26,25 +26,25 @@ myStr: .string "HELLO WORLD, I AM THE MSP430!", ''
 		.retainrefs						; And retain any sections that have
 										; references to current section.
 ;-------------------------------------------------------------------------------
-RESET:	mov.w	#__STACK_END,SP			; Initialize stack pointer
-		mov.w	#WDTPW|WDTHOLD,&WDTCTL	; Stop watchdog timer
+RESET:	mov 	#__STACK_END,SP			; Initialize stack pointer
+		mov 	#WDTPW|WDTHOLD,&WDTCTL	; Stop watchdog timer
 ;-------------------------------------------------------------------------------
 ; Main loop here
 ;-------------------------------------------------------------------------------
 main:	; bis.b	#0FFh,&P1DIR			; do not output the result on port pins
-		mov.w	#myStr, R4				; put starting address of myStr into R4
+		mov 	#myStr, R4				; put starting address of myStr into R4
 		clr.b	R5						; register R5 will serve as a counter
 gnext:	mov.b	@R4+, R6				; get a new character
 		cmp	 	#0,R6					; is it a null character
 		jeq	 	lend					; if yes, go to the end
 		cmp.b	#'E',R6				 	; is it an 'E' character
 		jne	 	gnext					; if not, go to the next
-		inc.w	R5						; if yes, increment counter
+		inc 	R5						; if yes, increment counter
 		jmp	 	gnext					; go to the next character
 
 lend:	mov.b	R5,&P1OUT				; write result in P1OUT
 										; (not visible on port pins)
-		bis.w	#LPM4,SR				; LPM4
+		bis 	#LPM4,SR				; LPM4
 		nop								; required only for Debugger
 
 ;-------------------------------------------------------------------------------

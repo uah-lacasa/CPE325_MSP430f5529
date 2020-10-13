@@ -33,8 +33,8 @@
 											; references to current section.
 
 ;-------------------------------------------------------------------------------
-RESET:		mov.w	#__STACK_END, SP		; Initialize stack pointer
-StopWDT:	mov.w	#WDTPW|WDTHOLD,&WDTCTL 	; Stop watchdog timer
+RESET:		mov 	#__STACK_END, SP		; Initialize stack pointer
+StopWDT:	mov 	#WDTPW|WDTHOLD,&WDTCTL 	; Stop watchdog timer
 ;-------------------------------------------------------------------------------
 SetupP2:
 			bis.b	#0x01, &P1DIR			; Set P1.0 to output
@@ -52,8 +52,8 @@ ChkSW1:	 bic.b		#0x01, &P1OUT
 			jnz	 	ChkSW1				  	; If not zero, SW1 is not pressed
 											; loop and check again
 Debounce:
-			mov.w	#2000, R15			  	; Set to (2000 * 10 cc = 20,000 cc)
-SWD20ms:	dec.w	R15					 	; Decrement R15
+			mov 	#2000, R15			  	; Set to (2000 * 10 cc = 20,000 cc)
+SWD20ms:	dec 	R15					 	; Decrement R15
 			nop
 			nop
 			nop
