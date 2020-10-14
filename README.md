@@ -59,10 +59,10 @@ Please refer to official [UAH LACASA site](http://lacasa.uah.edu/portal/index.ph
 
 ## Laboratory 9:
 
-Laboratory 9 discusses reverse engineering techniques. Students will be provided an executable and are tasked to decode what the program is doing.
+Laboratory 9 discusses the Analog-to-Digital Converter and Digital-to-Analog Converter basics. Demo code will interface the internal temperature sensor and print the temperature using UART communication on the PC. Please find demo codes inside the respective folder.
 
 ## Laboratory 10:
 
-Laboratory 10 discusses the Analog-to-Digital Converter and Digital-to-Analog Converter basics. Demo code will interface the internal temperature sensor and print the temperature using UART communication on the PC. Please find demo codes inside the respective folder.
+Laboratory 10 discusses reverse engineering techniques. Students will be provided an executable and are tasked to decode what the program is doing.
 
 Please refer to official [UAH LACASA site](http://lacasa.uah.edu/portal/index.php/teaching/47-cpe-323-introduction-to-embedded-computer-systems) for the tutorial document.
