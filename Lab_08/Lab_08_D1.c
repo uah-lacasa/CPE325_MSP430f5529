@@ -68,7 +68,7 @@ void main(void)
     UART_setup();                   // Initialize UART
 
     while (1)
-	{
+    {
        while(!(UCA0IFG&UCRXIFG));   // Wait for a new character
        // New character is here in UCA0RXBUF
        while(!(UCA0IFG&UCTXIFG));   // Wait until TXBUF is free

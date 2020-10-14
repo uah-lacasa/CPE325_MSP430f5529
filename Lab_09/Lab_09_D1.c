@@ -29,7 +29,7 @@ int main(void) {
     P1OUT = 0x01;
     unsigned int i = 0;
     for(;;)
-	{
+    {
         P1OUT ^= BIT0;
         P4OUT ^= BIT7;
         for(i = 0; i < 5000; i++);

@@ -82,11 +82,11 @@ void sendData(void)
 
     UART_putCharacter(0x55);            // Send header
     for(i = 0; i < 4; i++)
-	{            // Send x percentage - one byte at a time
+    {            // Send x percentage - one byte at a time
         UART_putCharacter(xpointer[i]);
     }
     for(i = 0; i < 4; i++)
-	{            // Send y percentage - one byte at a time
+    {            // Send y percentage - one byte at a time
         UART_putCharacter(ypointer[i]);
     }
 }
@@ -100,7 +100,7 @@ void main(void)
     _EINT();
 
     while (1)
-	{
+    {
         ADC12CTL0 |= ADC12SC;               // Start conversions
         __bis_SR_register(LPM0_bits + GIE); // Enter LPM0
     }

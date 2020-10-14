@@ -82,7 +82,7 @@ void sendMessage(char* msg, int len)
 {
     int i;
     for(i = 0; i < len; i++)
-	{
+    {
         UART_putCharacter(msg[i]);
     }
     UART_putCharacter('\n');        // Newline
@@ -111,7 +111,7 @@ void main(void)
     rx_flag = 0;                      // RX default state "empty"
     _EINT();                          // Enable global interrupts
     while(1)
-	{
+    {
         sendMessage(gm1, sizeof(gm1));// Send a greetings message
 
         while(!(rx_flag&0x01));       // Wait for input
@@ -120,7 +120,7 @@ void main(void)
 
         // Character input validation
         if ((ch == 'y') || (ch == 'Y'))
-		{
+        {
 
             ADC12CTL0 &= ~ADC12SC;
             ADC12CTL0 |= ADC12SC;                   // Sampling and conversion start
@@ -142,12 +142,12 @@ void main(void)
             sendMessage(NewTem, sizeof(NewTem));
         }
         else if ((ch == 'n') || (ch == 'N'))
-		{
+        {
             sendMessage(gm2, sizeof(gm2));
             break;                      // Get out
         }
         else
-		{
+        {
             sendMessage(gm3, sizeof(gm3));
         }
     }                                   // End of while

@@ -67,7 +67,7 @@ void SetTime(void)
 {
     tsec++;
     if (tsec == 10
-	{
+    {
         tsec = 0;
         sec++;
         P1OUT ^= BIT0;              // Toggle LED1
@@ -80,7 +80,7 @@ void SendTime(void)
     sprintf(Time, "%05d:%01d", sec, tsec);// Prints time to a string
 
     for (i = 0; i < sizeof(Time); i++)
-	{  // Send character by character
+    {  // Send character by character
         UART_putCharacter(Time[i]);
     }
     UART_putCharacter('\r');        // Carriage Return
@@ -94,7 +94,7 @@ void main(void)
     P1DIR |= BIT0;                  // P1.0 is output;
 
     while(1)
-	{
+    {
         _BIS_SR(LPM0_bits + GIE);   // Enter LPM0 w/ interrupts
         SendTime();                 // Send Time to HyperTerminal/putty
     }

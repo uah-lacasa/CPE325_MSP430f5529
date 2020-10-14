@@ -52,8 +52,8 @@ __interrupt void Port1_ISR (void)
         P1IFG &= ~BIT1;               // P1IFG.BIT0 is cleared
         P1IES &= ~BIT1;               // P1IES.BIT0 low/high edge
     }
-	else if (S2pressed == 1)
-	{
+    else if (S2pressed == 1)
+    {
         S2pressed = 0;
         P1OUT &= ~BIT0;                // LED1 is turned ON
         P1IFG &= ~BIT1;                // P1IFG.BIT0 is cleared

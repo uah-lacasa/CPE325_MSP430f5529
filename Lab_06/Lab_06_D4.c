@@ -41,7 +41,7 @@ void main(void)
     P1IFG &= ~BIT1;                 // P1.1 IFG cleared
 
     for(;;)
-	{
+    {
         while((S2) == 0);           // Wait until S2 is released
         P1OUT &= ~BIT0;             // LED1 is turned off
     }

@@ -88,14 +88,14 @@ __interrupt void watchdog_timer(void)
 
     UART_putCharacter(0x55);                // Send header
     for(index = 0; index < 4; index++)
-	{    // Send 4-bytes of myData
+    {    // Send 4-bytes of myData
         UART_putCharacter(myPointer[index]);
     }
 
     // Update myData for next transmission
     myData = (myData + 0.1);
     if(myData >= 10.0)
-	{
+    {
         myData = 0.0;
     }
 }

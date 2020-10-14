@@ -101,7 +101,7 @@ __interrupt void PORT2_ISR(void)
         change_clock_freq_8Mhz();
         is8Mhz = 1;
     }
-	else
+    else
     {
         // if already in 8Mhz, let us take back to 1Mhz
         change_clock_freq_1Mhz();

@@ -37,9 +37,9 @@ void main(void)
 
     unsigned int i = 0;
     for (;;)
-	{                            // Infinite loop
+    {                            // Infinite loop
         if ((S1) == 0)
-		{                  // If S1 is pressed
+        {                  // If S1 is pressed
             for (i = 2000; i > 0; i--);   // Debounce ~20 ms
             if ((S1) == 0)
             {
@@ -47,7 +47,7 @@ void main(void)
             }
             while ((S1) == 0);            // Hang-on as long as S1 pressed
         }
-		else
+        else
             P1OUT &= ~BIT0;
     }
 }

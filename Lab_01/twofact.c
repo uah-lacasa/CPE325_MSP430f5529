@@ -15,7 +15,7 @@ int ifact(int p)
 
     if(p==0 || p==1) return 1;    // factorial of 1 and 0 is = 1
     else
-	{
+    {
         for(j=2; j<=p; j++) t=t*j;  // Do the factorial multiplication
         return t;
     }
@@ -29,7 +29,7 @@ long int lifact(int p)
 
     if(p==0 || p==1) return 1;     // factorial of 1 and 0 is = 1
     else
-	{
+    {
         for(j=2; j<=p; j++) t=t*j;   // Do the factorial multiplication
         return t;
     }
