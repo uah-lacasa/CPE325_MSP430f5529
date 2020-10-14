@@ -26,7 +26,7 @@ int main(void)
     // Print header
     printf("( i)!   :  int-dec,  int-hex :   long int-dec,   long int-hex;\n");
     for (i = 1; i < MAXF; i++)
-	{
+    {
         a = ifact(i);   // Call subroutine ifact to calculate factoriel
         b = lifact(i);  // Call subroutine lifact to caculate factoriel
         // Print output
