@@ -39,7 +39,8 @@ void main(void)
 
 // Watchdog Timer interrupt service routine
 #pragma vector=WDT_VECTOR
-__interrupt void watchdog_timer(void) {
+__interrupt void watchdog_timer(void)
+{
     static int i = 0;
     i++;
     if (i == 32) {                  // 31.25 * 32 ms = 1s

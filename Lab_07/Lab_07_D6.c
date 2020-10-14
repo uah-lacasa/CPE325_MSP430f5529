@@ -34,7 +34,8 @@
  *------------------------------------------------------------------------------*/
 #include <msp430F5529.h>
 
-void main(void) {
+void main(void)
+{
     WDTCTL = WDTPW + WDTHOLD;     // Stop WDT
     _EINT();                      // Enable interrupts
 
@@ -56,12 +57,14 @@ void main(void) {
 }
 
 #pragma vector = TIMER0_A0_VECTOR
-__interrupt void timerISR(void) {
+__interrupt void timerISR(void)
+{
     P4OUT ^= BIT7;                // Toggle LED2
 }
 
 #pragma vector = TIMER0_A1_VECTOR
-__interrupt void timerISR2(void) {
+__interrupt void timerISR2(void)
+{
     P1OUT ^= BIT0;                // Toggle LED1
     TA0CCTL1 &= ~CCIFG;            // Clear interrupt flag
 }

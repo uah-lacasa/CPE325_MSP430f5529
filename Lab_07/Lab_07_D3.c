@@ -29,9 +29,11 @@ void main(void)
     WDTCTL = WDT_ADLY_1000;             // 1 s interval timer
     P1DIR |= BIT0;                      // Set P2.2 to output direction
 
-    for (;;) {
+    for (;;)
+	{
         // Use software polling
-        if ((SFRIFG1 & WDTIFG) == 1) {
+        if ((SFRIFG1 & WDTIFG) == 1)
+		{
             P1OUT ^= BIT0;
             SFRIFG1 &= ~WDTIFG;         // Clear bit WDTIFG in IFG1
         }

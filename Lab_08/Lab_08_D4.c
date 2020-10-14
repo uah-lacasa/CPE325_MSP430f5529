@@ -47,7 +47,8 @@
 
 volatile float myData;
 
-void UART_setup(void) {
+void UART_setup(void)
+{
 
     P3SEL |= BIT3 + BIT4;   // Set USCI_A0 RXD/TXD to receive/transmit data
     UCA0CTL1 |= UCSWRST;    // Set software reset during initialization
@@ -61,12 +62,14 @@ void UART_setup(void) {
     UCA0CTL1 &= ~UCSWRST;   // Clear software reset to initialize USCI state machine
 }
 
-void UART_putCharacter(char c) {
+void UART_putCharacter(char c)
+{
     while (!(UCA0IFG&UCTXIFG)); // Wait for previous character to transmit
     UCA0TXBUF = c;               // Put character into tx buffer
 }
 
-int main() {
+int main()
+{
     WDTCTL = WDT_ADLY_1000;
     UART_setup();                // Initialize USCI_A0 module in UART mode
     SFRIE1 |= WDTIE;                // Enable watchdog interrupts
@@ -77,19 +80,22 @@ int main() {
 
 // Sends a ramp signal; amplitude of one period ranges from 0.0 to 9.9
 #pragma vector = WDT_VECTOR
-__interrupt void watchdog_timer(void) {
+__interrupt void watchdog_timer(void)
+{
     char index = 0;
     // Use character pointers to send one byte at a time
     char *myPointer = (char* )&myData;
 
     UART_putCharacter(0x55);                // Send header
-    for(index = 0; index < 4; index++) {    // Send 4-bytes of myData
+    for(index = 0; index < 4; index++)
+	{    // Send 4-bytes of myData
         UART_putCharacter(myPointer[index]);
     }
 
     // Update myData for next transmission
     myData = (myData + 0.1);
-    if(myData >= 10.0) {
+    if(myData >= 10.0)
+	{
         myData = 0.0;
     }
 }

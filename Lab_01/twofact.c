@@ -8,24 +8,28 @@
                ifact gives an integer output;
                lifact gives a long integer output.
 *-----------------------------------------------------------------------------*/ 
-int ifact(int p) {
+int ifact(int p)
+{
     int j = 0;
     int t = 1;
 
     if(p==0 || p==1) return 1;    // factorial of 1 and 0 is = 1
-    else {
+    else
+	{
         for(j=2; j<=p; j++) t=t*j;  // Do the factorial multiplication
         return t;
     }
 }
 
 
-long int lifact(int p) {
+long int lifact(int p)
+{
     int j = 0;
     long int t = 1;
 
     if(p==0 || p==1) return 1;     // factorial of 1 and 0 is = 1
-    else {
+    else
+	{
         for(j=2; j<=p; j++) t=t*j;   // Do the factorial multiplication
         return t;
     }

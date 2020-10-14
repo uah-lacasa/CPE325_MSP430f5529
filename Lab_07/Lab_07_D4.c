@@ -39,7 +39,8 @@
  *------------------------------------------------------------------------------*/
 #include <msp430F5529.h>
 
-void main(void) {
+void main(void)
+{
     WDTCTL = WDTPW +WDTHOLD;  // Stop WDT
 
     P2DIR |= BIT4;            // P2.4 output (TA2.1)

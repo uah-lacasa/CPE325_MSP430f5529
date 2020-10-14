@@ -12,7 +12,8 @@
 #include <msp430.h> 
 #include <stdio.h>
 
-int main(void) {
+int main(void)
+{
     int i1 = 11, i2 = -6;           // 16-bit integers
     unsigned int u1 = 65535;        // unsigned 16-bit integer
     long int l1 = 100000;           // 32-bit signed integers

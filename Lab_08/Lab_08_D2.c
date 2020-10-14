@@ -35,7 +35,8 @@
 #include <msp430.h>
 
 // Initialize USCI_A0 module to UART mode
-void UART_setup(void) {
+void UART_setup(void)
+{
 
     P3SEL |= BIT3 + BIT4;   // Set USCI_A0 RXD/TXD to receive/transmit data
     UCA0CTL1 |= UCSWRST;    // Set software reset during initialization
@@ -50,7 +51,8 @@ void UART_setup(void) {
     UCA0IE |= UCRXIE;       // Enable USCI_A0 RX interrupt
 }
 
-void main(void) {
+void main(void)
+{
     WDTCTL = WDTPW + WDTHOLD;// Stop WDT
     P1DIR |= BIT0;           // Set P1.0 to be output
     UART_setup();            // InitiAlize USCI_A0 in UART mode
@@ -60,7 +62,8 @@ void main(void) {
 
 // Echo back RXed character, confirm TX buffer is ready first
 #pragma vector = USCI_A0_VECTOR
-__interrupt void USCIA0RX_ISR (void) {
+__interrupt void USCIA0RX_ISR (void)
+{
     while(!(UCA0IFG&UCTXIFG));  // Wait until can transmit
     UCA0TXBUF = UCA0RXBUF;      // TXBUF <-- RXBUF
     P1OUT ^= BIT0;              // Toggle LED1

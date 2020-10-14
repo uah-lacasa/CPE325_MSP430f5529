@@ -46,7 +46,8 @@
  *--------------------------------------------------------------------------------*/
 #include <msp430.h>
 
-void UART_setup(void) {
+void UART_setup(void)
+{
 
     P3SEL |= BIT3 + BIT4;   // Set USCI_A0 RXD/TXD to receive/transmit data
     UCA0CTL1 |= UCSWRST;    // Set software reset during initialization
@@ -60,12 +61,14 @@ void UART_setup(void) {
     UCA0CTL1 &= ~UCSWRST;   // Clear software reset to initialize USCI state machine
 }
 
-void main(void) {
+void main(void)
+{
     WDTCTL = WDTPW + WDTHOLD;       // Stop WDT
     P1DIR |= BIT0;                  // Set P1.0 to be output
     UART_setup();                   // Initialize UART
 
-    while (1) {
+    while (1)
+	{
        while(!(UCA0IFG&UCRXIFG));   // Wait for a new character
        // New character is here in UCA0RXBUF
        while(!(UCA0IFG&UCTXIFG));   // Wait until TXBUF is free

@@ -29,7 +29,8 @@
  *------------------------------------------------------------------------------*/
 #include <msp430.h>
 
-void main(void) {
+void main(void)
+{
     WDTCTL = WDT_ADLY_1000;           // 1 s interval timer
     P1DIR |= BIT0;                    // Set P1.0 to output direction
     SFRIE1 |= WDTIE;                  // Enable WDT interrupt
@@ -38,6 +39,7 @@ void main(void) {
 
 // Watchdog Timer Interrupt Service Routine
 #pragma vector=WDT_VECTOR
-__interrupt void watchdog_timer(void) {
+__interrupt void watchdog_timer(void)
+{
     P1OUT ^= BIT0;                    // Toggle P1.0 using exclusive-OR
 }

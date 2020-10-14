@@ -23,7 +23,8 @@
 # define REDLED 0x01                // mask for BIT0=00000001b
 # define GREENLED 0x80              // mask for BIT7=10000000b
 
-void main(void) {
+void main(void)
+{
 
     WDTCTL = WDTPW | WDTHOLD;       // stop watchdog timer
     P1DIR |= REDLED;                // configure P1.0 as output
@@ -31,7 +32,8 @@ void main(void) {
 
     P1OUT = P1OUT & ~REDLED;        // P1.0 is cleared
     P4OUT = P4OUT | GREENLED;       // P4.7 is on
-    while(1) {                      // main application loop
+    while(1)
+	{                      // main application loop
         __delay_cycles(500000);     // delay of ~250 ms
         P1OUT ^= REDLED;            // toggle P1.0
         P4OUT ^= GREENLED;          // toggle P4.7

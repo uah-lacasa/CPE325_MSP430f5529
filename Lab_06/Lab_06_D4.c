@@ -23,7 +23,8 @@
 #include  <msp430.h>
 #define   S2 BIT1&P1IN              // S2 is P1IN&BIT1
 
-void main(void) {
+void main(void)
+{
     WDTCTL = WDTPW+WDTHOLD;         // Stop WDT
 
     P1DIR |= BIT0;                  // Set LED1 as output
@@ -39,7 +40,8 @@ void main(void) {
     P1IES |= BIT1;                  // P1.1 hi/low edge
     P1IFG &= ~BIT1;                 // P1.1 IFG cleared
 
-    for(;;) {
+    for(;;)
+	{
         while((S2) == 0);           // Wait until S2 is released
         P1OUT &= ~BIT0;             // LED1 is turned off
     }
@@ -47,7 +49,8 @@ void main(void) {
 
 // Port 1 interrupt service routine
 #pragma vector = PORT1_VECTOR
-__interrupt void Port1_ISR (void) {
+__interrupt void Port1_ISR (void)
+{
     P1OUT |= BIT0;                // LED1 is turned ON
     P1IFG &= ~BIT1;               // P1.0 IFG cleared
 }

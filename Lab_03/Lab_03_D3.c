@@ -36,15 +36,18 @@ void main(void)
     P2OUT |= BIT1;                        // Required for proper IO
 
     unsigned int i = 0;
-    for (;;) {                            // Infinite loop
-        if ((S1) == 0) {                  // If S1 is pressed
+    for (;;)
+	{                            // Infinite loop
+        if ((S1) == 0)
+		{                  // If S1 is pressed
             for (i = 2000; i > 0; i--);   // Debounce ~20 ms
             if ((S1) == 0)
             {
                 P1OUT |= BIT0;            // S1 pressed, turn LED1 on
             }
             while ((S1) == 0);            // Hang-on as long as S1 pressed
-        } else
+        }
+		else
             P1OUT &= ~BIT0;
     }
 }

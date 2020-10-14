@@ -30,13 +30,15 @@
 volatile long int ADCXval, ADCYval;
 volatile float Xper, Yper;
 
-void TimerA_setup(void) {
+void TimerA_setup(void)
+{
     TA0CCR0 = 3277;                      // 3277 / 32768 Hz = 0.1s
     TA0CTL = TASSEL_1 + MC_1;            // ACLK, up mode
     TA0CCTL0 = CCIE;                     // Enabled interrupt
 }
 
-void ADC_setup(void) {
+void ADC_setup(void)
+{
     int i =0;
 
     P6DIR &= ~BIT3 + ~BIT4;             // Configure P6.4 and P6.4 as input pins
@@ -52,12 +54,14 @@ void ADC_setup(void) {
     ADC12CTL0 |= ADC12ENC;                   // Enable conversions
 }
 
-void UART_putCharacter(char c) {
+void UART_putCharacter(char c)
+{
     while (!(UCA0IFG&UCTXIFG));    // Wait for previous character to transmit
     UCA0TXBUF = c;                  // Put character into tx buffer
 }
 
-void UART_setup(void) {
+void UART_setup(void)
+{
     P3SEL |= BIT3 + BIT4;               // Set up Rx and Tx bits
     UCA0CTL0 = 0;                       // Set up default RS-232 protocol
     UCA0CTL1 |= BIT0 + UCSSEL_2;        // Disable device, set clock
@@ -67,7 +71,8 @@ void UART_setup(void) {
     UCA0CTL1 &= ~BIT0;                  // Start UART device
 }
 
-void sendData(void) {
+void sendData(void)
+{
     int i;
     Xper = (ADCXval*3.0/4095*100/3);    // Calculate percentage outputs
     Yper = (ADCYval*3.0/4095*100/3);
@@ -76,36 +81,42 @@ void sendData(void) {
     char *ypointer=(char *)&Yper;
 
     UART_putCharacter(0x55);            // Send header
-    for(i = 0; i < 4; i++) {            // Send x percentage - one byte at a time
+    for(i = 0; i < 4; i++)
+	{            // Send x percentage - one byte at a time
         UART_putCharacter(xpointer[i]);
     }
-    for(i = 0; i < 4; i++) {            // Send y percentage - one byte at a time
+    for(i = 0; i < 4; i++)
+	{            // Send y percentage - one byte at a time
         UART_putCharacter(ypointer[i]);
     }
 }
 
-void main(void) {
+void main(void)
+{
     WDTCTL = WDTPW +WDTHOLD;            // Stop WDT
     TimerA_setup();                     // Setup timer to send ADC data
     ADC_setup();                        // Setup ADC
     UART_setup();                       // Setup UART for RS-232
     _EINT();
 
-    while (1){
+    while (1)
+	{
         ADC12CTL0 |= ADC12SC;               // Start conversions
         __bis_SR_register(LPM0_bits + GIE); // Enter LPM0
     }
 }
 
 #pragma vector = ADC12_VECTOR
-__interrupt void ADC12ISR(void) {
+__interrupt void ADC12ISR(void)
+{
     ADCXval = ADC12MEM0;                  // Move results, IFG is cleared
     ADCYval = ADC12MEM1;
     __bic_SR_register_on_exit(LPM0_bits); // Exit LPM0
 }
 
 #pragma vector = TIMER0_A0_VECTOR
-__interrupt void timerA_isr() {
+__interrupt void timerA_isr()
+{
     sendData();                           // Send data to serial app
     __bic_SR_register_on_exit(LPM0_bits); // Exit LPM0
 }

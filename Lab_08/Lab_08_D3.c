@@ -38,7 +38,8 @@ unsigned int sec = 0;              // Seconds
 unsigned int tsec = 0;             // 1/10 second
 char Time[8];                      // String to keep current time
 
-void UART_setup(void) {
+void UART_setup(void)
+{
     P3SEL = BIT3+BIT4;                        // P3.4,5 = USCI_A0 TXD/RXD
     UCA0CTL1 |= UCSWRST;                      // **Put state machine in reset**
     UCA0CTL1 |= UCSSEL_2;                     // SMCLK
@@ -49,50 +50,59 @@ void UART_setup(void) {
     UCA0CTL1 &= ~UCSWRST;                     // **Initialize USCI state machine**
 }
 
-void TimerA_setup(void) {
+void TimerA_setup(void)
+{
     TA0CTL = TASSEL_2 + MC_1 + ID_3; // Select SMCLK/8 and up mode
     TA0CCR0 = 13107;                 // 100ms interval
     TA0CCTL0 = CCIE;                 // Capture/compare interrupt enable
 }
 
-void UART_putCharacter(char c) {
+void UART_putCharacter(char c)
+{
     while (!(UCA0IFG&UCTXIFG));    // Wait for previous character to transmit
     UCA0TXBUF = c;                  // Put character into tx buffer
 }
 
-void SetTime(void) {
+void SetTime(void)
+{
     tsec++;
-    if (tsec == 10){
+    if (tsec == 10
+	{
         tsec = 0;
         sec++;
         P1OUT ^= BIT0;              // Toggle LED1
     }
 }
 
-void SendTime(void) {
+void SendTime(void)
+{
     int i;
     sprintf(Time, "%05d:%01d", sec, tsec);// Prints time to a string
 
-    for (i = 0; i < sizeof(Time); i++) {  // Send character by character
+    for (i = 0; i < sizeof(Time); i++)
+	{  // Send character by character
         UART_putCharacter(Time[i]);
     }
     UART_putCharacter('\r');        // Carriage Return
 }
 
-void main(void) {
+void main(void)
+{
     WDTCTL = WDTPW + WDTHOLD;       // Stop watchdog timer
     UART_setup();                   // Initialize UART
     TimerA_setup();                 // Initialize Timer_B
     P1DIR |= BIT0;                  // P1.0 is output;
 
-    while (1) {
+    while(1)
+	{
         _BIS_SR(LPM0_bits + GIE);   // Enter LPM0 w/ interrupts
         SendTime();                 // Send Time to HyperTerminal/putty
     }
 }
 
 #pragma vector = TIMER0_A0_VECTOR
-__interrupt void TIMERA_ISA(void) {
+__interrupt void TIMERA_ISA(void)
+{
     SetTime();                       // Update time
     _BIC_SR_IRQ(LPM0_bits);          // Clear LPM0 bits from 0(SR)
 }

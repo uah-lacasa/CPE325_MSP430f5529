@@ -16,7 +16,8 @@
 int ifact(int);       // Prototype of ifact (integer)
 long int lifact(int); // Prototype of lifact (long interger)
 
-int main(void) {
+int main(void)
+{
     // Stop watchdog timer to prevent time out reset
     WDTCTL = WDTPW + WDTHOLD;
     int i;       // step counter
@@ -24,7 +25,8 @@ int main(void) {
     long int b;  // result for type long int
     // Print header
     printf("( i)!   :  int-dec,  int-hex :   long int-dec,   long int-hex;\n");
-    for (i = 1; i < MAXF; i++) {
+    for (i = 1; i < MAXF; i++)
+	{
         a = ifact(i);   // Call subroutine ifact to calculate factoriel
         b = lifact(i);  // Call subroutine lifact to caculate factoriel
         // Print output
