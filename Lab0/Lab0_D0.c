@@ -2,8 +2,8 @@
  * File:        Lab0_D0.c (CPE 325 Lab0 Demo code)
  * Function:    Toggle blinking of LED1 and LED2 (MPS430F5529)
  * Description: This C program initializes LED1 and LED2 as output
- *				with values 0 and 1 respectively. In the while loop,
- *				it toggles the values with an arbitrary delay.
+ *              with values 0 and 1 respectively. In the while loop,
+ *              it toggles the values with an arbitrary delay.
  * Clocks:      ACLK = 32.768kHz, MCLK = SMCLK = default DCO (~1 MHz)
  *
  *                           MSP430F552x
