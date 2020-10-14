@@ -1,5 +1,5 @@
 /*------------------------------------------------------------------------------
- * File:        Lab10_D1.c (CPE 325 Lab10 Demo code)
+ * File:        Lab9_D1.c (CPE 325 Lab9 Demo code)
  *
  * Function:    Measuring the temperature (MPS430F5529)
  *

@@ -1,5 +1,5 @@
 /******************************************************************************
- File:          Lab9_D1.c
+ File:          Lab10_D1.c
  Function:      Blink Led1 and Led2
  Description:   This program blinks Led1 and Led2 in an infinite loop
 

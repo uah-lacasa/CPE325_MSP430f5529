@@ -1,5 +1,5 @@
 /*------------------------------------------------------------------------------
- * File:        Lab10_D2.c (CPE 325 Lab10 Demo code)
+ * File:        Lab9_D2.c (CPE 325 Lab9 Demo code)
  * Function:    Interfacing thumbstick (MPS430F5529)
  * Description: This C program interfaces with a thumbstick sensor that has
  *              x (HORZ) and y (VERT) axis and outputs from 0 to 3V.
