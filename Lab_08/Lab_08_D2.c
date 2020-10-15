@@ -1,37 +1,33 @@
-/*----------------------------------------------------------------------------------
- * File:          Lab8_D2.c
- *
- * Function:      Echo a received character, using receiver ISR.
- * Description:   This program echos the character received from UART back to UART.
- *                Toggle LED1 with every received character.
- *                Baud rate: low-frequency (UCOS16=0);
- *                1048576/115200 = ~9.1 (0x0009|0x01)
- * Clocks:        ACLK = LFXT1 = 32768Hz, MCLK = SMCLK = default DCO
- *
- * Instructions: Set the following parameters in putty
- * Port: COMx
- * Baud rate: 115200
- * Data bits: 8
- * Parity: None
- * Stop bits: 1
- * Flow Control: None
- *
- *        MSP430f5529
- *     -----------------
- * /|\ |            XIN|-
- *  |  |               | 32kHz
- *  |--|RST        XOUT|-
- *     |               |
- *     |   P3.3/UCA0TXD|------------>
- *     |               | 115200 - 8N1
- *     |   P3.4/UCA0RXD|<------------
- *     |           P1.0|----> LED1
- *
- * Input:     None (Type characters in putty/MobaXterm/hyperterminal)
- * Output:    Character echoed at UART
- * Author:    A. Milenkovic, milenkovic@computer.org
- * Date:      October 2018
- *--------------------------------------------------------------------------------*/
+/*------------------------------------------------------------------------------
+ * File:        Lab_08_D2.c
+ * Function:    Echo a received character, using receiver ISR.
+ * Description: This program echos the character received from UART.
+ *              Toggle LED1 with every received character.
+ *              Baud rate: low-frequency (UCOS16=0);
+ *              1048576/115200 = ~9.1 (0x0009|0x01)
+ * Instruction: Set the following parameters in putty/hyperterminal
+ * Port:        COMx
+ * Baud rate:   115200
+ * Data bits:   8
+ * Parity:      None
+ * Stop bits:   1
+ * Flow Ctrl:   None
+ * Clocks:      ACLK = LFXT1 = 32768Hz, MCLK = SMCLK = default DCO
+ *                      MSP-EXP430F5529LP
+ *                     --------------------
+ *                   /|\|              XIN|-
+ *                    | |                 | 32kHz
+ *                    --|RST          XOUT|-
+ *                      |                 |
+ *                      |     P3.3/UCA0TXD|------------>
+ *                      |                 | 115200 - 8N1
+ *                      |     P3.4/UCA0RXD|<------------
+ *                      |             P1.0|----> LED1
+ * Input:       None (Type characters in putty/MobaXterm/hyperterminal)
+ * Output:      Character echoed at UART
+ * Author(s):   Aleksandar Milenkovic, milenkovic@computer.org
+ * Date:        October 2018
+ * ---------------------------------------------------------------------------*/
 #include <msp430.h>
 
 // Initialize USCI_A0 module to UART mode

@@ -1,35 +1,35 @@
-/*--------------------------------------------------------------------------------
- * File:          Lab8_D3.c
- * Function:      Displays real-time clock in serial communication client.
- * Description:   This program maintains real-time clock and sends time
- *                (10 times a second) to the workstation through
- *                a serial asynchronous link (UART).
- *                The time is displayed as follows: "sssss:tsec".
- *
- *                Baud rate divider with 1048576hz = 1048576/(16*9600) = ~6.8 [16 from UCOS16]
- * Clocks:        ACLK = LFXT1 = 32768Hz, MCLK = SMCLK = default DCO = 1048576Hz
- * Instructions:  Set the following parameters in putty/hyperterminal
- * Port: COMx
- * Baud rate: 19200
- * Data bits: 8
- * Parity: None
- * Stop bits: 1
- * Flow Control: None
- *
- *        MSP430F5529
- *     -----------------
- * /|\ |            XIN|-
- *  |  |               | 32kHz
- *  |--|RST        XOUT|-
- *     |               |
- *     |   P3.3/UCA0TXD|------------>
- *     |               | 9600 - 8N1
- *     |   P3.4/UCA0RXD|<------------
- *     |           P1.0|----> LED1
- *
- * Author:      A. Milenkovic, milenkovic@computer.org
+/*------------------------------------------------------------------------------
+ * File:        Lab_08_D3.c
+ * Function:    Displays real-time clock in serial communication client.
+ * Description: This program maintains real-time clock and sends time
+ *              (10 times a second) to the workstation through
+ *              a serial asynchronous link (UART).
+ *              The time is displayed as follows: "sssss:tsec".
+ *              Baud rate divider with 1048576hz = 1048576/(16*9600)
+ *              ~ 6.8 (16 from UCOS16)
+ * Instruction: Set the following parameters in putty/hyperterminal
+ * Port:        COMx
+ * Baud rate:   19200
+ * Data bits:   8
+ * Parity:      None
+ * Stop bits:   1
+ * Flow Ctrl:   None
+ * Clocks:      ACLK = LFXT1 = 32768Hz, MCLK = SMCLK = default DCO = 1048576Hz
+ *                      MSP-EXP430F5529LP
+ *                     --------------------
+ *                   /|\|              XIN|-
+ *                    | |                 | 32kHz
+ *                    --|RST          XOUT|-
+ *                      |                 |
+ *                      |     P3.3/UCA0TXD|------------>
+ *                      |                 | 9600 - 8N1
+ *                      |     P3.4/UCA0RXD|<------------
+ *                      |             P1.0|----> LED1
+ * Input:       
+ * Output:        
+ * Author(s):   Aleksandar Milenkovic, milenkovic@computer.org
  * Date:        October 2018
---------------------------------------------------------------------------------*/
+ * ---------------------------------------------------------------------------*/
 #include <msp430.h>
 #include <stdio.h>
 

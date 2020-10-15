@@ -1,27 +1,28 @@
-/******************************************************************************
- *  File:        Lab6_D6.c
- *  Description: MSP430F5529 Demo - FLL, Runs Internal DCO at 2.45MHz
- *               This program demonstrates setting the internal DCO to run at
- *               2.45MHz.
- *  Clocks:      ACLK = 32768Hz,
- *               MCLK = SMCLK = DCO = (74+1) x ACLK = 2457600Hz
- *
- *                MSP430F5529
- *            -----------------
- *        /|\|              XIN|-
- *         | |                 | 32kHz
- *         --|RST          XOUT|-
- *           |                 |
- *           |             P7.7|--> MCLK = 2.45MHz
- *           |                 |
- *           |             P2.2|--> SMCLK = 2.45MHz
- *           |             P1.0|--> ACLK = 32kHz
- *           |                 |
- *
- *  Author:     Aleksandar Milenkovic, milenkovic@computer.og
- *  Date:       September 2010
- *  Modified:   Prawar Poudel, August 2020
- ******************************************************************************/
+/*------------------------------------------------------------------------------
+ * File:        Lab_06_D6.c
+ * Function:    Demonstrates setting the internal DCO to run at 2.45MHz.
+ * Description: FLL, Runs Internal DCO at 2.45MHz
+ * Clocks:      ACLK = 32.768kHz
+ *              MCLK = SMCLK = DCO = (74+1) x ACLK = 2457600Hz
+ *                      MSP-EXP430F5529LP
+ *                     --------------------
+ *                  /|\|               XIN|-
+ *                   | |                  | 32kHz
+ *                   --|RST           XOUT|-
+ *                     |                  |
+ *                     |              P7.7|--> MCLK = 2.45MHz
+ *                     |                  |
+ *                     |              P2.2|--> SMCLK = 2.45MHz
+ *                     |              P1.0|--> ACLK = 32kHz
+ *                     |                  |
+ *                     |                  |
+ * Input:       None
+ * Output:      None
+ * Author(s):   Aleksandar Milenkovic, milenkovic@computer.org
+ * Date:        September 2010
+ * Modified:    Prawar Poudel, prawar.poudel@uah.edu
+ * Date:        August 2020
+ * ---------------------------------------------------------------------------*/
 #include  <msp430.h>
 
 void main(void)

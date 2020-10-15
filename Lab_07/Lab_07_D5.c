@@ -1,25 +1,22 @@
 /*------------------------------------------------------------------------------
- * File:        Lab7_D5.c (CPE 325 Lab7 Demo code)
- *
- * Function:    Toggle signal using Timer_A2 in up mode (MPS430F5529)
- *
+ * File:        Lab_07_D5.c
+ * Function:    Toggle signal using Timer_A2 in up mode
  * Description: In this C program, Timer_A2 is configured for UP mode. In this
  *              mode, the timer TA2 counts from 0 up to value stored in TA2CCR0.
  *              So, the counter period is CCR0*1us. The TA2.1 output signal is
  *              configured to toggle every time the counter reaches the value
  *              in TA2CCR1. TA2.1 is multiplexed with the P2.4. Thus, the output
  *              frequency on P2.4 will be f = ACLK/(2*CCR0) = 0.5Hz. Please note
- *              that once configured, the Timer_A2 toggles the signal automatically
- *              even when the CPU is in sleep mode.
+ *              that once configured, the Timer_A2 toggles the signal
+ *              automatically even when the CPU is in sleep mode.
  *
  *              Using the same connection as in Lab7_D4.c, you should be able to
  *              hear Buzzer ON for 1s and OFF for 1s continuously.
- *
  * Clocks:      ACLK = LFXT1 = 32768Hz, MCLK = SMCLK = DCO = default (2^20 Hz)
- *              An external watch crystal between XIN & XOUT is required for ACLK
+ *              An external watch crystal beten XIN & XOUT is required for ACLK
  *
- *                          MSP430xF5529
- *                       -----------------
+ *                      MSP-EXP430F5529LP
+ *                     --------------------
  *                   /|\|              XIN|-
  *                    | |                 | 32kHz
  *                    --|RST          XOUT|-
@@ -28,9 +25,10 @@
  *                      |                 |
  * Input:       None
  * Output:      Toggle output at P2.4 at 0.5Hz frequency using hardware TA2
- * Author:      Aleksandar Milenkovic, milenkovic@computer.org
- *              Prawar Poudel
- *------------------------------------------------------------------------------*/
+ * Author(s):   Aleksandar Milenkovic, milenkovic@computer.org
+ *              Prawar Poudel, prawar.poudel@uah.edu
+ * Date:        December 2008
+ * ---------------------------------------------------------------------------*/
 #include <msp430F5529.h>
 
 void main(void)

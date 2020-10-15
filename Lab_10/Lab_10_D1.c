@@ -1,26 +1,21 @@
 /*------------------------------------------------------------------------------
- * File:        Lab10_D1.c (CPE 325 Lab10 Demo code)
- *
- * Function:    Measuring the temperature (MPS430F5529)
- *
+ * File:        Lab_10_D1.c
+ * Function:    Measuring the temperature
  * Description: This C program samples the on-chip temperature sensor and
  *              converts the sampled voltage from the sensor to temperature in
  *              degrees Celsius and Fahrenheit. The converted temperature is
- *              sent to HyperTerminal over the UART by using serial UART.
- *
+ *              sent to hyperterminal over the UART by using serial UART.
+ * Instruction: Set the following parameters in hyperterminal
+ * Port:        COM1
+ * Baud rate:   115200
+ * Data bits:   8
+ * Parity:      None
+ * Stop bits:   1
+ * Flow Ctrl:   None
  * Clocks:      ACLK = LFXT1 = 32768Hz, MCLK = SMCLK = DCO = default (~1MHz)
- *              An external watch crystal between XIN & XOUT is required for ACLK
- *
- * Instructions:Set the following parameters in HyperTerminal
- *                  Port :        COM1
- *                  Baud rate :   115200
- *                  Data bits:    8
- *                  Parity:       None
- *                  Stop bits:    1
- *                  Flow Control: None
- *
- *                         MSP430F5529
- *                      -------------------
+ *              An external watch crystal beten XIN & XOUT is required for ACLK
+ *                      MSP-EXP430F5529LP
+ *                     --------------------
  *                   /|\|              XIN|-
  *                    | |                 | 32kHz
  *                    --|RST          XOUT|-
@@ -29,13 +24,12 @@
  *                      |                 | 115200 - 8N1
  *                      |     P3.4/UCA0RXD|<------------
  *                      |                 |
- * Input:       Character Y or y or N or n
- *
- * Output:      Displays Temperature in Celsius and Fahrenheit in HyperTerminal
- * Author:      Aleksandar Milenkovic, milenkovic@computer.org
- *              Prawar Poudel
- *------------------------------------------------------------------------------*/
-
+ * Input:       Character 'Y', 'y', 'N', or 'n'
+ * Output:      Displays temperature in Celsius and Fahrenheit in hyperterminal
+ * Author(s):   Aleksandar Milenkovic, milenkovic@computer.org
+ *              Prawar Poudel, prawar.poudel@uah.edu
+ * Date:        August 8, 2019
+ * ---------------------------------------------------------------------------*/
 #include  <msp430.h>
 #include  <stdio.h>
 

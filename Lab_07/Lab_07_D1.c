@@ -1,20 +1,14 @@
 /*------------------------------------------------------------------------------
- * File:        Lab7_D1.c (CPE 325 Lab7 Demo code)
- * Function:    Blinking LED1 using WDT ISR (MPS430F5529)
- *
+ * File:        Lab_07_D1.c
+ * Function:    Blinking LED1 using WDT ISR
  * Description: This C program configures the WDT in interval timer mode,
  *              clocked with the ACLK clock. The WDT is configured to give an
  *              interrupt for every 1s. LED1 is toggled in the WDT ISR
  *              by xoring P1.0. The blinking frequency of LED1 is 0.5Hz.
- *
- * Board:       MSP-EXP430F5529 (includes 32-KHZ crystal on XT1 and
- *                               4-MHz ceramic resonator on XT2)
- *
  * Clocks:      ACLK = XIN-XOUT = 32768Hz, MCLK = SMCLK = DCO = default (~1MHz)
- *              An external watch crystal between XIN & XOUT is required for ACLK
- *
- *                          MSP430F5529
- *                       -----------------
+ *              An external watch crystal beten XIN & XOUT is required for ACLK
+ *                      MSP-EXP430F5529LP
+ *                     --------------------
  *                   /|\|              XIN|-
  *                    | |                 | 32kHz crystal
  *                    --|RST          XOUT|-
@@ -23,10 +17,10 @@
  *                      |                 |
  * Input:       None
  * Output:      LED1 blinks at 0.5Hz frequency
- * Author:      Aleksandar Milenkovic, milenkovic@computer.org
- *              Prawar Poudel
+ * Author(s):   Aleksandar Milenkovic, milenkovic@computer.org
+ *              Prawar Poudel, prawar.poudel@uah.edu
  * Date:        December 2008
- *------------------------------------------------------------------------------*/
+ * ---------------------------------------------------------------------------*/
 #include <msp430.h>
 
 void main(void)

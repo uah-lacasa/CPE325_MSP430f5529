@@ -1,24 +1,25 @@
-/******************************************************************************
- File:          Lab9_D1.c
- Function:      Blink Led1 and Led2
- Description:   This program blinks Led1 and Led2 in an infinite loop
-
- Clocks:        ACLK = LFXT1 = 32768Hz, MCLK = SMCLK = default DCO = 32 x ACLK = 1048576Hz
-
-      MSP430f5529
-     -----------------
- /|\ |            XIN|-
-  |  |               | 32kHz
-  |--|RST        XOUT|-
-     |               |
-     |           P4.7|- Led2
-     |           P1.0|- Led1
-     |               |
-
- Input:     None
- Authors:   A. Milenkovic,
- Modified: Prawar Poudel, August 8, 2019
-******************************************************************************/
+/*------------------------------------------------------------------------------
+ * File:        Lab_09_D1.c
+ * Function:    Blink Led1 and Led2
+ * Description: This program blinks Led1 and Led2 in an infinite loop
+ * Clocks:      ACLK = LFXT1 = 32768Hz,
+ *              MCLK = SMCLK = default DCO = 32 x ACLK = 1048576Hz
+ *                      MSP-EXP430F5529LP
+ *                     --------------------
+ *                   /|\|              XIN|-
+ *                    | |                 | 32kHz
+ *                    --|RST          XOUT|-
+ *                      |                 |
+ *                      |             P4.7|- Led2
+ *                      |             P1.0|- Led1
+ *                      |                 |
+ * Input:       None
+ * Output:        
+ * Author(s):   Aleksandar Milenkovic, milenkovic@computer.org
+ * Date:        
+ * Modified:    Prawar Poudel, prawar.poudel@uah.edu
+ * Date:        August 8, 2019
+ * ---------------------------------------------------------------------------*/
 #include <msp430.h> 
 
 int main(void) {

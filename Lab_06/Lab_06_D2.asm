@@ -1,29 +1,27 @@
-;-------------------------------------------------------------------------------
-;   File:        Lab6_D2.asm
-;   Description: The program demonstrates Press/Release using S1 and LED1.
-;                LED1 is initialized off.
-;                When an S1 press is detected, a software delay of 20 ms
-;                is used to implement debouncing. The switch is checked
-;                again, and if it's on, LED1 is turned on until S1 is released.
-;
-;   Clocks:      ACLK = 32.768kHz, MCLK = SMCLK = default DCO = 2^20=1,048,576 Hz
-;   Platform:    TI EXP430F5529LP Launchpad
-;
-;                 MSP430F5529
-;             -----------------
-;         /|\|                 |
-;          | |                 |
-;          --|RST              |
-;            |             P1.0|-->LED1(REd)
-;            |             P2.1|<--SW1
-;
-;   Author:     Aleksandar Milenkovic, milenkovic@computer.org
-;   Date:       September 14, 2018
-;   Modified:   Prawar Poudel, August 08, 2019
-;-------------------------------------------------------------------------------
-
-            .cdecls C,LIST,"msp430.h"       ; Include device header file
-            
+; ------------------------------------------------------------------------------
+; File:         Lab_06_D2.asm
+; Function:     Demonstrates press and release using S1 and LED1.
+; Description:  When an S1 press is detected, a software delay of 20 ms
+;               is used to implement debouncing. The switch is checked
+;               again, and if it's on, LED1 is turned on until S1 is released.
+; Clocks:       ACLK = 32.768kHz, MCLK = SMCLK = default DCO = 2^20=1,048,576 Hz
+;                       MSP-EXP430F5529LP
+;                      --------------------
+;                   /|\|                  |
+;                    | |                  | 
+;                    --|RST               |
+;                      |              P1.0|-->LED1(RED)
+;                      |              P2.1|<--S1
+;                      |                  |
+;                      |                  |
+; Input:        Pressing S1
+; Output:       LED1 when S1 is pressed
+; Author(s):    Aleksandar Milenkovic, milenkovic@computer.org
+; Date:         September 14, 2018
+; Modified:     Prawar Poudel, prawar.poudel@uah.edu
+; Date:         August 08, 2019
+; ------------------------------------------------------------------------------
+            .cdecls C, LIST, "msp430.h"        ; Include device header file
 ;-------------------------------------------------------------------------------
             .def    RESET                   ; Export program entry-point to
                                             ; make it known to linker.

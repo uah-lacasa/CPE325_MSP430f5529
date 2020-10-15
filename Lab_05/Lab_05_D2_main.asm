@@ -1,17 +1,17 @@
-;-------------------------------------------------------------------------------
-; File       : Lab5_D2_main.asm (CPE 325 Lab5 Demo code)
-; Function   : Finds a sum of two integer arrays using a subroutine.
-; Description: The program calls suma_rp to sum up elements of integer arrays and
-;              then displays the sum on parallel ports.
-;              Parameters to suma_rp are passed through registers, R12, R13.
-;              The subroutine suma_rp return the result in register R14.
-; Input      : The input arrays are signed 16-bit integers in arr1 and arr2
-; Output     : P1OUT&P2OU displays sum of arr1, P3OUT&P4OUT displays sum of arr2
-; Author     : A. Milenkovic, milenkovic@computer.org
-; Date       : September 14, 2008 (revised August 2020)
-;-------------------------------------------------------------------------------
-            .cdecls C,LIST,"msp430.h"       ; Include device header file
-            
+; ------------------------------------------------------------------------------
+; File:         Lab_05_D2_main.asm
+; Function:     Finds a sum of two integer arrays using a subroutine.
+; Description:  The program calls suma_rp to sum up elements of integer arrays
+;               and then displays the sum on parallel ports.
+;               Parameters to suma_rp are passed through registers, R12, R13.
+;               The subroutine suma_rp return the result in register R14.
+; Input:        The input arrays are signed 16-bit integers in arr1 and arr2
+; Output:       P1OUT&P2OU displays arr1 sum, P3OUT&P4OUT displays arr2 sum
+; Author(s):    Aleksandar Milenkovic, milenkovic@computer.org
+; Date:         August 14, 2008
+; Revised:      August 5, 2020
+; ------------------------------------------------------------------------------
+            .cdecls C, LIST, "msp430.h"        ; Include device header file
 ;-------------------------------------------------------------------------------
             .def    RESET                   ; Export program entry-point to
                                             ; make it known to linker.

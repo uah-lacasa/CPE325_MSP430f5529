@@ -1,14 +1,13 @@
-/*******************************************************************************
- * File: Lab2_D1.c
- * Description: This program demonstrates common C data types and P
- *              printf formatting options.
- *
- * Platform: EXP-MSP430F5529lp
- *
- * Author: Aleksandar Milenkovic, milenkovic@computer.org
- * Date:   August 3, 2020
- *
- ********************************************************************************/
+/*------------------------------------------------------------------------------
+ * File:        Lab_02_D1.c
+ * Function:    Prints decimal, hex, and octal representations of numbers
+ * Description: This program demonstrates common C data types and
+ *              printf formatting options.    
+ * Input:       None
+ * Output:      Console print statements
+ * Author(s):   Aleksandar Milenkovic, milenkovic@computer.org
+ * Date:        Aug 16, 2017
+ * ---------------------------------------------------------------------------*/
 #include <msp430.h> 
 #include <stdio.h>
 

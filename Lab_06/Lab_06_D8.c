@@ -1,37 +1,31 @@
-/******************************************************************************
- *  File:        Lab6_D8.c
- *  Description: MSP430F5529 Demo - FLL, Runs Internal DCO at 1MHz
- *               This program demonstrates setting the internal DCO to run at
- *               8MHz when SW1 is pressed.
- *
- *               A LED will keep blinking at 1Hz (0.5s ON and 0.5s OFF) at
- *               clock running at default frequency of 1Mhz. When SW1 is pressed,
- *               the frequency is changed to ~ 8 Mhz. When SW1 is pressed again,
- *               the frequency is restored to 1Mhz.
- *
- *  Clocks:      ACLK = 32768Hz,
- *               MCLK = SMCLK = DCO = (249+1) x ACLK = 8192000Hz
- *
+/*------------------------------------------------------------------------------
+ * File:        Lab_06_D8.c
+ * Function:    This program demonstrates setting the internal DCO to run at
+ *              8MHz when SW1 is pressed. Runs Internal DCO at 1MHz.
+ * Description: A LED will keep blinking at 1Hz (0.5s ON and 0.5s OFF) at
+ *              clock running at default frequency of 1Mhz. When SW1 is pressed,
+ *              the frequency is changed to ~ 8 Mhz. When SW1 is pressed again,
+ *              the frequency is restored to 1Mhz.
+ * Clocks:      ACLK = 32.768kHz
+ *              MCLK = SMCLK = DCO = (249+1) x ACLK = 8192000Hz
+ *                      MSP-EXP430F5529LP
+ *                     --------------------
+ *                  /|\|               XIN|-
+ *                   | |                  | 32kHz
+ *                   --|RST           XOUT|-
+ *                     |                  |
+ *               SW1-->|P2.1          P7.7|--> MCLK = 1 or 8MHz
+ *              LED2<--|P4.7              |
+ *                     |              P2.2|--> SMCLK = 1 or 8MHz
+ *                     |              P1.0|--> ACLK = 32kHz
+ *                     |                  |
  * Input:       SW1 (P2.1)
  * Output:      LED2 (P4.7)
- *
- *                MSP430F5529
- *            -----------------
- *        /|\|              XIN|-
- *         | |                 | 32kHz
- *         --|RST          XOUT|-
- *           |                 |
- *     SW1-->|P2.1         P7.7|--> MCLK = 1 or 8MHz
- *    LED2<--|P4.7             |
- *           |             P2.2|--> SMCLK = 1 or 8MHz
- *           |             P1.0|--> ACLK = 32kHz
- *           |                 |
- *
- *  Modified:   Prawar Poudel
- *  Date:       August 2020
- ******************************************************************************/
-
-// mandatory include statement
+ * Author(s):   Aleksandar Milenkovic, milenkovic@computer.org
+ * Date:        September 2010
+ * Modified:    Prawar Poudel, prawar.poudel@uah.edu
+ * Date:        August 2020
+ * ---------------------------------------------------------------------------*/
 #include  <msp430.h>
 
 // this function configures the clock sources as follows

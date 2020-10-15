@@ -1,13 +1,13 @@
-/*------------------------------------------------------------------
-* Instructor:  Aleksandar Milenkovic
-* Program:     This program calculates the power of a given
-*              base using recursive function call.
-* Date:        Aug 16, 2017
-* Input:       None
-* Output:      Base raised to the given power.
-* Description: This C code will calculate the power of a given base.
-*-------------------------------------------------------------------*/
-
+/*------------------------------------------------------------------------------
+ * File:        Lab_01_D2.c
+ * Function:    This C code will calculate the power of a given base.
+ * Description: This program calculates the power of a given
+ *              base using recursive function call.
+ * Input:       None
+ * Output:      Base raised to the given power.
+ * Author(s):   Aleksandar Milenkovic, milenkovic@computer.org
+ * Date:        Aug 16, 2017
+ * ---------------------------------------------------------------------------*/
 #include <stdio.h>
 #include <math.h>
 #include "msp430.h"

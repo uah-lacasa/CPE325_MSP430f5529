@@ -1,29 +1,28 @@
-/******************************************************************************
- *  File:        Lab6_D7.c
- *  Description: MSP430F5529 Demo - FLL, Runs Internal DCO at 8MHz
- *               This program demonstrates setting the internal DCO to run at
- *               8MHz.
- *  Clocks:      ACLK = 32768Hz,
- *               MCLK = SMCLK = DCO = (121+1) x 2 x ACLK = 7995392Hz
- *
- *                MSP430F5529
- *            -----------------
- *        /|\|              XIN|-
- *         | |                 | 32kHz
- *         --|RST          XOUT|-
- *           |                 |
- *           |             P7.7|--> MCLK = 8MHz
- *           |                 |
- *           |             P2.2|--> SMCLK = 8MHz
- *           |             P1.0|--> ACLK = 32kHz
- *           |                 |
- *
- *  Author:     Aleksandar Milenkovic, milenkovic@computer.og
- *  Date:       September 2010
- *  Modified:   Prawar Poudel
- *  Date:       August 2020
- ******************************************************************************/
-
+/*------------------------------------------------------------------------------
+ * File:        Lab_06_D7.c
+ * Function:    Demonstrates setting the internal DCO to run at 8MHz.
+ * Description: FLL, Runs Internal DCO at 8MHz
+ * Clocks:      ACLK = 32.768kHz
+ *              MCLK = SMCLK = DCO = (121+1) x 2 x ACLK = 7995392Hz
+ *                      MSP-EXP430F5529LP
+ *                     --------------------
+ *                  /|\|               XIN|-
+ *                   | |                  | 32kHz
+ *                   --|RST           XOUT|-
+ *                     |                  |
+ *                     |              P7.7|--> MCLK = 8MHz
+ *                     |                  |
+ *                     |              P2.2|--> SMCLK = 8MHz
+ *                     |              P1.0|--> ACLK = 32kHz
+ *                     |                  |
+ *                     |                  |
+ * Input:       None
+ * Output:      None
+ * Author(s):   Aleksandar Milenkovic, milenkovic@computer.org
+ * Date:        September 2010
+ * Modified:    Prawar Poudel, prawar.poudel@uah.edu
+ * Date:        August 2020
+ * ---------------------------------------------------------------------------*/
 #include  <msp430.h>
 
 void main(void)

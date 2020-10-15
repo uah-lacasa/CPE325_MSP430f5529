@@ -1,27 +1,27 @@
-;-------------------------------------------------------------------------------
-;   File:        Lab6_D3.asm
-;   Description: The program demonstrates Press/Release using S2 and LED1.
-;                LED1 is initialized off. The main program enables interrupts
-;                from P1.BIT1 (S2) and remains in an infinite loop doing nothing.
-;                P1_ISR implements debouncing and waits for a S2 to be released.
-;
-;   Clocks:      ACLK = 32.768kHz, MCLK = SMCLK = default DCO = 2^20=1,048,576 Hz
-;   Platform:    TI EXP430F5529LP Launchpad
-;
-;                 MSP430F5529
-;             -----------------
-;         /|\|                 |
-;          | |                 |
-;          --|RST              |
-;            |             P1.0|-->LED1(RED)
-;            |             P1.1|<--S2
-;
-;   Author:     Aleksandar Milenkovic, milenkovic@computer.org
-;   Date:       September 14, 2018
-;   Modified:   Prawar Poudel, Auguest 8, 2019
-;-------------------------------------------------------------------------------
-            .cdecls C,LIST,"msp430.h"       ; Include device header file
-
+; ------------------------------------------------------------------------------
+; File:         Lab_06_D3.asm
+; Function:     Demonstrates press and release using S2 and LED1.
+; Description:  The main program enables interrupts    from P1.BIT1 (S2) and
+;               remains in an infinite loop doing nothing. P1_ISR implements
+;               debouncing and waits for a S2 to be released.
+; Clocks:       ACLK = 32.768kHz, MCLK = SMCLK = default DCO = 2^20=1,048,576 Hz
+;                       MSP-EXP430F5529LP
+;                      --------------------
+;                   /|\|                  |
+;                    | |                  | 
+;                    --|RST               |
+;                      |              P1.0|-->LED1(RED)
+;                      |              P1.1|<--S2
+;                      |                  |
+;                      |                  |
+; Input:        Pressing S2
+; Output:       LED1 when S2 is pressed
+; Author(s):    Aleksandar Milenkovic, milenkovic@computer.org
+; Date:         September 14, 2018
+; Modified:     Prawar Poudel, prawar.poudel@uah.edu
+; Date:         August 08, 2019
+; ------------------------------------------------------------------------------
+            .cdecls C, LIST, "msp430.h"        ; Include device header file
 ;-------------------------------------------------------------------------------
             .def    RESET                   ; Export program entry-point to
                                             ; make it known to linker.

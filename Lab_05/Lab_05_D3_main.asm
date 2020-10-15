@@ -1,16 +1,17 @@
-;-------------------------------------------------------------------------------
-; File       : Lab5_D3_main.asm (CPE 325 Lab5 Demo code)
-; Function   : Finds a sum of two integer arrays using a subroutine suma_sp
-; Description: The program calls suma_sp to sum up elements of integer arrays and
-;              stores the respective sums in parallel ports' output registers.
-;              Parameters to suma_sp are passed through the stack.
-; Input      : The input arrays are signed 16-bit integers in arr1 and arr2
-; Output     : P2OUT&P1OUT stores the sum of arr1, P4OUT&P3OUT stores the sum of arr2
-; Author     : A. Milenkovic, milenkovic@computer.org
-; Date       : September 14, 2008 (revised August 2020)
-;-------------------------------------------------------------------------------
-            .cdecls C,LIST,"msp430.h"           ; Include device header file
-            
+; ------------------------------------------------------------------------------
+; File:         Lab_05_D3_main.asm
+; Function:     Finds a sum of two integer arrays using a subroutine suma_sp
+; Description:  The program calls suma_sp to sum up elements of integer arrays
+;               and stores the respective sums in parallel ports' output
+;               registers. Parameters to suma_sp are passed through the stack.
+; Input:        The input arrays are signed 16-bit integers in arr1 and arr2
+; Output:       P2OUT&P1OUT stores the sum of arr1
+;               P4OUT&P3OUT stores the sum of arr2
+; Author(s):    Aleksandar Milenkovic, milenkovic@computer.org
+; Date:         September 14, 2008
+; Revised:      August 5, 2020
+; ------------------------------------------------------------------------------
+            .cdecls C, LIST, "msp430.h"        ; Include device header file
 ;-------------------------------------------------------------------------------
             .def    RESET                       ; Export program entry-point to
                                                 ; make it known to linker.

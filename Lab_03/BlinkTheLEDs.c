@@ -1,23 +1,21 @@
-/*******************************************************************************
- * File: BlinkTheLED.c
+/*------------------------------------------------------------------------------
+ * File:        BlinkTheLEDs.c
+ * Function:    Blink LEDs on MSP-EXP430F5529LP
  * Description: This program toggles the red and green LEDs on MSP-EXP430F5529LP
- *
- * Platform: MSP-EXP430F5529LP
- * Initial conditions: the red LED is off, the green LED is on
- *                          MSP430F5529
- *                      -------------------
- *                   /|\|              XIN|-
- *                    | |                 | 32kHz
- *                    --|RST          XOUT|-
- *                      |                 |
- *                      |             P1.0|---> Red LED
- *                      |                 |
- *                      |             P4.7|---> Green LED
- *
- * Author: Aleksandar Milenkovic, milenkovic@computer.org
- * Date:   August 2, 2020
- *
- ********************************************************************************/
+ * Clocks:              MSP-EXP430F5529LP
+ *                    --------------------
+ *                 /|\|               XIN|-
+ *                  | |                  | 32kHz
+ *                  --|RST           XOUT|-
+ *                    |                  |
+ *                    |              P1.0|---> Red LED
+ *                    |                  |
+ *                    |              P4.7|---> Green LED
+ * Input:       None
+ * Output:      LEDs on MSP-EXP430F5529LP
+ * Author(s):   Aleksandar Milenkovic, milenkovic@computer.org
+ * Date:        August 2, 2020
+ * ---------------------------------------------------------------------------*/
 #include <msp430.h>
 
 # define REDLED 0x01                // mask for BIT0=00000001b

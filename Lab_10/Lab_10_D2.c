@@ -1,16 +1,14 @@
 /*------------------------------------------------------------------------------
- * File:        Lab9_D2.c (CPE 325 Lab9 Demo code)
- * Function:    Interfacing thumbstick (MPS430F5529)
+ * File:        Lab_10_D2.c
+ * Function:    Interfacing thumbstick
  * Description: This C program interfaces with a thumbstick sensor that has
  *              x (HORZ) and y (VERT) axis and outputs from 0 to 3V.
- *              The value of x and y axis
- *              is sent as the percentage of power to the UAH Serial App.
- *
+ *              The value of x and y axis is sent as the percentage
+ *              of por to the UAH Serial App.
  * Clocks:      ACLK = LFXT1 = 32768Hz, MCLK = SMCLK = DCO = default (~1MHz)
- *              An external watch crystal between XIN & XOUT is required for ACLK
- *
- *                         MSP430F5529
- *                      -------------------
+ *              An external watch crystal beten XIN & XOUT is required for ACLK
+ *                      MSP-EXP430F5529LP
+ *                     --------------------
  *                   /|\|              XIN|-
  *                    | |                 | 32kHz
  *                    --|RST          XOUT|-
@@ -20,11 +18,11 @@
  *                      |     P3.4/UCA0RXD|<------------
  *                      |                 |
  * Input:       Connect thumbstick to the board
- * Output:      Displays % of power in UAH serial app
- * Author:      Micah Harvey
- *              Prawar Poudel
- *------------------------------------------------------------------------------*/
-
+ * Output:      Displays % of por in UAH serial app
+ * Author(s):   Prawar Poudel, prawar.poudel@uah.edu
+ *              Micah Harvey
+ * Date:        August 8, 2019
+ *----------------------------------------------------------------------------*/
 #include <msp430.h>
 
 volatile long int ADCXval, ADCYval;

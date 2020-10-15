@@ -1,31 +1,27 @@
 /*------------------------------------------------------------------------------
- * File:        Lab7_D2.c (CPE 325 Lab7 Demo code)
- *
- * Function:    Toggling LED1 using WDT ISR (MPS430F5529)
- *
+ * File:        Lab_07_D2.c
+ * Function:    Toggling LED1 using WDT ISR
  * Description: This C program configures the WDT in interval timer mode,
  *              clocked with SMCLK. The WDT is configured to give an
  *              interrupt for every 32ms. The WDT ISR is counted for 32 times
  *              (32*32.5ms ~ 1sec) before toggling LED1 to get 1 s on/off.
  *              The blinking frequency of LED1 is 0.5Hz.
- *
  * Clocks:      ACLK = XT1 = 32768Hz, MCLK = SMCLK = DCO = default (~1MHz)
- *              An external watch crystal between XIN & XOUT is required for ACLK
- *
- *                          MSP430xF5529
- *                       -----------------
- *                   /|\|              XIN|-
- *                    | |                 | 32kHz
- *                    --|RST          XOUT|-
- *                      |                 |
- *                      |             P1.0|-->LED1(RED)
- *                      |                 |
+ *              An external watch crystal beten XIN & XOUT is required for ACLK
+ *                      MSP-EXP430F5529LP
+ *                     --------------------
+ *                  /|\|               XIN|-
+ *                   | |                  | 32kHz
+ *                   --|RST           XOUT|-
+ *                     |                  |
+ *                     |              P1.0|-->LED1(RED)
+ *                     |                  |
  * Input:       None
  * Output:      LED1 blinks at 0.5Hz frequency
- * Author:      Aleksandar Milenkovic, milenkovic@computer.org
- *              Prawar Poudel
+ * Author(s):   Aleksandar Milenkovic, milenkovic@computer.org
+ *              Prawar Poudel, prawar.poudel@uah.edu
  * Date:        December 2008
- *------------------------------------------------------------------------------*/
+ * ---------------------------------------------------------------------------*/
 #include <msp430.h>
 
 void main(void)

@@ -1,23 +1,22 @@
-/********************************************************************************
- *   File:        Lab6_D5.c
- *   Description: The program detects when S2 is pressed and turns on LED1.
- *                LED1 is kept on as long as S2 is pressed.
- *                P1_ISR is used to detect both S2 presses and releases.
- *   Board:       EXP430F5529LP Launchpad
- *   Clocks:      ACLK = 32.768kHz, MCLK = SMCLK = default DCO
- *
- *                 MSP430F5529
- *            +-----------------+
- *            |                 |
- *            |                 |
- *            |                 |
- *            |                 |
- *            |             P1.0|--> LED1
- *            |             P1.1|<-- S2
- *
- *   Author: Aleksandar Milenkovic, milenkovic@computer.org
- *   Date:   September 2010
-********************************************************************************/
+/*------------------------------------------------------------------------------
+ * File:        Lab_06_D5.c
+ * Function:    The program detects when S2 is pressed and turns on LED1.
+ * Description: P1_ISR is used to detect both S2 presses and releases.
+ * Clocks:      ACLK = 32.768kHz, MCLK = SMCLK = default DCO = 2^20=1,048,576 Hz
+ *                      MSP-EXP430F5529LP
+ *                     --------------------
+ *                      |                 |
+ *                      |                 | 
+ *                      |                 |
+ *                      |                 |
+ *                      |             P1.0|--> LED1(RED)
+ *                      |             P1.1|<-- S2
+ *                      |                 |
+ * Input:       Pressing S2
+ * Output:      LED1 is kept on as long as S2 is pressed.
+ * Author(s):   Aleksandar Milenkovic, milenkovic@computer.org
+ * Date:        September 2010
+ * ---------------------------------------------------------------------------*/
 #include  <msp430.h>
 
 unsigned char S2pressed = 0;        // S2 status (0 not pressed, 1 pressed)

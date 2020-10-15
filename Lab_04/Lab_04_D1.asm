@@ -1,16 +1,15 @@
-;-------------------------------------------------------------------------------
-; File       : Lab4_D1.asm (CPE 325 Lab4 Demo code)
-; Function   : Counts the number of characters E in a given string
-; Description: Program traverses an input array of characters
-;              to detect a character 'E'; exits when a NULL is detected
-; Input      : The input string is specified in myStr
-; Output     : The port P1OUT displays the number of E's in the string
-; Author     : A. Milenkovic, milenkovic@computer.org
-; Date       : August 14, 2008;
-;              August 5, 2020 (revised)
-;-------------------------------------------------------------------------------
-        .cdecls C,LIST,"msp430.h"       ; Include device header file
-
+ ------------------------------------------------------------------------------
+; File:         Lab_04_D1.asm
+; Function:     Counts the number of characters E in a given string
+; Description:  Program traverses an input array of characters
+;               to detect a character 'E'; exits when a NULL is detected    
+; Input:        The input string specified in myStr
+; Output:       The port P1OUT displays the number of E's in the string
+; Author(s):    Aleksandar Milenkovic, milenkovic@computer.org
+; Date:         August 14, 2008
+; Revised:      August 5, 2020
+; ------------------------------------------------------------------------------
+        .cdecls C, LIST, "msp430.h"        ; Include device header file
 ;-------------------------------------------------------------------------------
         .def    RESET                   ; Export program entry-point to
                                         ; make it known to linker.

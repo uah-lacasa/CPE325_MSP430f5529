@@ -1,34 +1,27 @@
-;/******************************************************************************
- ;*  File:        Lab5_D4.asm
- ;*  Description: MSP430F5529 Demo: This program defines two integer variables
- ;*               .. and performs multiplication of these two intergers and
- ;*               .. and stores the result in another variable
- ;*
- ;*  Clocks:      ACLK = 32768Hz,
- ;*               MCLK = SMCLK = 1 Mhz
- ;*
- ;* Input:       None
- ;* Output:      None
- ;*
- ;*                MSP430F5529
- ;*            -----------------
- ;*        /|\|              XIN|-
- ;*         | |                 | 32kHz
- ;*         --|RST          XOUT|-
- ;*           |                 |
- ;*           |                 |
- ;*           |                 |
- ;*           |                 |
- ;*           |                 |
- ;*           |                 |
- ;*
- ;*  Modified:   Prawar Poudel
- ;*  Date:       August 2020
- ;****************************************************************************/
-
-;-------------------------------------------------------------------------------
-            .cdecls C,LIST,"msp430.h"       ; Include device header file
-            
+; ------------------------------------------------------------------------------
+; File:         Lab_05_D4.asm
+; Function:     Multiply two integers
+; Description:  This program defines two integer variables
+;               and performs multiplication of these two intergers and
+;               and stores the result in another variable
+; Clocks:       ACLK = 32.768kHz, MCLK = SMCLK = 1 Mhz
+;                       MSP-EXP430F5529LP
+;                      --------------------
+;                   /|\|               XIN|-
+;                    | |                  | 32kHz
+;                    --|RST           XOUT|-
+;                      |                  |
+;                      |                  |
+;                      |                  |
+;                      |                  |
+; Input:        None
+; Output:       None
+; Author(s):    Aleksandar Milenkovic, milenkovic@computer.org
+; Date:         September 14, 2018
+; Modified:     Prawar Poudel, prawar.poudel@uah.edu
+; Date:         August 5, 2020
+; ------------------------------------------------------------------------------
+            .cdecls C, LIST, "msp430.h"    ; Include device header file
 ;-------------------------------------------------------------------------------
             .def    RESET                   ; Export program entry-point to
                                             ; make it known to linker.
