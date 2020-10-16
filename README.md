@@ -1,7 +1,7 @@
 # CPE 325: Embedded Systems Laboratory @ The University of Alabama in Huntsville
 Demonstration programs for the MSP-EXP430F5529LP.
 
-This repository contains demonstration programs for the **CPE 325: Embeddedd Systems Laboratory** course taught at **The University of Alabama in Huntsville** (UAH). The programs in this repository are targeting the [MSP-EXP430F5529LP](https://www.ti.com/tool/MSP-EXP430F5529LP) LaunchPad board by **Texas Instruments** (TI). Please refer to the official [UAH LACASA site](http://lacasa.uah.edu/portal/index.php/teaching/47-cpe-323-introduction-to-embedded-computer-systems) for all tutorial documents.
+This repository contains demonstration programs for the **CPE 325: Embedded Systems Laboratory** course taught at **The University of Alabama in Huntsville** (UAH). The programs in this repository are targeting the [MSP-EXP430F5529LP](https://www.ti.com/tool/MSP-EXP430F5529LP) LaunchPad board by **Texas Instruments** (TI). Please refer to the official [UAH LACASA site](http://lacasa.uah.edu/portal/index.php/teaching/47-cpe-323-introduction-to-embedded-computer-systems) for all tutorial documents.
 
 ## [Lab 00](https://github.com/uah-lacasa/CPE325_MSP430f5529/tree/master/Lab00)
 - Lab 00 demonstrates the installation procedure for [**Code Composer Studio**](https://www.ti.com/tool/CCSTUDIO) (CCS) on a Windows machine. CCS is the integrated development environment (IDE) from TI that will be used for this course.
