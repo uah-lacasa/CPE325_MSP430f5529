@@ -4,6 +4,9 @@
  * Description: This C program calculates the factorial for several integers
                 and print out the result for both int (16-bit) and
                 long int data types (32-bit), decimally and hexadecimally.
+                
+                Students must have the source file with definition of functions
+                ifact() and lifact() added to the same project as this file.
  * Input:       MAXF
  * Output:      Factorials of integer numbers from 1 to MAXF
  * Author(s):   Aleksandar Milenkovic, milenkovic@computer.org
