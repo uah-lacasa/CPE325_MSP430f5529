@@ -27,7 +27,7 @@ RESET:  mov.w   #__STACK_END,SP         ; Initialize stack pointer
 main:
         mov.w   #arr1, R4   ; Load the starting address of the arr1 into R4
         mov.w   #arr2, R5   ; Load the starting address of the arr2 into R5
-            
+
         ; Sum arr1 and display
         clr.w   R7                      ; Holds the sum
         mov.w   #8, R10                 ; Number of elements in arr1

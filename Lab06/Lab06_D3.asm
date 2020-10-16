@@ -37,19 +37,19 @@ RESET:  mov.w   #__STACK_END,SP         ; Initialize stack pointer
         mov.w   #WDTPW|WDTHOLD,&WDTCTL  ; Stop watchdog timer
 ;-------------------------------------------------------------------------------
 Setup:
-            bis.b   #0x01, &P1DIR       ; Set P1.0 to output
+        bis.b   #0x01, &P1DIR           ; Set P1.0 to output
                                         ; direction (0000_0001)
-            bic.b   #0x01, &P1OUT       ; Set P1OUT to 0x0000_0001
+        bic.b   #0x01, &P1OUT           ; Set P1OUT to 0x0000_0001
 
-            bic.b   #0x02, &P1DIR       ; SET P1.1 as input for S2
-            bis.b   #0x02, &P1REN       ; Enable Pull-Up resister at P1.1
-            bis.b   #0x02, &P1OUT       ; required for proper IO set up
+        bic.b   #0x02, &P1DIR           ; SET P1.1 as input for S2
+        bis.b   #0x02, &P1REN           ; Enable Pull-Up resister at P1.1
+        bis.b   #0x02, &P1OUT           ; required for proper IO set up
 
 
-            bis.w   #GIE, SR            ; Enable Global Interrupts
-            bis.b   #0x02, &P1IE        ; Enable Port 1 interrupt from bit 1
-            bis.b   #0x02, &P1IES       ; Set interrupt to call from hi to low
-            bic.b   #0x02, &P1IFG       ; Clear interrupt flag
+        bis.w   #GIE, SR                ; Enable Global Interrupts
+        bis.b   #0x02, &P1IE            ; Enable Port 1 interrupt from bit 1
+        bis.b   #0x02, &P1IES           ; Set interrupt to call from hi to low
+        bic.b   #0x02, &P1IFG           ; Clear interrupt flag
 InfLoop:
             jmp     $                   ; Loop here until interrupt
                                             
@@ -58,7 +58,7 @@ InfLoop:
 ;----------------------------------------------------------------------------
 S2_ISR:
             bic.b   #0x02, &P1IFG       ; Clear interrupt flag
-ChkSW2:     bit.b   #0x02, &P1IN         ; Check if S2 is pressed
+ChkSW2:     bit.b   #0x02, &P1IN        ; Check if S2 is pressed
                                         ; (0000_0010 on P1IN)
             jnz     LExit               ; If not zero, SW is not pressed
                                         ; loop and check again
@@ -72,12 +72,12 @@ SWD20ms:    dec.w   R15                 ; Decrement R15
             nop
             nop
             jnz     SWD20ms             ; Delay over?
-            bit.b   #0x02, &P1IN    ; Verify S2 is still pressed
+            bit.b   #0x02, &P1IN        ; Verify S2 is still pressed
             jnz     LExit               ; If not, wait for S2 press
-LEDon:      bis.b   #0x01, &P1OUT        ; Turn on LED1
-SW2wait:    bit.b   #0x02, &P1IN         ; Test S2
+LEDon:      bis.b   #0x01, &P1OUT       ; Turn on LED1
+SW2wait:    bit.b   #0x02, &P1IN        ; Test S2
             jz      SW2wait             ; Wait until S2 is released
-            bic.b   #001, &P1OUT         ; Turn off LED1
+            bic.b   #001, &P1OUT        ; Turn off LED1
 LExit:      reti                        ; Return from interrupt
 ;-------------------------------------------------------------------------------
 ; Stack Pointer definition

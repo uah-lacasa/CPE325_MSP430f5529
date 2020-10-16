@@ -24,12 +24,14 @@
 #include <msp430.h>
 
 #define S1 P2IN&BIT1
+#define REDLED 0x01                     // Mask for BIT0 = 0000_0001b
+#define GREENLED 0x80                   // Mask for BIT7 = 1000_0000b
 
 void main(void)
 {
     WDTCTL = WDTPW + WDTHOLD;           // Stop watchdog timer
-    P1DIR |= BIT0;                      // Set P1.0 to output direction (0000_0001b)
-    P1OUT &= ~BIT0;                     // LED1 is OFF
+    P1DIR |= REDLED;                    // Set P1.0 to output direction
+    P1OUT &= ~REDLED;                   // LED1 is OFF
 
     P2DIR &= ~BIT1;                     // Set P2.1 as input for S1 input
     P2REN |= BIT1;                      // Enable the pull-up resistor at P2.1
@@ -43,13 +45,13 @@ void main(void)
             for (i = 2000; i > 0; i--); // Debounce ~20 ms
             if ((S1) == 0)              // If S1 is pressed
             {
-                P1OUT |= BIT0;          // Turn LED1 on
+                P1OUT |= REDLED;        // Turn LED1 on
             }
             while ((S1) == 0);          // Hang-on as long as S1 pressed
         }
         else
 		{
-            P1OUT &= ~BIT0;             // Turn LED1 off
+            P1OUT &= ~REDLED;           // Turn LED1 off
 		}
     }
 }

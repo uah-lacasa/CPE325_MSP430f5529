@@ -28,6 +28,9 @@
  * ---------------------------------------------------------------------------*/
 #include  <msp430.h>
 
+#define REDLED 0x01             // Mask for BIT0 = 0000_0001b
+#define GREENLED 0x80           // Mask for BIT7 = 1000_0000b
+
 // this function configures the clock sources as follows
 // .. use internal REFOCLK for FLL reference clock (UCSCTL3 = SELREF_2)
 // .. ACLK is sourced with REFOCLK (UCSCTL4 |= SELA_2)
@@ -46,14 +49,14 @@ void main(void)
 {
    WDTCTL = WDTPW + WDTHOLD;            // Stop watchdog timer
 
-   P1DIR |= BIT0;                       // ACLK set out to pins
-   P1SEL |= BIT0;
+   P1DIR |= REDLED;                       // ACLK set out to pins
+   P1SEL |= REDLED;
 
    P2DIR |= BIT2;                       // SMCLK set out to pins
    P2SEL |= BIT2;
 
-   P7DIR |= BIT7;                       // MCLK set out to pins
-   P7SEL |= BIT7;
+   P7DIR |= GREENLED;                       // MCLK set out to pins
+   P7SEL |= GREENLED;
 
    _EINT();                             // enable interrupts
    P2DIR &= ~BIT1;                      // set P2.1 as input (SW1)
@@ -63,13 +66,13 @@ void main(void)
    P2IES |= BIT1;                       // enable hi->lo edge for interrupt
    P2IFG &= ~BIT1;                      // clear any errornous interrupt flag
 
-   P4DIR |= BIT7;                       // set P4.7 as output (LED2)
+   P4DIR |= GREENLED;                       // set P4.7 as output (LED2)
 
    configure_clock_sources();           // configure the clock sources
 
    while(1)                             // Loop in place (infinite)
    {
-       P4OUT ^= BIT7;                   // toggle LED2
+       P4OUT ^= GREENLED;                   // toggle LED2
        __delay_cycles(500000);          // arbitrary delay of 500ms
    }
 }

@@ -25,12 +25,14 @@
  * ---------------------------------------------------------------------------*/
 #include  <msp430.h>
 
+#define REDLED 0x01             // Mask for BIT0 = 0000_0001b
+
 void main(void)
 {
    WDTCTL = WDTPW + WDTHOLD;            // Stop watchdog timer
 
-   P1DIR |= BIT0;                       // ACLK set out to pins
-   P1SEL |= BIT0;
+   P1DIR |= REDLED;                       // ACLK set out to pins
+   P1SEL |= REDLED;
    P2DIR |= BIT2;                       // SMCLK set out to pins
    P2SEL |= BIT2;
    P7DIR |= BIT7;                       // MCLK set out to pins

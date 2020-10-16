@@ -31,7 +31,7 @@ RESET:  mov.w   #__STACK_END,SP         ; Initialize stack pointer
 ;-------------------------------------------------------------------------------
 ; Main loop here
 ;-------------------------------------------------------------------------------
-main:   ; bis.b   #0FFh,&P1DIR          ; Do not output the result on port pins
+main:   ; bis.b   #0FFh, &P1DIR         ; Do not output the result on port pins
         mov.w   #myStr, R4              ; Load the starting address of the string into R4
         clr.b   R5                      ; Register R5 will serve as a counter
 gnext:  mov.b   @R4+, R6                ; Get a new character

@@ -34,9 +34,9 @@ long int exponential(int base, int power)
         power--;
         answer = base * exponential(base, power); // Call function again
     }
-    else                        // Else power = 1
+    else                        // Else, power = 1
     {
-        answer = base;          // Answer is the base
+        answer = base;          // Answer is the base when power = 1
     }
     return answer;
 }

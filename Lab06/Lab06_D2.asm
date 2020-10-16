@@ -77,6 +77,6 @@ SW1wait:
 ;-------------------------------------------------------------------------------
 ; Interrupt Vectors
 ;-------------------------------------------------------------------------------
-         .sect   ".reset"               ; MSP430 RESET Vector
-         .short  RESET
-         .end
+        .sect   ".reset"                ; MSP430 RESET Vector
+        .short  RESET
+        .end
