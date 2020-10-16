@@ -32,7 +32,7 @@
 
 void main(void)
 {
-    WDTCTL = WDTPW + WDTHOLD;     // Stop WDT
+    WDTCTL = WDTPW + WDTHOLD;   // Stop watchdog timer
     _EINT();                      // Enable interrupts
 
     P1DIR |= BIT0;                //LED1 as output

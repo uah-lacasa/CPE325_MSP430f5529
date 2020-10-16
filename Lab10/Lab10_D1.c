@@ -23,7 +23,7 @@
 #include <msp430.h> 
 
 int main(void) {
-    WDTCTL = WDTPW + WDTHOLD;   // stop watchdog timer
+    WDTCTL = WDTPW + WDTHOLD;   // Stop watchdog timer
     P1DIR |= BIT0;
     P4DIR |= BIT7;
 

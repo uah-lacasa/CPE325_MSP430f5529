@@ -27,7 +27,7 @@
 
 void main(void)
 {
-  WDTCTL = WDTPW + WDTHOLD;      // Stop watchdog timer
+  WDTCTL = WDTPW + WDTHOLD;                 // Stop watchdog timer
   P1DIR |= BIT0;                            // ACLK set out to pins
   P1SEL |= BIT0;
   P2DIR |= BIT2;                            // SMCLK set out to pins

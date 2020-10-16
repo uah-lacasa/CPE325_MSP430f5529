@@ -25,7 +25,7 @@ int main()
 {
 
     // stop watchdog timer
-    WDTCTL = WDTPW+WDTHOLD;
+    WDTCTL = WDTPW + WDTHOLD;   // Stop watchdog timer
 
     // initialize LED1 and LED2 as output
     P4DIR |= BIT7;

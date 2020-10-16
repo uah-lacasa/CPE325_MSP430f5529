@@ -17,7 +17,7 @@ long int exponential(int, int);
 
 int main(void)
 {
-    WDTCTL = WDTPW + WDTHOLD;     //stop the watchdog timer
+    WDTCTL = WDTPW + WDTHOLD;   // Stop watchdog timer
 
     int base = 12;        //the base
     int power = 4;        //the exponent, must be positive and 1 or greater

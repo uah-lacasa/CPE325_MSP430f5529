@@ -23,7 +23,7 @@ long int lifact(int); // Prototype of lifact (long interger)
 int main(void)
 {
     // Stop watchdog timer to prevent time out reset
-    WDTCTL = WDTPW + WDTHOLD;
+    WDTCTL = WDTPW + WDTHOLD;   // Stop watchdog timer
     int i;       // step counter
     int a;       // result for type int 
     long int b;  // result for type long int

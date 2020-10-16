@@ -23,7 +23,7 @@ unsigned char S2pressed = 0;        // S2 status (0 not pressed, 1 pressed)
 
 void main(void)
 {
-    WDTCTL = WDTPW+WDTHOLD;         // Stop WDT
+    WDTCTL = WDTPW + WDTHOLD;   // Stop watchdog timer
     P1DIR |= BIT0;                  // Set LED1 as output
     P1OUT = 0x00;                   // Clear LED1 status
 

@@ -49,7 +49,7 @@ void UART_setup(void)
 
 void main(void)
 {
-    WDTCTL = WDTPW + WDTHOLD;// Stop WDT
+    WDTCTL = WDTPW + WDTHOLD;   // Stop watchdog timer
     P1DIR |= BIT0;           // Set P1.0 to be output
     UART_setup();            // InitiAlize USCI_A0 in UART mode
 
