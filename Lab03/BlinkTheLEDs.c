@@ -29,7 +29,7 @@ void main(void)
 
     P1OUT = P1OUT & ~REDLED;    // P1.0 is cleared
     P4OUT = P4OUT | GREENLED;   // P4.7 is on
-    while(1)
+    while(1)                    // Infinite loop
     {
         __delay_cycles(500000); // Delay of ~250 ms
         P1OUT ^= REDLED;        // Toggle P1.0 (REDLED)

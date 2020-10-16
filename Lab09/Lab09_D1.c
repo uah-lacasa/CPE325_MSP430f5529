@@ -104,7 +104,7 @@ void main(void)
 
     rx_flag = 0;                      // RX default state "empty"
     _EINT();                          // Enable global interrupts
-    while(1)
+    while(1)                          // Infinite loop
     {
         sendMessage(gm1, sizeof(gm1));// Send a greetings message
 
@@ -145,7 +145,7 @@ void main(void)
             sendMessage(gm3, sizeof(gm3));
         }
     }                                   // End of while
-    while(1);                           // Stay here forever
+    while(1);                           // Infinite loop
 }
 
 #pragma vector = USCI_A0_VECTOR

@@ -30,30 +30,32 @@
  * ---------------------------------------------------------------------------*/
 #include <msp430.h>
 
+#define REDLED 0x01             // Mask for BIT0 = 0000_0001b
+
 // Initialize USCI_A0 module to UART mode
 void UART_setup(void)
 {
 
-    P3SEL |= BIT3 + BIT4;   // Set USCI_A0 RXD/TXD to receive/transmit data
-    UCA0CTL1 |= UCSWRST;    // Set software reset during initialization
-    UCA0CTL0 = 0;           // USCI_A0 control register
-    UCA0CTL1 |= UCSSEL_2;   // Clock source SMCLK
+    P3SEL |= BIT3 + BIT4;       // Set USCI_A0 RXD/TXD to receive/transmit data
+    UCA0CTL1 |= UCSWRST;        // Set software reset during initialization
+    UCA0CTL0 = 0;               // USCI_A0 control register
+    UCA0CTL1 |= UCSSEL_2;       // Clock source SMCLK
 
-    UCA0BR0 = 0x09;         // 1048576 Hz  / 115200 lower byte
-    UCA0BR1 = 0x00;         // upper byte
-    UCA0MCTL |= UCBRS0;     // Modulation (UCBRS0=0x01, UCOS16=0)
+    UCA0BR0 = 0x09;             // 1048576 Hz  / 115200 lower byte
+    UCA0BR1 = 0x00;             // upper byte
+    UCA0MCTL |= UCBRS0;         // Modulation (UCBRS0=0x01, UCOS16=0)
 
-    UCA0CTL1 &= ~UCSWRST;   // Clear software reset to initialize USCI state machine
-    UCA0IE |= UCRXIE;       // Enable USCI_A0 RX interrupt
+    UCA0CTL1 &= ~UCSWRST;       // Clear software reset to initialize USCI state machine
+    UCA0IE |= UCRXIE;           // Enable USCI_A0 RX interrupt
 }
 
 void main(void)
 {
     WDTCTL = WDTPW + WDTHOLD;   // Stop watchdog timer
-    P1DIR |= BIT0;           // Set P1.0 to be output
-    UART_setup();            // InitiAlize USCI_A0 in UART mode
+    P1DIR |= REDLED;            // Set P1.0 to be output
+    UART_setup();               // InitiAlize USCI_A0 in UART mode
 
-    _BIS_SR(LPM0_bits + GIE); // Enter LPM0, interrupts enabled
+    _BIS_SR(LPM0_bits + GIE);   // Enter LPM0, interrupts enabled
 }
 
 // Echo back RXed character, confirm TX buffer is ready first
@@ -62,5 +64,5 @@ __interrupt void USCIA0RX_ISR (void)
 {
     while(!(UCA0IFG&UCTXIFG));  // Wait until can transmit
     UCA0TXBUF = UCA0RXBUF;      // TXBUF <-- RXBUF
-    P1OUT ^= BIT0;              // Toggle LED1
+    P1OUT ^= REDLED;            // Toggle LED1
 }

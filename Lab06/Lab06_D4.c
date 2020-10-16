@@ -41,7 +41,7 @@ void main(void)
     P1IES |= BIT1;              // P1.1 hi/low edge
     P1IFG &= ~BIT1;             // P1.1 IFG cleared
 
-    while(1)
+    while(1)                    // Infinite loop
     {
         while((S2) == 0);       // Wait until S2 is released
         P1OUT &= ~REDLED;       // LED1 is turned off

@@ -62,7 +62,7 @@ void main(void)
 
     configure_clock_sources();  // configure the clock sources
 
-    while(1)                    // Loop in place (infinite)
+    while(1)                    // Infinite loop
     {
         P4OUT ^= GREENLED;      // toggle LED2
         __delay_cycles(500000); // arbitrary delay of 500ms

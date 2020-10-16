@@ -60,5 +60,5 @@ void main(void)
     // UG for optimization.
     // 32 x 32 x 8 MHz / 32,768 Hz = 250000 = MCLK cycles for DCO to settle
     __delay_cycles(250000);
-    while(1);                   // Loop in place
+    while(1);                   // Infinite loop
 }

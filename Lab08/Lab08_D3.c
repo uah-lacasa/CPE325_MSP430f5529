@@ -33,6 +33,8 @@
 #include <msp430.h>
 #include <stdio.h>
 
+#define REDLED 0x01             // Mask for BIT0 = 0000_0001b
+
 // Current time variables
 unsigned int sec = 0;              // Seconds
 unsigned int tsec = 0;             // 1/10 second
@@ -70,7 +72,7 @@ void SetTime(void)
     {
         tsec = 0;
         sec++;
-        P1OUT ^= BIT0;              // Toggle LED1
+        P1OUT ^= REDLED;              // Toggle LED1
     }
 }
 
@@ -91,9 +93,9 @@ void main(void)
     WDTCTL = WDTPW + WDTHOLD;       // Stop watchdog timer
     UART_setup();                   // Initialize UART
     TimerA_setup();                 // Initialize Timer_B
-    P1DIR |= BIT0;                  // P1.0 is output;
+    P1DIR |= REDLED;                  // P1.0 is output;
 
-    while(1)
+    while(1)                        // Infinite loop
     {
         _BIS_SR(LPM0_bits + GIE);   // Enter LPM0 w/ interrupts
         SendTime();                 // Send Time to HyperTerminal/putty

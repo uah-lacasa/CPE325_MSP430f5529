@@ -50,7 +50,6 @@ volatile float myData;
 
 void UART_setup(void)
 {
-
     P3SEL |= BIT3 + BIT4;   // Set USCI_A0 RXD/TXD to receive/transmit data
     UCA0CTL1 |= UCSWRST;    // Set software reset during initialization
     UCA0CTL0 = 0;           // USCI_A0 control register

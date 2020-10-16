@@ -32,7 +32,7 @@ void main(void)
     P1OUT &= ~REDLED;                   // LED1 is OFF
     P4OUT |= GREENLED;                  // LED2 is ON
     unsigned int i = 0;
-    while(1)
+    while(1)                            // Infinite loop
     {
         for (i = 0; i < 50000; i++);    // Delay 0.5s
                                         // 0.5s on, 0.5s off => 1/(1s) = 1Hz

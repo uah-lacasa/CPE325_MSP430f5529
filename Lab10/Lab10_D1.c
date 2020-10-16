@@ -22,17 +22,20 @@
  * ---------------------------------------------------------------------------*/
 #include <msp430.h> 
 
+#define REDLED 0x01             // Mask for BIT0 = 0000_0001b
+#define GREENLED 0x80           // Mask for BIT7 = 1000_0000b
+
 int main(void)
 {
-    WDTCTL = WDTPW + WDTHOLD;           // Stop watchdog timer
-    P1DIR |= BIT0;
-    P4DIR |= BIT7;
+    WDTCTL = WDTPW + WDTHOLD;   // Stop watchdog timer
+    P1DIR |= REDLED;
+    P4DIR |= GREENLED;
     P1OUT = 0x01;
     unsigned int i = 0;
-    while(1)
+    while(1)                    // Infinite loop
     {
-        P1OUT ^= BIT0;
-        P4OUT ^= BIT7;
+        P1OUT ^= REDLED;
+        P4OUT ^= GREENLED;
         for(i = 0; i < 5000; i++);
     }
     return 0;

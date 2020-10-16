@@ -43,6 +43,8 @@
  * ---------------------------------------------------------------------------*/
 #include <msp430.h>
 
+#define REDLED 0x01             // Mask for BIT0 = 0000_0001b
+
 void UART_setup(void)
 {
 
@@ -61,7 +63,7 @@ void UART_setup(void)
 void main(void)
 {
     WDTCTL = WDTPW + WDTHOLD;   // Stop watchdog timer
-    P1DIR |= BIT0;                  // Set P1.0 to be output
+    P1DIR |= REDLED;                  // Set P1.0 to be output
     UART_setup();                   // Initialize UART
 
     while (1)
@@ -70,6 +72,6 @@ void main(void)
        // New character is here in UCA0RXBUF
        while(!(UCA0IFG&UCTXIFG));   // Wait until TXBUF is free
        UCA0TXBUF = UCA0RXBUF;       // TXBUF <= RXBUF (echo)
-       P1OUT ^= BIT0;               // Toggle LED1
+       P1OUT ^= REDLED;               // Toggle LED1
     }
 }

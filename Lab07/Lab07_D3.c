@@ -24,18 +24,20 @@
  * ---------------------------------------------------------------------------*/
 #include <msp430.h>
 
+#define REDLED 0x01             // Mask for BIT0 = 0000_0001b
+
 void main(void)
 {
-    WDTCTL = WDT_ADLY_1000;             // 1 s interval timer
-    P1DIR |= BIT0;                      // Set P2.2 to output direction
+    WDTCTL = WDT_ADLY_1000;     // 1 s interval timer
+    P1DIR |= REDLED;            // Set P1.0 to output direction
 
-    for (;;)
+    while(1)                    // Infinite loop
     {
         // Use software polling
         if ((SFRIFG1 & WDTIFG) == 1)
         {
-            P1OUT ^= BIT0;
-            SFRIFG1 &= ~WDTIFG;         // Clear bit WDTIFG in IFG1
+            P1OUT ^= REDLED;
+            SFRIFG1 &= ~WDTIFG; // Clear bit WDTIFG in IFG1
         }
     }
 }
