@@ -19,7 +19,7 @@ int int_fact(int base)
     {
         for(power = 2; power <= base; power++)
 		{
-			total *= power;  // Do the factorial multiplication
+			total *= power;     // Do the factorial multiplication
 		}
         return total;
     }
@@ -38,7 +38,7 @@ long int long_int_fact(int p)
     {
         for(power = 2; power <= base; power++)
 		{
-			total *= power;  // Do the factorial multiplication
+			total *= power;     // Do the factorial multiplication
 		}
         return total;
     }

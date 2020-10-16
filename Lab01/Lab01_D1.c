@@ -16,8 +16,8 @@
 
 #define MAXF 16
 
-int int_fact(int);                 // Prototype of ifact (integer)
-long int long_int_fact(int);           // Prototype of lifact (long interger)
+int int_fact(int);              // Prototype of int_fact
+long int long_int_fact(int);    // Prototype of long_int_fact
 
 int main(void)
 {

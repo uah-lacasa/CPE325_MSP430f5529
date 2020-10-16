@@ -19,7 +19,7 @@ int main(void)
 {
     WDTCTL = WDTPW + WDTHOLD;   // Stop watchdog timer
     int base = 12;
-    int power = 4;              // the exponent, must be positive and 1 or greater
+    int power = 4;              // Exponent, must be greater than 1
     long int answer = exponential(base, power);  // find the power
     printf("%d raised to the %d power is %ld", base, power, answer);
     return 0;
@@ -32,7 +32,7 @@ long int exponential(int base, int power)
     if (power > 1)              // if power > 1, call again
     {
         power--;
-        answer = base*exponential(base, power);
+        answer = base * exponential(base, power);
     }
     else                        // else power = 1 and the answer is the base
     {
