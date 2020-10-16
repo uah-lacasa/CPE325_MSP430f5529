@@ -41,7 +41,7 @@ __interrupt void watchdog_timer(void)
     static int i = 0;
     i++;
     if (i == 32)
-	{                           // 31.25 * 32 ms ~ 1s
+    {                           // 31.25 * 32 ms ~ 1s
         P1OUT ^= REDLED;        // Toggle P1.0
                                 // 1s on, 1s off; period = 2s, f = 1/2s = 0.5Hz
         i = 0;

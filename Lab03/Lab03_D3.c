@@ -50,8 +50,8 @@ void main(void)
             while ((S1) == 0);          // Hang-on as long as S1 pressed
         }
         else
-		{
+        {
             P1OUT &= ~REDLED;           // Turn LED1 off
-		}
+        }
     }
 }

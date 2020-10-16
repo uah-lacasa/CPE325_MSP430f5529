@@ -15,7 +15,7 @@ int main(void)
 {
     WDTCTL = WDTPW + WDTHOLD;       // Stop watchdog timer
     int int_1 = 11;                 // Signed 16-bit integer
-	int int_2 = -6;                 // Signed 16-bit integer
+    int int_2 = -6;                 // Signed 16-bit integer
     unsigned int u_int_1 = 65535;   // Unsigned 16-bit integer
     long int long_1 = 100000;       // Signed 32-bit integer
     long int long_2 = -2;           // Signed 32-bit integer

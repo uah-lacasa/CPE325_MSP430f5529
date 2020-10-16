@@ -48,7 +48,7 @@ void main(void)
 __interrupt void Port1_ISR (void)
 {
     if (S2pressed == 0)
-	{
+    {
         S2pressed = 1;
         P1OUT |= REDLED;        // LED1 is turned ON
         P1IFG &= ~BIT1;         // P1IFG.BIT0 is cleared
