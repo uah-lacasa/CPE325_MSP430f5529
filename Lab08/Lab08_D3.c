@@ -36,34 +36,37 @@
 #define REDLED 0x01             // Mask for BIT0 = 0000_0001b
 
 // Current time variables
-unsigned int sec = 0;              // Seconds
-unsigned int tsec = 0;             // 1/10 second
-char Time[8];                      // String to keep current time
+unsigned int sec = 0;           // Seconds
+unsigned int tsec = 0;          // 1/10 second
+char Time[8];                   // String to keep current time
 
 void UART_setup(void)
 {
-    P3SEL = BIT3+BIT4;                        // P3.4,5 = USCI_A0 TXD/RXD
-    UCA0CTL1 |= UCSWRST;                      // **Put state machine in reset**
-    UCA0CTL1 |= UCSSEL_2;                     // SMCLK
-    UCA0BR0 = 6;                              // 1MHz 9600 (see User's Guide)
-    UCA0BR1 = 0;                              // 1MHz 9600
-    UCA0MCTL = UCBRS_0 + UCBRF_13 + UCOS16;   // Mod. UCBRSx=0, UCBRFx=0,
-                                              // over sampling
-    UCA0CTL1 &= ~UCSWRST;                     // **Initialize USCI state machine**
+    P3SEL = BIT3+BIT4;          // P3.4,5 = USCI_A0 TXD/RXD
+    UCA0CTL1 |= UCSWRST;        // **Put state machine in reset**
+    UCA0CTL1 |= UCSSEL_2;       // SMCLK
+    UCA0BR0 = 6;                // 1MHz 9600 (see User's Guide)
+    UCA0BR1 = 0;                // 1MHz 9600
+    UCA0MCTL = UCBRS_0 + UCBRF_13 + UCOS16; // Mod. UCBRSx=0, UCBRFx=0, over sampling
+    // Clear software reset to initialize USCI state machine
+    UCA0CTL1 &= ~UCSWRST;
 }
+
 
 void TimerA_setup(void)
 {
-    TA0CTL = TASSEL_2 + MC_1 + ID_3; // Select SMCLK/8 and up mode
-    TA0CCR0 = 13107;                 // 100ms interval
-    TA0CCTL0 = CCIE;                 // Capture/compare interrupt enable
+    TA0CTL = TASSEL_2 + MC_1 + ID_3;    // Select SMCLK/8 and up mode
+    TA0CCR0 = 13107;                    // 100ms interval
+    TA0CCTL0 = CCIE;                    // Capture/compare interrupt enable
 }
+
 
 void UART_putCharacter(char c)
 {
-    while (!(UCA0IFG&UCTXIFG));    // Wait for previous character to transmit
-    UCA0TXBUF = c;                  // Put character into tx buffer
+    while (!(UCA0IFG&UCTXIFG)); // Wait for previous character to transmit
+    UCA0TXBUF = c;              // Put character into tx buffer
 }
+
 
 void SetTime(void)
 {
@@ -72,39 +75,41 @@ void SetTime(void)
     {
         tsec = 0;
         sec++;
-        P1OUT ^= REDLED;              // Toggle LED1
+        P1OUT ^= REDLED;        // Toggle LED1
     }
 }
+
 
 void SendTime(void)
 {
     int i;
-    sprintf(Time, "%05d:%01d", sec, tsec);// Prints time to a string
+    sprintf(Time, "%05d:%01d", sec, tsec); // Prints time to a string
 
     for (i = 0; i < sizeof(Time); i++)
     {  // Send character by character
         UART_putCharacter(Time[i]);
     }
-    UART_putCharacter('\r');        // Carriage Return
+    UART_putCharacter('\r');    // Carriage Return
 }
+
 
 void main(void)
 {
-    WDTCTL = WDTPW + WDTHOLD;       // Stop watchdog timer
-    UART_setup();                   // Initialize UART
-    TimerA_setup();                 // Initialize Timer_B
-    P1DIR |= REDLED;                  // P1.0 is output;
+    WDTCTL = WDTPW + WDTHOLD;   // Stop watchdog timer
+    UART_setup();               // Initialize UART
+    TimerA_setup();             // Initialize Timer_B
+    P1DIR |= REDLED;            // P1.0 is output;
 
-    while(1)                        // Infinite loop
+    while(1)                    // Infinite loop
     {
         _BIS_SR(LPM0_bits + GIE);   // Enter LPM0 w/ interrupts
-        SendTime();                 // Send Time to HyperTerminal/putty
+        SendTime();             // Send Time to HyperTerminal/putty
     }
 }
 
 #pragma vector = TIMER0_A0_VECTOR
 __interrupt void TIMERA_ISA(void)
 {
-    SetTime();                       // Update time
-    _BIC_SR_IRQ(LPM0_bits);          // Clear LPM0 bits from 0(SR)
+    SetTime();                  // Update time
+    _BIC_SR_IRQ(LPM0_bits);     // Clear LPM0 bits from 0(SR)
 }

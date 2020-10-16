@@ -48,30 +48,31 @@
 void UART_setup(void)
 {
 
-    P3SEL |= BIT3 + BIT4;   // Set USCI_A0 RXD/TXD to receive/transmit data
-    UCA0CTL1 |= UCSWRST;    // Set software reset during initialization
-    UCA0CTL0 = 0;           // USCI_A0 control register
-    UCA0CTL1 |= UCSSEL_2;   // Clock source SMCLK
+    P3SEL |= BIT3 + BIT4;       // Set USCI_A0 RXD/TXD to receive/transmit data
+    UCA0CTL1 |= UCSWRST;        // Set software reset during initialization
+    UCA0CTL0 = 0;               // USCI_A0 control register
+    UCA0CTL1 |= UCSSEL_2;       // Clock source SMCLK
 
-    UCA0BR0 = 0x09;         // 1048576 Hz  / 115200 lower byte
-    UCA0BR1 = 0x00;         // upper byte
-    UCA0MCTL |= UCBRS0;     // Modulation (UCBRS0=0x01, UCOS16=0)
-
-    UCA0CTL1 &= ~UCSWRST;   // Clear software reset to initialize USCI state machine
+    UCA0BR0 = 0x09;             // 1048576 Hz  / 115200 lower byte
+    UCA0BR1 = 0x00;             // upper byte
+    UCA0MCTL |= UCBRS0;         // Modulation (UCBRS0=0x01, UCOS16=0)
+    // Clear software reset to initialize USCI state machine
+    UCA0CTL1 &= ~UCSWRST;
 }
+
 
 void main(void)
 {
     WDTCTL = WDTPW + WDTHOLD;   // Stop watchdog timer
-    P1DIR |= REDLED;                  // Set P1.0 to be output
-    UART_setup();                   // Initialize UART
+    P1DIR |= REDLED;            // Set P1.0 to be output
+    UART_setup();               // Initialize UART
 
     while (1)
     {
-       while(!(UCA0IFG&UCRXIFG));   // Wait for a new character
-       // New character is here in UCA0RXBUF
-       while(!(UCA0IFG&UCTXIFG));   // Wait until TXBUF is free
-       UCA0TXBUF = UCA0RXBUF;       // TXBUF <= RXBUF (echo)
-       P1OUT ^= REDLED;               // Toggle LED1
+        while(!(UCA0IFG&UCRXIFG));  // Wait for a new character
+        // New character is here in UCA0RXBUF
+        while(!(UCA0IFG&UCTXIFG));  // Wait until TXBUF is free
+        UCA0TXBUF = UCA0RXBUF;      // TXBUF <= RXBUF (echo)
+        P1OUT ^= REDLED;            // Toggle LED1
     }
 }

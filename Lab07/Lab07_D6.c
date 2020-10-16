@@ -41,8 +41,8 @@ void main(void)
     P1DIR |= REDLED;            // LED1 as output
     P4DIR |= GREENLED;          // LED2 as output
 
-    P1OUT &= ~REDLED;           // ensure LED1 and LED2 are off
-    P4OUT &= ~GREENLED;
+    P1OUT &= ~REDLED;           // Ensure LED1 is off
+    P4OUT &= ~GREENLED;         // Ensure LED2 is off
 
     TA0CCTL0 = CCIE;            // TA0 count triggers interrupt
     TA0CCR0 = 10000;            // Set TA0 (and maximum) count value
