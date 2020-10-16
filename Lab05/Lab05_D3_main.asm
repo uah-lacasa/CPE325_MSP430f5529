@@ -29,34 +29,33 @@ RESET:  mov.w   #__STACK_END,SP         ; Initialize stack pointer
 ; Main code here
 ;-------------------------------------------------------------------------------
 main:
-            push    #arr1                       ; push the address of arr1
-            push    #8                          ; push the number of elements
-            sub.w   #2, SP                      ; allocate space for the sum
-            call    #suma_sp
-            mov.w   @SP, &P1OUT                 ; store the sum in P2OUT&P1OUT
-            add.w   #6,SP                       ; collapse the stack
+        push    #arr1                   ; Push the address of arr1
+        push    #8                      ; Push the number of elements
+        sub.w   #2, SP                  ; Allocate space for the sum
+        call    #suma_sp
+        mov.w   @SP, &P1OUT             ; Store the sum in P2OUT&P1OUT
+        add.w   #6, SP                  ; Collapse the stack
 
-            push    #arr2                       ; push the address of arr1
-            push    #7                          ; push the number of elements
-            sub     #2, SP                      ; allocate space for the sum
-            call    #suma_sp
-            mov.w   @SP, &P3OUT                 ; store the sume in P4OUT&P3OUT
-            add.w   #6,SP                       ; collapse the stack
+        push    #arr2                   ; Push the address of arr1
+        push    #7                      ; Push the number of elements
+        sub     #2, SP                  ; Allocate space for the sum
+        call    #suma_sp
+        mov.w   @SP, &P3OUT             ; Store the sume in P4OUT&P3OUT
+        add.w   #6, SP                  ; Collapse the stack
 
-            jmp     $
+        jmp     $
 
-arr1:       .int     1, 2, 3, 4, 1, 2, 3, 4     ; the first array
-arr2:       .int     1, 1, 1, 1, -1, -1, -1     ; the second array
+arr1:   .int    1, 2, 3, 4, 1, 2, 3, 4
+arr2:   .int    1, 1, 1, 1, -1, -1, -1
 
 ;-------------------------------------------------------------------------------
 ; Stack Pointer definition
 ;-------------------------------------------------------------------------------
-            .global __STACK_END
-            .sect   .stack
-            
+        .global __STACK_END
+        .sect   .stack
 ;-------------------------------------------------------------------------------
 ; Interrupt Vectors
 ;-------------------------------------------------------------------------------
-            .sect   ".reset"            ; MSP430 RESET Vector
-            .short  RESET
-            .end
+        .sect   ".reset"                ; MSP430 RESET Vector
+        .short  RESET
+        .end

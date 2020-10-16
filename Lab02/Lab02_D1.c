@@ -13,18 +13,18 @@
 
 int main(void)
 {
-    int int_1 = 11;                 // Signed 16-bit integer
-	int int_2 = -6;                 // Signed 16-bit integer
-    unsigned int u_int_1 = 65535;   // Unsigned 16-bit integer
-    long int long_1 = 100000;       // Signed 32-bit integer
-    long int long_2 = -2;           // Signed 32-bit integer
-    char char_1 = 'A';              // 8-bit character
-    float float_1 = 1.25;           // Single-precision floating-point
+    int int_1 = 11;                         // Signed 16-bit integer
+	int int_2 = -6;                         // Signed 16-bit integer
+    unsigned int u_int_1 = 65535;           // Unsigned 16-bit integer
+    long int long_1 = 100000;               // Signed 32-bit integer
+    long int long_2 = -2;                   // Signed 32-bit integer
+    char char_1 = 'A';                      // 8-bit character
+    float float_1 = 1.25;                   // Single-precision floating-point
     // pointer_1 points to memory where float_1 is stored
     unsigned long int* pointer_1 = &float_1;
     unsigned long int long_3 = *pointer_1;  // Interpret float as long integer
 
-    WDTCTL = WDTPW + WDTHOLD;       // Stop watchdog timer
+    WDTCTL = WDTPW + WDTHOLD;               // Stop watchdog timer
     printf("Each variable below is printed in decimal, hex, and octal representations.\n");
     printf(" int_1 = %6d, %#04.4x, %#06o\n", int_1, int_1, int_1);
     printf(" int_2 = %6d, %#04.4x, %#06o\n", int_2, int_2, int_2);

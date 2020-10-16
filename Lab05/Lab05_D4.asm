@@ -28,11 +28,10 @@
 ;-----------------------------------------------------------------------------
 ;            USER DATA
 ;-----------------------------------------------------------------------------
-            .data                       ; so that it goes to data section
-val1:       .int    45                  ; val1 is an integer whose value is 45
-val2:       .int    3                   ; val2 is an integer whose value is 3
-val3:       .int    0                   ; val3 will hold result of val1*val2
-                                        ; .. let us init it with 0 for now
+        .data                           ; So that it goes to data section
+val1:   .int    45                      ; val1 is an integer whose value is 45
+val2:   .int    3                       ; val2 is an integer whose value is 3
+val3:   .int    0                       ; val3 will hold result of val1*val2
 ;-------------------------------------------------------------------------------
         .text                           ; Assemble into program memory.
         .retain                         ; Override ELF conditional linking
@@ -46,30 +45,23 @@ RESET:  mov.w   #__STACK_END,SP         ; Initialize stack pointer
 ; Main loop here
 ;-------------------------------------------------------------------------------
 main:
-            mov val1,&MPY                ; moves val1 to R5
-            mov val2,&OP2                ; moves val2 to R6
-
-            ; since we have both the numbers already, let us get the results
-            ; after three clock cycles (for 16X16 multiplication)
-            nop
-            nop
-            nop
-
-            mov  RESLO,&val3
-
-            jmp $                        ; infinite loop
-
-                                            
-
+        mov     val1, &MPY              ; moves val1 to R5
+        mov     val2, &OP2              ; moves val2 to R6
+; Since we have both numbers, let us get the result after the three clock cycles
+; required for for 16X16 hardware multiplication
+        nop
+        nop
+        nop
+        mov     RESLO, &val3
+        jmp     $                       ; Infinite loop
 ;-------------------------------------------------------------------------------
 ; Stack Pointer definition
 ;-------------------------------------------------------------------------------
-            .global __STACK_END
-            .sect   .stack
-            
+        .global __STACK_END
+        .sect   .stack
 ;-------------------------------------------------------------------------------
 ; Interrupt Vectors
 ;-------------------------------------------------------------------------------
-            .sect   ".reset"            ; MSP430 RESET Vector
-            .short  RESET
-            .end
+        .sect   ".reset"                ; MSP430 RESET Vector
+        .short  RESET
+        .end
