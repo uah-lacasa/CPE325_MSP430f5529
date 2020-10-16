@@ -22,14 +22,13 @@
  * Date:        August 08, 2019
  * ---------------------------------------------------------------------------*/
 #include  <msp430.h>
-#define   S2 BIT1&P1IN
+#define S2 BIT1&P1IN
 #define REDLED 0x01             // Mask for BIT0 = 0000_0001b
 
 void main(void)
 {
     WDTCTL = WDTPW + WDTHOLD;   // Stop watchdog timer
-
-    P1DIR |= REDLED;              // Set LED1 as output
+    P1DIR |= REDLED;            // Set LED1 as output
     P1OUT = 0x00;               // Clear LED1
 
     P1DIR &= ~BIT1;             // Set the direction at S2 as input
@@ -42,10 +41,10 @@ void main(void)
     P1IES |= BIT1;              // P1.1 hi/low edge
     P1IFG &= ~BIT1;             // P1.1 IFG cleared
 
-    for(;;)
+    while(1)
     {
         while((S2) == 0);       // Wait until S2 is released
-        P1OUT &= ~REDLED;         // LED1 is turned off
+        P1OUT &= ~REDLED;       // LED1 is turned off
     }
 }
 
@@ -53,6 +52,6 @@ void main(void)
 #pragma vector = PORT1_VECTOR
 __interrupt void Port1_ISR (void)
 {
-    P1OUT |= REDLED;                // LED1 is turned ON
-    P1IFG &= ~BIT1;               // P1.0 IFG cleared
+    P1OUT |= REDLED;            // LED1 is turned ON
+    P1IFG &= ~BIT1;             // P1.0 IFG cleared
 }

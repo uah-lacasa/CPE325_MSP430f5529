@@ -12,8 +12,7 @@
 #include <math.h>
 #include "msp430.h"
 
-//function prototypes
-long int exponential(int, int);
+long int exponential(int, int); // Prototype of exponential
 
 int main(void)
 {

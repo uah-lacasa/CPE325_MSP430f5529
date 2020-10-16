@@ -38,7 +38,7 @@ void main(void)
     P2OUT |= BIT1;                      // Required for proper IO
 
     unsigned int i = 0;
-    for (;;)
+    while(1)
     {
         if ((S1) == 0)                  // If S1 is pressed
         {

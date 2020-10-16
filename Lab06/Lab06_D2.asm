@@ -49,6 +49,7 @@ ChkSW1: bic.b   #0x01, &P1OUT
                                         ; loop and check again
 Debounce:
         mov.w   #2000, R15              ; Set to (2000 * 10 cc = 20,000 cc)
+
 SWD20ms:
         dec.w   R15                     ; Decrement R15
         nop
@@ -63,6 +64,7 @@ SWD20ms:
         jnz     ChkSW1                  ; If not, wait for SW1 press
 
 LEDon:  bis.b   #0x01, &P1OUT           ; Turn on LED1
+
 SW1wait:
         bit.b   #0x02, &P2IN            ; Test SW1
         jz      SW1wait                 ; Wait until SW1 is released

@@ -26,11 +26,10 @@
 
 void main(void)
 {
-    WDTCTL = WDT_MDLY_32;           // 32ms interval (default)
-    P1DIR |= BIT0;                  // Set P1.0 to output direction
-    SFRIE1 |= WDTIE;                // Enable WDT interrupt
-
-    _BIS_SR(LPM0_bits + GIE);       // Enter LPM0 with interrupt
+    WDTCTL = WDT_MDLY_32;       // 32ms interval (default)
+    P1DIR |= BIT0;              // Set P1.0 to output direction
+    SFRIE1 |= WDTIE;            // Enable WDT interrupt
+    _BIS_SR(LPM0_bits + GIE);   // Enter LPM0 with interrupt
 }
 
 // Watchdog Timer interrupt service routine
@@ -39,9 +38,10 @@ __interrupt void watchdog_timer(void)
 {
     static int i = 0;
     i++;
-    if (i == 32) {                  // 31.25 * 32 ms = 1s
-        P1OUT ^= BIT0;              // Toggle P1.0 using exclusive-OR
-                                    // 1s on, 1s off; period = 2s, f = 1/2s = 0.5Hz
+    if (i == 32)
+	{                           // 31.25 * 32 ms = 1s
+        P1OUT ^= BIT0;          // Toggle P1.0 using exclusive-OR
+                                // 1s on, 1s off; period = 2s, f = 1/2s = 0.5Hz
         i = 0;
     }
 }
