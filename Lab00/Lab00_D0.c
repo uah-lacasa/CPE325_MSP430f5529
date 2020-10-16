@@ -32,7 +32,7 @@ int main()
     {
         P1OUT ^= BIT0;          // Toggle LED 1
         P4OUT ^= BIT7;          // Toggle LED 2
-        __delay_cycles(100000); // Arbitrary delay of 100 ms
+        __delay_cycles(100000); // Arbitrary delay
     }
     return 0;
 }

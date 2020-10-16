@@ -13,10 +13,11 @@
 
 int main(void)
 {
-    int int_1 = 11, int_2 = -6;     // Signed 16-bit integers
+    int int_1 = 11;                 // Signed 16-bit integer
+	int int_2 = -6;                 // Signed 16-bit integer
     unsigned int u_int_1 = 65535;   // Unsigned 16-bit integer
-    long int long_1 = 100000;       // Signed 32-bit integers
-    long int long_2 = -2;
+    long int long_1 = 100000;       // Signed 32-bit integer
+    long int long_2 = -2;           // Signed 32-bit integer
     char char_1 = 'A';              // 8-bit character
     float float_1 = 1.25;           // Single-precision floating-point
     // pointer_1 points to memory where float_1 is stored

@@ -26,10 +26,10 @@ int int_fact(int base)
 }
 
 
-long int long_int_fact(int p)
+long int long_int_fact(int base)
 {
-    int j = 1;
-    long int t = 1;
+    int power = 1;
+    long int total = 1;
     if(base == 0 || base == 1)
     {
         return 1;               // Factorial of 0 and 1 is 1 by definition

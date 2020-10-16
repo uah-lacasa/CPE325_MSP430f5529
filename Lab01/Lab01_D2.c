@@ -28,15 +28,15 @@ int main(void)
 // This function recursively calculates an exponential, given a base and a power
 long int exponential(int base, int power)
 {
-    long int answer;
-    if (power > 1)              // if power > 1, call again
+    long int answer = 0;
+    if (power > 1)
     {
         power--;
-        answer = base * exponential(base, power);
+        answer = base * exponential(base, power); // Call function again
     }
-    else                        // else power = 1 and the answer is the base
+    else                        // Else power = 1
     {
-        answer = base;
+        answer = base;          // Answer is the base
     }
     return answer;
 }
