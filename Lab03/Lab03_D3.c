@@ -27,27 +27,29 @@
 
 void main(void)
 {
-    WDTCTL = WDTPW + WDTHOLD;             // Stop watchdog timer
-    P1DIR |= BIT0;                        // Set P1.0 to output direction (0000_0001)
-    P1OUT &= ~BIT0;                       // LED1 is OFF
+    WDTCTL = WDTPW + WDTHOLD;           // Stop watchdog timer
+    P1DIR |= BIT0;                      // Set P1.0 to output direction (0000_0001b)
+    P1OUT &= ~BIT0;                     // LED1 is OFF
 
-    P2DIR &= ~BIT1;                       // Set P2.1 as input for S1 input
-    P2REN |= BIT1;                        // Enable the Pull-up resistor at P2.1
-    P2OUT |= BIT1;                        // Required for proper IO
+    P2DIR &= ~BIT1;                     // Set P2.1 as input for S1 input
+    P2REN |= BIT1;                      // Enable the pull-up resistor at P2.1
+    P2OUT |= BIT1;                      // Required for proper IO
 
     unsigned int i = 0;
     for (;;)
-    {                            // Infinite loop
-        if ((S1) == 0)
-        {                  // If S1 is pressed
-            for (i = 2000; i > 0; i--);   // Debounce ~20 ms
-            if ((S1) == 0)
+    {
+        if ((S1) == 0)                  // If S1 is pressed
+        {
+            for (i = 2000; i > 0; i--); // Debounce ~20 ms
+            if ((S1) == 0)              // If S1 is pressed
             {
-                P1OUT |= BIT0;            // S1 pressed, turn LED1 on
+                P1OUT |= BIT0;          // Turn LED1 on
             }
-            while ((S1) == 0);            // Hang-on as long as S1 pressed
+            while ((S1) == 0);          // Hang-on as long as S1 pressed
         }
         else
-            P1OUT &= ~BIT0;
+		{
+            P1OUT &= ~BIT0;             // Turn LED1 off
+		}
     }
 }

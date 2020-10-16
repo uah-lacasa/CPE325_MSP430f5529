@@ -18,12 +18,11 @@
  * ---------------------------------------------------------------------------*/
 #include <msp430.h>
 
-# define REDLED 0x01                // Mask for BIT0 = 00000001b
-# define GREENLED 0x80              // Mask for BIT7 = 10000000b
+# define REDLED 0x01                // Mask for BIT0 = 0000_0001b
+# define GREENLED 0x80              // Mask for BIT7 = 1000_0000b
 
 void main(void)
 {
-
     WDTCTL = WDTPW + WDTHOLD;       // Stop watchdog timer
     P1DIR |= REDLED;                // Configure P1.0 as output
     P4DIR |= GREENLED;              // Configure P4.7 as output
@@ -33,7 +32,7 @@ void main(void)
     while(1)
     {
         __delay_cycles(500000);     // Delay of ~250 ms
-        P1OUT ^= REDLED;            // toggle P1.0
-        P4OUT ^= GREENLED;          // toggle P4.7
+        P1OUT ^= REDLED;            // Toggle P1.0 (REDLED)
+        P4OUT ^= GREENLED;          // Toggle P4.7 (GREENLED)
     }
 }

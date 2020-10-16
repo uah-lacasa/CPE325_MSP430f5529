@@ -20,7 +20,7 @@
 void main(void)
 {
     WDTCTL = WDTPW + WDTHOLD;   // Stop watchdog timer
-    P1DIR |= 0x01;              // Set P1.0 to output direction (0000_0001)
+    P1DIR |= 0x01;              // Set P1.0 to output direction (0000_0001b)
     P1OUT |= 0x01;              // Set P1OUT to 0000_0001b (LED1 is ON)
-    for (;;);                   // Infinite loop
+    while(1);                   // Infinite loop
 }
