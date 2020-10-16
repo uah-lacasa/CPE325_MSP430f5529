@@ -31,7 +31,7 @@ This repository contains demonstration programs for the **CPE 325: Embeddedd Sys
 - Lab 08 discusses serial communication using UART module on the MSP430 microcontroller. This is so the microcontroller can talk to the PC or any device that supports UART communication.
 
 ## [Lab 09](https://github.com/uah-lacasa/CPE325_MSP430f5529/tree/master/Lab_09)
-- Lab 9 discusses reverse engineering techniques. Students will be provided an executable and are tasked to decode what the program is doing.
+- Lab 09 discusses the Analog-to-Digital Converter and Digital-to-Analog Converter basics. Demo code will interface the internal temperature sensor and print the temperature using UART communication on the PC.
 
 ## [Lab 10](https://github.com/uah-lacasa/CPE325_MSP430f5529/tree/master/Lab_10)
-- Lab 10 discusses the Analog-to-Digital Converter and Digital-to-Analog Converter basics. Demo code will interface the internal temperature sensor and print the temperature using UART communication on the PC.
+- Lab 10 discusses reverse engineering techniques. Students will be provided an executable and are tasked to decode what the program is doing.

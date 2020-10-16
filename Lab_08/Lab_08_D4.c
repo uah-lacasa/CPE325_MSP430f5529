@@ -1,8 +1,25 @@
 /*------------------------------------------------------------------------------
  * File:        Lab_08_D4.c
  * Function:    Send floating data to Serial port
- * Description: UAH serial app expects lor byte first so send each byte at a
- *              time sending Lost byte first
+ * Description: UAH serial app expects lower byte first so send each byte at a
+ *              time sending lowest byte first. Serial App can be downloaded at
+ *              portal.mhealth.uah.edu/public/index.php/serial-port-application
+ 
+ *              FOR PROPER OPERATION:
+ *              In the UAH serial app, please do the following:
+ *              1. In the "Active Session" tab, select the appropriate Com Port.
+ *              2. Check the box that says "Enable Chart"
+ *              3. In "Settings" tab, 
+ *                 a. Number of Channels = 1
+ *                    i. We are sending a single floating point number to plot
+ *                 b. Packet Size = 5 bytes
+ *                    i. 1 byte header and 4 bytes for the floating point number
+ *                 c. Header = 85 or 0x55
+ *                    i. Header byte we are sending at the beginning of each
+ *                       packet from our program
+ *                 d. In CH0, select Type = Single 32bit
+ *                 e. Set the position to 1
+ *                 f. Check Show on Graph
  * Instruction: Set the following parameters in putty/hyperterminal
  * Port:        COMx
  * Baud rate:   115200

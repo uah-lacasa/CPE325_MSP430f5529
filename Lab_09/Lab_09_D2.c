@@ -1,5 +1,5 @@
 /*------------------------------------------------------------------------------
- * File:        Lab_10_D2.c
+ * File:        Lab_09_D2.c
  * Function:    Interfacing thumbstick
  * Description: This C program interfaces with a thumbstick sensor that has
  *              x (HORZ) and y (VERT) axis and outputs from 0 to 3V.
