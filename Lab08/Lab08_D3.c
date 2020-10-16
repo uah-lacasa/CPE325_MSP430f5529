@@ -9,7 +9,7 @@
  *              ~ 6.8 (16 from UCOS16)
  * Instruction: Set the following parameters in putty/hyperterminal
  * Port:        COMx
- * Baud rate:   19200
+ * Baud rate:   9600
  * Data bits:   8
  * Parity:      None
  * Stop bits:   1
