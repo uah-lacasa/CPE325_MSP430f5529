@@ -18,30 +18,25 @@ long int exponential(int, int);
 int main(void)
 {
     WDTCTL = WDTPW + WDTHOLD;   // Stop watchdog timer
-
-    int base = 12;        //the base
-    int power = 4;        //the exponent, must be positive and 1 or greater
-    long int answer = exponential(base, power);  //find the power
-
+    int base = 12;
+    int power = 4;              // the exponent, must be positive and 1 or greater
+    long int answer = exponential(base, power);  // find the power
     printf("%d raised to the %d power is %ld", base, power, answer);
-
     return 0;
 }
 
-//This function recursively calculates a power given a base and a power
+// This function recursively calculates an exponential, given a base and a power
 long int exponential(int base, int power)
 {
-    long int answer;      //the solution
-    if (power > 1)        //if the current call has power > 1 than call again
+    long int answer;
+    if (power > 1)              // if power > 1, call again
     {
         power--;
         answer = base*exponential(base, power);
     }
-
-    else                  //else the power = 1 and the answer is the base
+    else                        // else power = 1 and the answer is the base
     {
         answer = base;
     }
-
-    return answer;        //return the answer
+    return answer;
 }
