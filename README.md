@@ -10,7 +10,7 @@ This repository contains demonstration programs for the **CPE 325: Embedded Syst
 - Lab 01 discusses various aspects of using the CCS IDE. This lab is designed to give students basic knowledge on debugging, compiling, and inspecting various aspects of the program while using CCS.
 
 ## [Lab 02](https://github.com/uah-lacasa/CPE325_MSP430f5529/tree/master/Lab02)
-- Lab 02 discusses different data types and their representation in memory. It also deals with conversion of numbers beten different bases.
+- Lab 02 discusses different data types and their representation in memory. It also deals with conversion of numbers between different bases.
 
 ## [Lab 03](https://github.com/uah-lacasa/CPE325_MSP430f5529/tree/master/Lab03)
 - Lab 03 discusses interfacing information for MSP430 microcontrollers. First, the board in use will be introduced. Then, students will be introduced with initializing inputs and outputs using parallel ports to interface LEDs and Switches.
@@ -31,7 +31,7 @@ This repository contains demonstration programs for the **CPE 325: Embedded Syst
 - Lab 08 discusses serial communication using UART module on the MSP430 microcontroller. This is so the microcontroller can talk to the PC or any device that supports UART communication.
 
 ## [Lab 09](https://github.com/uah-lacasa/CPE325_MSP430f5529/tree/master/Lab09)
-- Lab 09 discusses the Analog-to-Digital Converter. One of the demo codes will interface the internal temperature sensor and print the temperature using UART communication on the PC. Another demo code will interface an analong thumbstick.
+- Lab 09 discusses the Analog-to-Digital Converter. One of the demo codes will interface the internal temperature sensor and print the temperature using UART communication on the PC. Another demo code will interface an analog thumb stick.
 
 ## [Lab 10](https://github.com/uah-lacasa/CPE325_MSP430f5529/tree/master/Lab10)
 - Lab 10 discusses reverse engineering techniques. Students will be provided an executable and are tasked to decode what the program is doing.
