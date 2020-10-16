@@ -24,7 +24,7 @@
 void main(void)
 {
 
-    WDTCTL = WDTPW | WDTHOLD;       // stop watchdog timer
+    WDTCTL = WDTPW + WDTHOLD;       // Stop watchdog timer
     P1DIR |= REDLED;                // configure P1.0 as output
     P4DIR |= GREENLED;              // configure P4.7 as output
 

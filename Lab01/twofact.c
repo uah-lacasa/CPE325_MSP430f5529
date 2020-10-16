@@ -12,15 +12,15 @@ int int_fact(int base)
 {
     int power, total = 1;
     if(base == 0 || base == 1)
-	{
-		return 1;               // Factorial of 0 and 1 is 1 by definition
-	}
+    {
+        return 1;               // Factorial of 0 and 1 is 1 by definition
+    }
     else
     {
         for(power = 2; power <= base; power++)
-		{
-			total *= power;     // Do the factorial multiplication
-		}
+        {
+            total *= power;     // Do the factorial multiplication
+        }
         return total;
     }
 }
@@ -31,15 +31,15 @@ long int long_int_fact(int p)
     int j = 1;
     long int t = 1;
     if(base == 0 || base == 1)
-	{
-		return 1;               // Factorial of 0 and 1 is 1 by definition
-	}
+    {
+        return 1;               // Factorial of 0 and 1 is 1 by definition
+    }
     else
     {
         for(power = 2; power <= base; power++)
-		{
-			total *= power;     // Do the factorial multiplication
-		}
+        {
+            total *= power;     // Do the factorial multiplication
+        }
         return total;
     }
 }

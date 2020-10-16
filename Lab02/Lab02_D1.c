@@ -13,25 +13,25 @@
 
 int main(void)
 {
-    int i1 = 11, i2 = -6;           // 16-bit integers
-    unsigned int u1 = 65535;        // unsigned 16-bit integer
-    long int l1 = 100000;           // 32-bit signed integers
-    long int l2 = -2;
-    char c1 = 'A';                  // 8-bit character
-    float f1 = 1.25;                // single-precision floating-point
-    unsigned long int * p1 = &f1;   // p1 points to memory where f1 is stored
-    unsigned long int l3 = *p1;     // interpret floating-point number as long integer
+    int int_1 = 11, int_2 = -6;     // Signed 16-bit integers
+    unsigned int u_int_1 = 65535;   // Unsigned 16-bit integer
+    long int long_1 = 100000;       // Signed 32-bit integers
+    long int long_2 = -2;
+    char char_1 = 'A';              // 8-bit character
+    float float_1 = 1.25;           // Single-precision floating-point
+    // pointer_1 points to memory where float_1 is stored
+    unsigned long int* pointer_1 = &float_1;
+    unsigned long int long_3 = *pointer_1;  // Interpret float as long integer
 
-    WDTCTL = WDTPW | WDTHOLD;   // stop watchdog timer
+    WDTCTL = WDTPW + WDTHOLD;       // Stop watchdog timer
     printf("Each variable below is printed in decimal, hex, and octal representations.\n");
-    printf(" i1 = %6d, %#04.4x, %#06o\n", i1, i1, i1);
-    printf(" i2 = %6d, %#04.4x, %#06o\n", i2, i2, i2);
-    printf(" u1 = %6u, %#04.4x, %#06o\n", u1, u1, u1);
-    printf(" l1 = %ld, %#08.8lx, %#011lo\n", l1, l1, l1);
-    printf(" l2 = %6ld, %#08.8lx, %#011lo\n", l2, l2, l2);
-    printf(" f1 = %6.2f, %#08.8lx\n", f1, l3);
-    printf(" c1 = %c, %#02.2x, %#03o\n", c1, c1, c1);
+    printf(" int_1 = %6d, %#04.4x, %#06o\n", int_1, int_1, int_1);
+    printf(" int_2 = %6d, %#04.4x, %#06o\n", int_2, int_2, int_2);
+    printf(" u_int_1 = %6u, %#04.4x, %#06o\n", u_int_1, u_int_1, u_int_1);
+    printf(" long_1 = %ld, %#08.8lx, %#011lo\n", long_1, long_1, long_1);
+    printf(" long_2 = %6ld, %#08.8lx, %#011lo\n", long_2, long_2, long_2);
+    printf(" float_1 = %6.2f, %#08.8lx\n", float_1, long_3);
+    printf(" char_1 = %c, %#02.2x, %#03o\n", char_1, char_1, char_1);
     printf("That's all folks\n");
-
     return 0;
 }

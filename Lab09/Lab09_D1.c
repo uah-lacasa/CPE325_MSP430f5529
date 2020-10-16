@@ -98,7 +98,7 @@ void ADC_setup(void)
 
 void main(void)
 {
-    WDTCTL = WDTPW | WDTHOLD;         // Stop watchdog timer
+    WDTCTL = WDTPW + WDTHOLD;         // Stop watchdog timer
     UART_setup();                     // Setup USCI_A0 module in UART mode
     ADC_setup();                      // Setup ADC12
 
