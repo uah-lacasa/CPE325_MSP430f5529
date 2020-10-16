@@ -21,30 +21,27 @@
 ; Modified:     Prawar Poudel, prawar.poudel@uah.edu
 ; Date:         August 5, 2020
 ; ------------------------------------------------------------------------------
-            .cdecls C, LIST, "msp430.h"    ; Include device header file
+        .cdecls C, LIST, "msp430.h"     ; Include device header file
 ;-------------------------------------------------------------------------------
-            .def    RESET                   ; Export program entry-point to
-                                            ; make it known to linker.
+        .def    RESET                   ; Export program entry-point to
+                                        ; make it known to linker.
 ;-----------------------------------------------------------------------------
 ;            USER DATA
 ;-----------------------------------------------------------------------------
-            .data                            ; so that it goes to data section
-val1:       .int    45                        ; val1 is an integer whose value is 45
-val2:       .int    3                        ; val2 is an integer whose value is 3
-val3:       .int    0                        ; val3 will hold result of val1*val2
-                                            ; .. let us init it with 0 for now
+            .data                       ; so that it goes to data section
+val1:       .int    45                  ; val1 is an integer whose value is 45
+val2:       .int    3                   ; val2 is an integer whose value is 3
+val3:       .int    0                   ; val3 will hold result of val1*val2
+                                        ; .. let us init it with 0 for now
 ;-------------------------------------------------------------------------------
-            .text                           ; Assemble into program memory.
-            .retain                         ; Override ELF conditional linking
-                                            ; and retain current section.
-            .retainrefs                     ; And retain any sections that have
-                                            ; references to current section.
-
+        .text                           ; Assemble into program memory.
+        .retain                         ; Override ELF conditional linking
+                                        ; and retain current section.
+        .retainrefs                     ; And retain any sections that have
+                                        ; references to current section.
 ;-------------------------------------------------------------------------------
-RESET       mov.w   #__STACK_END,SP         ; Initialize stackpointer
-StopWDT     mov.w   #WDTPW|WDTHOLD,&WDTCTL  ; Stop watchdog timer
-
-
+RESET:  mov.w   #__STACK_END,SP         ; Initialize stack pointer
+        mov.w   #WDTPW|WDTHOLD,&WDTCTL  ; Stop watchdog timer
 ;-------------------------------------------------------------------------------
 ; Main loop here
 ;-------------------------------------------------------------------------------
@@ -73,6 +70,6 @@ main:
 ;-------------------------------------------------------------------------------
 ; Interrupt Vectors
 ;-------------------------------------------------------------------------------
-            .sect   ".reset"                ; MSP430 RESET Vector
+            .sect   ".reset"            ; MSP430 RESET Vector
             .short  RESET
-            
+            .end

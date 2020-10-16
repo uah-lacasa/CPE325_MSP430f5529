@@ -11,21 +11,20 @@
 ; Date:         September 14, 2008
 ; Revised:      August 5, 2020
 ; ------------------------------------------------------------------------------
-            .cdecls C, LIST, "msp430.h"        ; Include device header file
+        .cdecls C, LIST, "msp430.h"     ; Include device header file
 ;-------------------------------------------------------------------------------
-            .def    RESET                       ; Export program entry-point to
-                                                ; make it known to linker.
-            .ref    suma_sp
+        .def    RESET                   ; Export program entry-point to
+                                        ; make it known to linker.
+        .ref    suma_sp
 ;-------------------------------------------------------------------------------
-            .text                               ; Assemble into program memory.
-            .retain                             ; Override ELF conditional linking
-                                                ; and retain current section.
-            .retainrefs                         ; And retain any sections that have
-                                                ; references to current section.
+        .text                           ; Assemble into program memory.
+        .retain                         ; Override ELF conditional linking
+                                        ; and retain current section.
+        .retainrefs                     ; And retain any sections that have
+                                        ; references to current section.
 ;-------------------------------------------------------------------------------
-RESET:      mov.w   #__STACK_END,SP             ; Initialize stack pointer
-StopWDT:    mov.w   #WDTPW|WDTHOLD,&WDTCTL      ; Stop watchdog timer
-
+RESET:  mov.w   #__STACK_END,SP         ; Initialize stack pointer
+        mov.w   #WDTPW|WDTHOLD,&WDTCTL  ; Stop watchdog timer
 ;-------------------------------------------------------------------------------
 ; Main code here
 ;-------------------------------------------------------------------------------
@@ -58,7 +57,6 @@ arr2:       .int     1, 1, 1, 1, -1, -1, -1     ; the second array
 ;-------------------------------------------------------------------------------
 ; Interrupt Vectors
 ;-------------------------------------------------------------------------------
-            .sect   ".reset"                ; MSP430 RESET Vector
+            .sect   ".reset"            ; MSP430 RESET Vector
             .short  RESET
             .end
-

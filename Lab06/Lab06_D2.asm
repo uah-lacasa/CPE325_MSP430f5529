@@ -21,20 +21,19 @@
 ; Modified:     Prawar Poudel, prawar.poudel@uah.edu
 ; Date:         August 08, 2019
 ; ------------------------------------------------------------------------------
-            .cdecls C, LIST, "msp430.h"        ; Include device header file
+        .cdecls C, LIST, "msp430.h"     ; Include device header file
 ;-------------------------------------------------------------------------------
-            .def    RESET                   ; Export program entry-point to
-                                            ; make it known to linker.
+        .def    RESET                   ; Export program entry-point to
+                                        ; make it known to linker.
 ;-------------------------------------------------------------------------------
-            .text                           ; Assemble into program memory.
-            .retain                         ; Override ELF conditional linking
-                                            ; and retain current section.
-            .retainrefs                     ; And retain any sections that have
-                                            ; references to current section.
-
+        .text                           ; Assemble into program memory.
+        .retain                         ; Override ELF conditional linking
+                                        ; and retain current section.
+        .retainrefs                     ; And retain any sections that have
+                                        ; references to current section.
 ;-------------------------------------------------------------------------------
-RESET:      mov.w   #__STACK_END,SP         ; Initialize stack pointer
-StopWDT:    mov.w   #WDTPW|WDTHOLD,&WDTCTL  ; Stop watchdog timer
+RESET:  mov.w   #__STACK_END,SP         ; Initialize stack pointer
+        mov.w   #WDTPW|WDTHOLD,&WDTCTL  ; Stop watchdog timer
 ;-------------------------------------------------------------------------------
 SetupP2:
             bis.b   #001h, &P1DIR           ; Set P1.0 to output
@@ -81,6 +80,6 @@ SW1wait:    bit.b   #002h, &P2IN            ; Test SW1
 ;-------------------------------------------------------------------------------
 ; Interrupt Vectors
 ;-------------------------------------------------------------------------------
-            .sect   ".reset"                ; MSP430 RESET Vector
+            .sect   ".reset"            ; MSP430 RESET Vector
             .short  RESET
             .end
