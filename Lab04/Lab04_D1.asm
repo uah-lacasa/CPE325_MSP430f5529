@@ -15,7 +15,7 @@
                                         ; make it known to linker.
 ;-------------------------------------------------------------------------------
 myStr:  .string "HELLO WORLD, I AM THE MSP430!", ''
-        ; .string does add NULL at the end of the string;
+        ; .string does not add NULL at the end of the string;
         ; '' ensures that a NULL follows the string.
         ; You can alternatively use .cstring "HELLO WORLD, I AM THE MSP430!"
         ; that adds a NULL character at the end of the string automatically.
