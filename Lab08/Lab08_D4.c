@@ -50,30 +50,32 @@ volatile float myData;
 
 void UART_setup(void)
 {
+    P3SEL |= BIT3 + BIT4;       // Set USCI_A0 RXD/TXD to receive/transmit data
+    UCA0CTL1 |= UCSWRST;        // Set software reset during initialization
+    UCA0CTL0 = 0;               // USCI_A0 control register
+    UCA0CTL1 |= UCSSEL_2;       // Clock source SMCLK
 
-    P3SEL |= BIT3 + BIT4;   // Set USCI_A0 RXD/TXD to receive/transmit data
-    UCA0CTL1 |= UCSWRST;    // Set software reset during initialization
-    UCA0CTL0 = 0;           // USCI_A0 control register
-    UCA0CTL1 |= UCSSEL_2;   // Clock source SMCLK
+    UCA0BR0 = 0x09;             // 1048576 Hz  / 115200 lower byte
+    UCA0BR1 = 0x00;             // upper byte
+    UCA0MCTL = 0x02;            // Modulation (UCBRS0=0x01, UCOS16=0)
 
-    UCA0BR0 = 0x09;         // 1048576 Hz  / 115200 lower byte
-    UCA0BR1 = 0x00;         // upper byte
-    UCA0MCTL = 0x02;        // Modulation (UCBRS0=0x01, UCOS16=0)
-
-    UCA0CTL1 &= ~UCSWRST;   // Clear software reset to initialize USCI state machine
+    // Clear software reset to initialize USCI state machine
+    UCA0CTL1 &= ~UCSWRST;
 }
+
 
 void UART_putCharacter(char c)
 {
     while (!(UCA0IFG&UCTXIFG)); // Wait for previous character to transmit
-    UCA0TXBUF = c;               // Put character into tx buffer
+    UCA0TXBUF = c;              // Put character into tx buffer
 }
+
 
 int main()
 {
     WDTCTL = WDT_ADLY_1000;
-    UART_setup();                // Initialize USCI_A0 module in UART mode
-    SFRIE1 |= WDTIE;                // Enable watchdog interrupts
+    UART_setup();               // Initialize USCI_A0 module in UART mode
+    SFRIE1 |= WDTIE;            // Enable watchdog interrupts
 
     myData = 0.0;
     __bis_SR_register(LPM0_bits + GIE);
@@ -87,7 +89,7 @@ __interrupt void watchdog_timer(void)
     // Use character pointers to send one byte at a time
     char *myPointer = (char* )&myData;
 
-    UART_putCharacter(0x55);                // Send header
+    UART_putCharacter(0x55);    // Send header
     for(index = 0; index < 4; index++)
     {    // Send 4-bytes of myData
         UART_putCharacter(myPointer[index]);

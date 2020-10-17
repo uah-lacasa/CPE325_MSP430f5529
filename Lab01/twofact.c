@@ -8,29 +8,38 @@
  * Author(s):   Aleksandar Milenkovic, milenkovic@computer.org
  * Date:        Aug 16, 2017
  * ---------------------------------------------------------------------------*/
-int ifact(int p)
+int int_fact(int base)
 {
-    int j = 0;
-    int t = 1;
-
-    if(p==0 || p==1) return 1;    // factorial of 1 and 0 is = 1
+    int power, total = 1;
+    if(base == 0 || base == 1)
+    {
+        return 1;               // Factorial of 0 and 1 is 1 by definition
+    }
     else
     {
-        for(j=2; j<=p; j++) t=t*j;  // Do the factorial multiplication
-        return t;
+        for(power = 2; power <= base; power++)
+        {
+            total *= power;     // Do the factorial multiplication
+        }
+        return total;
     }
 }
 
 
-long int lifact(int p)
+long int long_int_fact(int base)
 {
-    int j = 0;
-    long int t = 1;
-
-    if(p==0 || p==1) return 1;     // factorial of 1 and 0 is = 1
+    int power = 1;
+    long int total = 1;
+    if(base == 0 || base == 1)
+    {
+        return 1;               // Factorial of 0 and 1 is 1 by definition
+    }
     else
     {
-        for(j=2; j<=p; j++) t=t*j;   // Do the factorial multiplication
-        return t;
+        for(power = 2; power <= base; power++)
+        {
+            total *= power;     // Do the factorial multiplication
+        }
+        return total;
     }
 }

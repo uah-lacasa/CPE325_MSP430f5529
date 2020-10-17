@@ -30,37 +30,40 @@
  * ---------------------------------------------------------------------------*/
 #include <msp430F5529.h>
 
+#define REDLED 0x01             // Mask for BIT0 = 0000_0001b
+#define GREENLED 0x80           // Mask for BIT7 = 1000_0000b
+
 void main(void)
 {
-    WDTCTL = WDTPW + WDTHOLD;     // Stop WDT
-    _EINT();                      // Enable interrupts
+    WDTCTL = WDTPW + WDTHOLD;   // Stop watchdog timer
+    _EINT();                    // Enable interrupts
 
-    P1DIR |= BIT0;                //LED1 as output
-    P4DIR |= BIT7;                //LED2 as output
+    P1DIR |= REDLED;            // LED1 as output
+    P4DIR |= GREENLED;          // LED2 as output
 
-    P1OUT &= ~BIT0;               // ensure LED1 and LED2 are off
-    P4OUT &= ~BIT7;
+    P1OUT &= ~REDLED;           // Ensure LED1 is off
+    P4OUT &= ~GREENLED;         // Ensure LED2 is off
 
-    TA0CCTL0 = CCIE;              // TA0 count triggers interrupt
-    TA0CCR0 = 10000;              // Set TA0 (and maximum) count value
+    TA0CCTL0 = CCIE;            // TA0 count triggers interrupt
+    TA0CCR0 = 10000;            // Set TA0 (and maximum) count value
 
-    TA0CCTL1 = CCIE;              // TA0.1 count triggers interrupt
-    TA0CCR1 = 2000;               // Set TA0.1 count value
+    TA0CCTL1 = CCIE;            // TA0.1 count triggers interrupt
+    TA0CCR1 = 2000;             // Set TA0.1 count value
 
-    TA0CTL = TASSEL_1 | MC_3;     // ACLK is clock source, UP/DOWN mode
+    TA0CTL = TASSEL_1 | MC_3;   // ACLK is clock source, UP/DOWN mode
 
-    _BIS_SR(LPM3);                // Enter Low Power Mode 3
+    _BIS_SR(LPM3);              // Enter Low Power Mode 3
 }
 
 #pragma vector = TIMER0_A0_VECTOR
 __interrupt void timerISR(void)
 {
-    P4OUT ^= BIT7;                // Toggle LED2
+    P4OUT ^= GREENLED;          // Toggle LED2
 }
 
 #pragma vector = TIMER0_A1_VECTOR
 __interrupt void timerISR2(void)
 {
-    P1OUT ^= BIT0;                // Toggle LED1
-    TA0CCTL1 &= ~CCIFG;            // Clear interrupt flag
+    P1OUT ^= REDLED;            // Toggle LED1
+    TA0CCTL1 &= ~CCIFG;         // Clear interrupt flag
 }

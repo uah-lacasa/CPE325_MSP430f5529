@@ -38,13 +38,13 @@
 
 void main(void)
 {
-    WDTCTL = WDTPW +WDTHOLD;  // Stop WDT
+    WDTCTL = WDTPW +WDTHOLD;    // Stop WDT
 
-    P2DIR |= BIT4;            // P2.4 output (TA2.1)
-    P2SEL |= BIT4;            // P2.4 special function (TA2.1 output)
+    P2DIR |= BIT4;              // P2.4 output (TA2.1)
+    P2SEL |= BIT4;              // P2.4 special function (TA2.1 output)
 
-    TA2CCTL1 = OUTMOD_4;      // TA2.1 output is in toggle mode
-    TA2CTL = TASSEL_2 + MC_2; // SMCLK is clock source, Continuous mode
+    TA2CCTL1 = OUTMOD_4;        // TA2.1 output is in toggle mode
+    TA2CTL = TASSEL_2 + MC_2;   // SMCLK is clock source, Continuous mode
 
-    _BIS_SR(LPM0_bits + GIE); // Enter Low Power Mode 0
+    _BIS_SR(LPM0_bits + GIE);   // Enter Low Power Mode 0
 }

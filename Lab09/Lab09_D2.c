@@ -35,6 +35,7 @@ void TimerA_setup(void)
     TA0CCTL0 = CCIE;                     // Enabled interrupt
 }
 
+
 void ADC_setup(void)
 {
     int i =0;
@@ -52,11 +53,13 @@ void ADC_setup(void)
     ADC12CTL0 |= ADC12ENC;                   // Enable conversions
 }
 
+
 void UART_putCharacter(char c)
 {
     while (!(UCA0IFG&UCTXIFG));    // Wait for previous character to transmit
     UCA0TXBUF = c;                  // Put character into tx buffer
 }
+
 
 void UART_setup(void)
 {
@@ -68,6 +71,7 @@ void UART_setup(void)
     UCA0MCTL = 0x94;
     UCA0CTL1 &= ~BIT0;                  // Start UART device
 }
+
 
 void sendData(void)
 {
@@ -88,6 +92,7 @@ void sendData(void)
         UART_putCharacter(ypointer[i]);
     }
 }
+
 
 void main(void)
 {

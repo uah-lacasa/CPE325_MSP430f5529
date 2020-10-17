@@ -21,29 +21,21 @@
 #include <stdio.h>
 #include <msp430.h>
 
+#define REDLED 0x01             // Mask for BIT0 = 0000_0001b
+#define GREENLED 0x80           // Mask for BIT7 = 1000_0000b
+
 int main()
 {
-
-    // stop watchdog timer
-    WDTCTL = WDTPW+WDTHOLD;
-
-    // initialize LED1 and LED2 as output
-    P4DIR |= BIT7;
-    P1DIR |= BIT0;
-
-    // initialize the values of outputs to
-    // P4.7 as 1 (LED2 ON)
-    // P1.0 as 0 (LED1 OFF)
-    P4OUT |= BIT7;
-    P1OUT &= ~BIT0;
-
-    while(1)
+    WDTCTL = WDTPW + WDTHOLD;   // Stop watchdog timer
+    P1DIR |= REDLED;            // Set LED1 as output
+    P4DIR |= GREENLED;          // Set LED2 as output
+    P1OUT &= ~REDLED;           // Set the value of LED1 (P1.0) to 0 (OFF)
+    P4OUT |= GREENLED;          // Set the value of LED2 (P4.7) to 1 (ON)
+    while(1)                    // Infinite loop
     {
-        // toggle values on each LEDS
-        P4OUT ^= BIT7;
-        P1OUT ^= BIT0;
-        // arbitrary delays
-        __delay_cycles(100000);
+        P1OUT ^= REDLED;        // Toggle LED 1
+        P4OUT ^= GREENLED;      // Toggle LED 2
+        __delay_cycles(100000); // Arbitrary delay of ~50 ms
     }
     return 0;
 }

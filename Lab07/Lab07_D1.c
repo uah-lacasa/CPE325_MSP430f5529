@@ -23,17 +23,19 @@
  * ---------------------------------------------------------------------------*/
 #include <msp430.h>
 
+#define REDLED 0x01             // Mask for BIT0 = 0000_0001b
+
 void main(void)
 {
-    WDTCTL = WDT_ADLY_1000;           // 1 s interval timer
-    P1DIR |= BIT0;                    // Set P1.0 to output direction
-    SFRIE1 |= WDTIE;                  // Enable WDT interrupt
-    _BIS_SR(LPM0_bits + GIE);         // Enter LPM0 w/ interrupt
+    WDTCTL = WDT_ADLY_1000;     // 1 s interval timer
+    P1DIR |= REDLED;            // Set P1.0 to output direction
+    SFRIE1 |= WDTIE;            // Enable WDT interrupt
+    _BIS_SR(LPM0_bits + GIE);   // Enter LPM0 with interrupt
 }
 
 // Watchdog Timer Interrupt Service Routine
 #pragma vector=WDT_VECTOR
 __interrupt void watchdog_timer(void)
 {
-    P1OUT ^= BIT0;                    // Toggle P1.0 using exclusive-OR
+    P1OUT ^= REDLED;            // Toggle P1.0 using exclusive-OR
 }
