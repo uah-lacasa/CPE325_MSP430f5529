@@ -22,7 +22,7 @@
 #include <msp430.h>
 
 #define REDLED 0x01             // Mask for BIT0 = 0000_0001b
-#define GREENLED 0x80           // Mask for BIT7 = 1000_0000b
+#define GREENLED BIT7           // Mask BIT7, defined in header
 
 int main()
 {
