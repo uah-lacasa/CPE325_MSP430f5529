@@ -13,7 +13,7 @@
  *                    | |               |
  *                    --|RST            |
  *                      |           P1.0|-->LED1(RED)
- *                      |           P4.7|<--LED2(GREEN)
+ *                      |           P2.1|<--SW1
  *                      |               |
  * Input:       Pressing S1
  * Output:      LED1 is turned on when S1 is pressed
