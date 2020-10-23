@@ -45,7 +45,7 @@ void TimerA_setup(void)
 void ADC_setup(void)
 {
     // configure ADC converter
-    P6SEL = 0x07;                             // Enable A/D channel inputs
+    P6SEL = 0x03;                             // Enable A/D channel inputs
     ADC12CTL0 = ADC12ON+ADC12MSC+ADC12SHT0_8; // Turn on ADC12, extend sampling time
                                               // to avoid overflow of results
 
