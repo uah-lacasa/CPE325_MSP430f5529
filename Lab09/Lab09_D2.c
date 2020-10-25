@@ -8,7 +8,7 @@
  *              https://www.digikey.com/htmldatasheets/production/2262974/0/0/1/512.html
  *              
  *              The value of x and y axis is sent as the percentage
- *              of por to the UAH Serial App.
+ *              of power to the UAH Serial App.
  *
  * Clocks:      ACLK = LFXT1 = 32768Hz, MCLK = SMCLK = DCO = default (~1MHz)
  *              An external watch crystal beten XIN & XOUT is required for ACLK
@@ -23,7 +23,7 @@
  *           P6.1(A1)-->|     P3.4/UCA0RXD|<------------
  *                      |                 |
  * Input:       Connect thumbstick to the board
- * Output:      Displays % of por in UAH serial app
+ * Output:      Displays % of power in UAH serial app
  * Author(s):   Prawar Poudel, prawar.poudel@uah.edu
  *              Micah Harvey
  * Date:        August 8, 2020
