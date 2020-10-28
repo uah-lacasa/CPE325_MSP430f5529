@@ -71,7 +71,7 @@ void UART_putCharacter(char c)
 void SetTime(void)
 {
     tsec++;
-    if (tsec == 10
+    if (tsec == 10)
     {
         tsec = 0;
         sec++;

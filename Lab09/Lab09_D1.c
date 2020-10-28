@@ -63,7 +63,6 @@ void UART_setup(void)
     UCA0MCTL = 0x02;            // Modulation (UCBRS0=0x01, UCOS16=0)
     // Clear software reset to initialize USCI state machine
     UCA0CTL1 &= ~UCSWRST;
-    
     UCA0IE |= UCRXIE;           // Enable USCI_A0 RX interrupt
 }
 
