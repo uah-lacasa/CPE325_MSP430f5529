@@ -1,42 +1,44 @@
-/*------------------------------------------------------------------------------
- * File:        Lab10_D1.c
- * Function:    Blink LED1 and LED2
- * Description: This program blinks LED1 and LED2 in an infinite loop
- * Clocks:      ACLK = LFXT1 = 32768Hz,
- *              MCLK = SMCLK = default DCO = 32 x ACLK = 1048576Hz
- *                      MSP-EXP430F5529LP
- *                     --------------------
- *                   /|\|              XIN|-
- *                    | |                 | 32kHz
- *                    --|RST          XOUT|-
- *                      |                 |
- *                      |             P4.7|- LED2
- *                      |             P1.0|- LED1
- *                      |                 |
- * Input:       None
- * Output:        
- * Author(s):   Aleksandar Milenkovic, milenkovic@computer.org
- * Date:        October 2018
- * Modified:    Prawar Poudel, prawar.poudel@uah.edu
- * Date:        August 8, 2019
- * ---------------------------------------------------------------------------*/
-#include <msp430.h> 
+/********************************************************************************
+ *   File:        ToggleLEDs.c
+ *   Description: Program toggles LED1 and LED2 by
+ *                xoring port pins inside of an infinite loop.
+ *
+ *   Board:       MSP-EXP430F5529 Experimenter Board
+ *   Clocks:      ACLK = 32.768kHz, MCLK = SMCLK = default DCO
+ *
+ *                 MSP430F5529
+ *             -----------------
+ *         /|\|                 |
+ *          | |                 |
+ *          --|RST              |
+ *            |                 |
+ *            |             P1.0|--> LED1
+ *            |             P4.7|--> LED2
+ *
+ *   Author: Alex Milenkovich, milenkovic@computer.org
+ *   Date:   September 2010
+ *   Modified: Prawar Poudel, prawar.poudel@uah.edu
+ *   Date:   November 2020
+********************************************************************************/
+#include  <msp430.h>
 
-#define REDLED 0x01             // Mask for BIT0 = 0000_0001b
-#define GREENLED 0x80           // Mask for BIT7 = 1000_0000b
+int main(void) {
+   WDTCTL = WDTPW + WDTHOLD;    // Stop watchdog timer
 
-int main(void)
-{
-    WDTCTL = WDTPW + WDTHOLD;   // Stop watchdog timer
-    P1DIR |= REDLED;
-    P4DIR |= GREENLED;
-    P1OUT = 0x01;
-    unsigned int i = 0;
-    while(1)                    // Infinite loop
-    {
-        P1OUT ^= REDLED;
-        P4OUT ^= GREENLED;
-        for(i = 0; i < 5000; i++);
-    }
-    return 0;
+   P1DIR |= BIT0;               // Set P1.0 to output direction (xxxx_xxx1) for LED1
+   P4DIR |= BIT7;               // Set P4.7 to output direction (1xxx_xxxx) for LED2
+
+   P1OUT |= BIT0;               // Set P1.0 ON (xxxx_xxx1) for LED1
+   P4OUT &= ~BIT7;              // Set P4.7 OFF (0xxx_xxxx) for LED2
+
+   for (;;) {
+     unsigned int i;
+
+     P1OUT ^= BIT0;             // toggle the LED1
+     P4OUT ^= BIT7;             // toggle the LED2
+
+     for(i = 0; i < 50000; i++); // Software delay (13 cc per iteration)
+     /* Total delay on average 13 cc*50,000 = 750,000; 750,000 * 1us = 0.75 s */
+   }
+   return 0;
 }
